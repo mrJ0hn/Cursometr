@@ -63,9 +63,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="UUw-f8-Gkr">
-                                        <rect key="frame" x="337" y="25" width="22" height="22"/>
-                                        <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_leave_feedback" translatesAutoresizingMaskIntoConstraints="NO" id="UUw-f8-Gkr">
+                                        <rect key="frame" x="343" y="25" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="4ZK-26-4KU"/>
                                             <constraint firstAttribute="width" constant="22" id="WPn-U3-JRr"/>
@@ -91,17 +90,27 @@
                                             <constraint firstAttribute="height" constant="1" id="qqE-ln-fde"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="JUg-Ss-J8r">
+                                        <rect key="frame" x="346" y="84" width="13" height="13"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="13" id="HNt-u0-vYJ"/>
+                                            <constraint firstAttribute="width" constant="13" id="ROx-lc-Jx0"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="UUw-f8-Gkr" firstAttribute="centerY" secondItem="15V-Ig-ltN" secondAttribute="centerY" id="442-xd-T4F"/>
                                     <constraint firstItem="ubY-ag-Bgy" firstAttribute="leading" secondItem="gGf-Z9-CA2" secondAttribute="leading" id="7kq-yM-Fj4"/>
                                     <constraint firstAttribute="trailing" secondItem="ubY-ag-Bgy" secondAttribute="trailing" id="BoM-jk-uGZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="UUw-f8-Gkr" secondAttribute="trailing" constant="16" id="FeP-2d-oyM"/>
+                                    <constraint firstAttribute="trailing" secondItem="UUw-f8-Gkr" secondAttribute="trailing" constant="10" id="FeP-2d-oyM"/>
                                     <constraint firstAttribute="trailing" secondItem="eRD-Ar-JH9" secondAttribute="trailing" id="JR5-wI-5kd"/>
+                                    <constraint firstItem="JUg-Ss-J8r" firstAttribute="centerY" secondItem="HV9-1u-1pp" secondAttribute="centerY" id="K7W-Tf-9CW"/>
                                     <constraint firstItem="15V-Ig-ltN" firstAttribute="top" secondItem="gGf-Z9-CA2" secondAttribute="top" constant="16" id="KWY-Na-krq"/>
                                     <constraint firstItem="eRD-Ar-JH9" firstAttribute="bottom" secondItem="HV9-1u-1pp" secondAttribute="bottom" constant="16" id="MWp-8E-ZI8"/>
                                     <constraint firstItem="ubY-ag-Bgy" firstAttribute="bottom" secondItem="15V-Ig-ltN" secondAttribute="bottom" constant="8" id="Nxp-q4-Jbd"/>
+                                    <constraint firstAttribute="trailing" secondItem="JUg-Ss-J8r" secondAttribute="trailing" constant="16" id="QZZ-gR-qID"/>
                                     <constraint firstItem="eRD-Ar-JH9" firstAttribute="leading" secondItem="gGf-Z9-CA2" secondAttribute="leading" id="ZyE-2M-53A"/>
                                     <constraint firstItem="15V-Ig-ltN" firstAttribute="leading" secondItem="gGf-Z9-CA2" secondAttribute="leading" constant="16" id="eCE-4V-Ij7"/>
                                     <constraint firstAttribute="height" constant="128" id="k0W-wo-h25"/>
@@ -132,7 +141,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u32-Fi-wvr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="H0X-gf-TUT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="H0X-gf-TUT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
@@ -148,6 +157,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="edit" width="22" height="22"/>
+        <image name="icn_arrow_right" width="13" height="13"/>
+        <image name="icn_leave_feedback" width="34" height="34"/>
     </resources>
 </document>

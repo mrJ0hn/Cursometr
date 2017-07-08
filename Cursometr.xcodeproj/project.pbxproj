@@ -10,8 +10,8 @@
 		DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F85231F10327F00A05586 /* AppDelegate.swift */; };
 		DC4F85291F10327F00A05586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F85271F10327F00A05586 /* Main.storyboard */; };
 		DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */; };
-		DC4F852E1F10327F00A05586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC4F852D1F10327F00A05586 /* Assets.xcassets */; };
 		DC4F85311F10327F00A05586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */; };
+		DCAFEE421F115E7400263C7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCAFEE411F115E7400263C7B /* Assets.xcassets */; };
 		DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */; };
 		DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AC1F10D712009A6ABC /* ViewController.swift */; };
 /* End PBXBuildFile section */
@@ -21,9 +21,9 @@
 		DC4F85231F10327F00A05586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC4F85281F10327F00A05586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DC4F852B1F10327F00A05586 /* Cursometr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cursometr.xcdatamodel; sourceTree = "<group>"; };
-		DC4F852D1F10327F00A05586 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC4F85301F10327F00A05586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC4F85321F10327F00A05586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCAFEE411F115E7400263C7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		DCC183AC1F10D712009A6ABC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,10 +58,10 @@
 		DC4F85221F10327F00A05586 /* Cursometr */ = {
 			isa = PBXGroup;
 			children = (
+				DCAFEE411F115E7400263C7B /* Assets.xcassets */,
 				DCC183AC1F10D712009A6ABC /* ViewController.swift */,
 				DC4F85231F10327F00A05586 /* AppDelegate.swift */,
 				DC4F85271F10327F00A05586 /* Main.storyboard */,
-				DC4F852D1F10327F00A05586 /* Assets.xcassets */,
 				DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */,
 				DC4F85321F10327F00A05586 /* Info.plist */,
 				DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */,
@@ -130,7 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC4F85311F10327F00A05586 /* LaunchScreen.storyboard in Resources */,
-				DC4F852E1F10327F00A05586 /* Assets.xcassets in Resources */,
+				DCAFEE421F115E7400263C7B /* Assets.xcassets in Resources */,
 				DC4F85291F10327F00A05586 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
