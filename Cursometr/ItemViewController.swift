@@ -10,9 +10,15 @@ import UIKit
 
 class ItemViewController: UIViewController {
 
+    var itemIndex: Int = 0
+    var itemTitle = String()
+    
+    @IBOutlet weak var lblTitle: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        lblTitle.text = itemTitle
         // Do any additional setup after loading the view.
     }
 
@@ -22,6 +28,11 @@ class ItemViewController: UIViewController {
     }
     
 
+    func setConfig(title: String)
+    {
+        itemTitle  = title
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F85231F10327F00A05586 /* AppDelegate.swift */; };
-		DC4F85261F10327F00A05586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F85251F10327F00A05586 /* ViewController.swift */; };
 		DC4F85291F10327F00A05586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F85271F10327F00A05586 /* Main.storyboard */; };
 		DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */; };
 		DC4F852E1F10327F00A05586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC4F852D1F10327F00A05586 /* Assets.xcassets */; };
 		DC4F85311F10327F00A05586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */; };
+		DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */; };
+		DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AC1F10D712009A6ABC /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DC4F85201F10327F00A05586 /* Cursometr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cursometr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4F85231F10327F00A05586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DC4F85251F10327F00A05586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DC4F85281F10327F00A05586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DC4F852B1F10327F00A05586 /* Cursometr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cursometr.xcdatamodel; sourceTree = "<group>"; };
 		DC4F852D1F10327F00A05586 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC4F85301F10327F00A05586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC4F85321F10327F00A05586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		DCC183AC1F10D712009A6ABC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +58,14 @@
 		DC4F85221F10327F00A05586 /* Cursometr */ = {
 			isa = PBXGroup;
 			children = (
+				DCC183AC1F10D712009A6ABC /* ViewController.swift */,
 				DC4F85231F10327F00A05586 /* AppDelegate.swift */,
-				DC4F85251F10327F00A05586 /* ViewController.swift */,
 				DC4F85271F10327F00A05586 /* Main.storyboard */,
 				DC4F852D1F10327F00A05586 /* Assets.xcassets */,
 				DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */,
 				DC4F85321F10327F00A05586 /* Info.plist */,
 				DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */,
+				DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */,
 			);
 			path = Cursometr;
 			sourceTree = "<group>";
@@ -140,7 +143,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */,
-				DC4F85261F10327F00A05586 /* ViewController.swift in Sources */,
+				DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */,
+				DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */,
 				DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +309,7 @@
 				DC4F85371F10327F00A05586 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
