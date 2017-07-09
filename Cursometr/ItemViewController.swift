@@ -8,17 +8,17 @@
 
 import UIKit
 
-class ItemViewController: UIViewController {
+class ItemViewController: UIViewController{
 
     var itemIndex: Int = 0
     var itemTitle = String()
     
-    @IBOutlet weak var lblTitle: UILabel!
+    //@IBOutlet weak var lblTitle: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblTitle.text = itemTitle
+        //lblTitle.text = itemTitle
         // Do any additional setup after loading the view.
     }
 
@@ -33,14 +33,15 @@ class ItemViewController: UIViewController {
         itemTitle  = title
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 3
+//    }
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "BankDataTableViewCell", for: indexPath) as! BankDataTableViewCell
+//        
+//        return cell
+//    }
 }

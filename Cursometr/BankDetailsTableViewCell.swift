@@ -8,8 +8,13 @@
 
 import UIKit
 
-class BankDataTableViewCell: UITableViewCell {
+class BankDetailsTableViewCell: UITableViewCell {
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        //customInit()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
