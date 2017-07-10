@@ -13,6 +13,7 @@
 		DC4F85311F10327F00A05586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */; };
 		DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */; };
 		DCA2D51C1F12182600F44DA2 /* BankDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */; };
+		DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */; };
 		DCAFEE421F115E7400263C7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCAFEE411F115E7400263C7B /* Assets.xcassets */; };
 		DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */; };
 		DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AC1F10D712009A6ABC /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 		DC4F85321F10327F00A05586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewController.swift; sourceTree = "<group>"; };
+		DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackViewController.swift; sourceTree = "<group>"; };
 		DCAFEE411F115E7400263C7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		DCC183AC1F10D712009A6ABC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				DC4F85221F10327F00A05586 /* Cursometr */,
+				DC4F85271F10327F00A05586 /* Main.storyboard */,
 				DC4F85211F10327F00A05586 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,18 +65,42 @@
 		DC4F85221F10327F00A05586 /* Cursometr */ = {
 			isa = PBXGroup;
 			children = (
-				DCAFEE411F115E7400263C7B /* Assets.xcassets */,
+				DCAD9CB11F12C4430051D209 /* Application */,
+				DCAD9CB01F12C4150051D209 /* View */,
+				DCAD9CAF1F12C36F0051D209 /* View controller */,
+			);
+			path = Cursometr;
+			sourceTree = "<group>";
+		};
+		DCAD9CAF1F12C36F0051D209 /* View controller */ = {
+			isa = PBXGroup;
+			children = (
+				DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */,
 				DCC183AC1F10D712009A6ABC /* ViewController.swift */,
+				DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */,
+				DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */,
+			);
+			name = "View controller";
+			sourceTree = "<group>";
+		};
+		DCAD9CB01F12C4150051D209 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DCAD9CB11F12C4430051D209 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DCAFEE411F115E7400263C7B /* Assets.xcassets */,
 				DC4F85231F10327F00A05586 /* AppDelegate.swift */,
-				DC4F85271F10327F00A05586 /* Main.storyboard */,
 				DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */,
 				DC4F85321F10327F00A05586 /* Info.plist */,
 				DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */,
-				DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */,
-				DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */,
-				DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */,
 			);
-			path = Cursometr;
+			name = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +178,7 @@
 				DCA2D51C1F12182600F44DA2 /* BankDetailsTableViewController.swift in Sources */,
 				DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */,
 				DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */,
+				DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */,
 				DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */,
 				DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */,
 				DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */,
@@ -166,6 +194,7 @@
 				DC4F85281F10327F00A05586 /* Base */,
 			);
 			name = Main.storyboard;
+			path = Cursometr;
 			sourceTree = "<group>";
 		};
 		DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */ = {

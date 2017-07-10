@@ -10,16 +10,23 @@ import UIKit
 
 class ItemViewController: UIViewController{
 
+    @IBOutlet weak var imgLeaveFeedback: UIImageView!
+    
     var itemIndex: Int = 0
     var itemTitle = String()
+    
+    enum SegueIdentifier: String {
+        case leaveFeedbackViewController = "LeaveFeedbackViewController"
+    }
     
     //@IBOutlet weak var lblTitle: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //lblTitle.text = itemTitle
-        // Do any additional setup after loading the view.
+        let imgLeaveFeedbackTap = UITapGestureRecognizer(target: self, action: #selector(imgLeaveFeedbackTapped))
+        imgLeaveFeedback.addGestureRecognizer(imgLeaveFeedbackTap)
+        imgLeaveFeedback.isUserInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,21 +34,27 @@ class ItemViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
-
     func setConfig(title: String)
     {
         itemTitle  = title
     }
     
+    func imgLeaveFeedbackTapped()
+    {
+            performSegue(withIdentifier: SegueIdentifier.leaveFeedbackViewController.rawValue, sender: self)
+    }
     
-    
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 3
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "BankDataTableViewCell", for: indexPath) as! BankDataTableViewCell
-//        
-//        return cell
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier,
+            let sid = SegueIdentifier(rawValue: id) else {
+                return
+        }
+        switch sid {
+        case .leaveFeedbackViewController:
+            let vc = segue.destination as! LeaveFeedbackViewController
+        default:
+            break
+        }
+
+    }
 }
