@@ -12,10 +12,11 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController: UIPageViewController?
     let contentTitles = ["Page 1", "Page 2", "Page 3"]
+    let bankDataDownloadService = BankDataDownloadService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        bankDataDownloadService.getData()
         createPageViewController()
         setupPageControl()
         // Do any additional setup after loading the view, typically from a nib.

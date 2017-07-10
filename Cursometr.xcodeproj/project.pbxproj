@@ -17,6 +17,7 @@
 		DCAFEE421F115E7400263C7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCAFEE411F115E7400263C7B /* Assets.xcassets */; };
 		DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */; };
 		DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AC1F10D712009A6ABC /* ViewController.swift */; };
+		DCFD6A261F13EDEE00E8FACD /* BankDataDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFD6A251F13EDEE00E8FACD /* BankDataDownloadService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		DCAFEE411F115E7400263C7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		DCC183AC1F10D712009A6ABC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DCFD6A231F13E0A900E8FACD /* TestRequestsPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestRequestsPlayground.playground; sourceTree = "<group>"; };
+		DCFD6A251F13EDEE00E8FACD /* BankDataDownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDataDownloadService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +68,11 @@
 		DC4F85221F10327F00A05586 /* Cursometr */ = {
 			isa = PBXGroup;
 			children = (
+				DCFD6A241F13EDAE00E8FACD /* Model */,
 				DCAD9CB11F12C4430051D209 /* Application */,
 				DCAD9CB01F12C4150051D209 /* View */,
 				DCAD9CAF1F12C36F0051D209 /* View controller */,
+				DCFD6A231F13E0A900E8FACD /* TestRequestsPlayground.playground */,
 			);
 			path = Cursometr;
 			sourceTree = "<group>";
@@ -101,6 +106,14 @@
 				DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */,
 			);
 			name = Application;
+			sourceTree = "<group>";
+		};
+		DCFD6A241F13EDAE00E8FACD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DCFD6A251F13EDEE00E8FACD /* BankDataDownloadService.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +195,7 @@
 				DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */,
 				DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */,
 				DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */,
+				DCFD6A261F13EDEE00E8FACD /* BankDataDownloadService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
