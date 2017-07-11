@@ -11,32 +11,33 @@ import UIKit
 class ViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController: UIPageViewController?
-    let contentTitles = ["Page 1", "Page 2", "Page 3"]
     let bankDataDownloadService = BankDataDownloadService()
+    var currencies : [Currency] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bankDataDownloadService.getData()
+        bankDataDownloadService.getData(onSuccess: { [weak self] (currencies) in
+            DispatchQueue.main.async {
+                self?.currencies = currencies
+                self?.updatePageViewController()
+            }
+        })
         createPageViewController()
         setupPageControl()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func updatePageViewController(){
+        let firstController = self.getItemController(0)!
+        let startingViewController = [firstController]
+        self.pageViewController?.setViewControllers(startingViewController, direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
     }
-
+    
     func createPageViewController(){
         let pageController = self.storyboard?.instantiateViewController(withIdentifier: "PageController") as! UIPageViewController
         pageController.dataSource = self
-        
-        if contentTitles.count > 0{
-            let firstController = getItemController(0)!
-            let startingViewController = [firstController]
-            
-            pageController.setViewControllers(startingViewController, direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
-        }
+
+        updatePageViewController()
         
         pageViewController = pageController
         addChildViewController(pageViewController!)
@@ -62,7 +63,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
     //swipe to right
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let itemController = viewController as! ItemViewController
-        if (itemController.itemIndex + 1 < contentTitles.count)
+        if (itemController.itemIndex + 1 < currencies.count)
         {
             return getItemController(itemController.itemIndex + 1)
         }
@@ -70,8 +71,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return contentTitles.count
-    }
+        return currencies.count
+    }   
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
@@ -93,14 +94,19 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
     func getItemController(_ itemIndex: Int) -> ItemViewController? {
-        if (itemIndex < contentTitles.count){
+        if (itemIndex < currencies.count){
             let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: "ItemController") as! ItemViewController
             pageItemController.itemIndex = itemIndex
-            
-            pageItemController.setConfig(title: contentTitles[itemIndex])
+            pageItemController.setConfig(currency: currencies[itemIndex])
             return pageItemController
         }
-        return nil
+        else{
+            let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: "ItemController") as! ItemViewController
+            pageItemController.itemIndex = itemIndex
+            pageItemController.setConfig(title: "No data")
+            return pageItemController
+        }
+        //return nil
     }
 }
 

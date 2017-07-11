@@ -124,6 +124,7 @@
                     </view>
                     <connections>
                         <outlet property="imgLeaveFeedback" destination="UUw-f8-Gkr" id="ayx-Cu-Aj0"/>
+                        <outlet property="lblTitle" destination="15V-Ig-ltN" id="YsS-SZ-SrK"/>
                         <segue destination="8Ck-OQ-k59" kind="show" identifier="LeaveFeedbackViewController" id="8pC-K6-qpu"/>
                     </connections>
                 </viewController>
@@ -153,6 +154,7 @@
         <!--Bank Details Table View Controller-->
         <scene sceneID="79u-4Z-46q">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AYk-xd-lGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="6YA-tf-qff" customClass="BankDetailsTableViewController" customModule="Cursometr" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="BnG-eB-jEH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -288,8 +290,10 @@
                         </prototypes>
                     </tableView>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="tblView" destination="BnG-eB-jEH" id="n1z-1f-pGN"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AYk-xd-lGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3099.5" y="34.5"/>
         </scene>

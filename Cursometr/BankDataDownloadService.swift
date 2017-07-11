@@ -13,21 +13,25 @@ typealias JSON = [String:AnyObject]
 
 class BankDataDownloadService{
     
-    var strUrlAuthentication = "http://currency.btc-solutions.ru:8080/api/Account"
-    var strUrlData = "http://currency.btc-solutions.ru:8080/api/CurrencyList"
+    enum ApiURL: String{
+        case strUrlAuthentication = "http://currency.btc-solutions.ru:8080/api/Account"
+        case strUrlData = "http://currency.btc-solutions.ru:8080/api/CurrencyList"
+    }
     
-    func getData()
+    func getData(onSuccess: @escaping (([Currency])->Void))
     {
         getCookies(onSuccess: {
-            self.loadingJsonToData(strURL: self.strUrlData)
+            self.loadingJsonToData(strURL: ApiURL.strUrlData.rawValue, onSuccess: { (currencies) in
+                onSuccess(currencies)
+            })
         })
     }
     
-    func loadingJsonToData(strURL: String)
+    func loadingJsonToData(strURL: String, onSuccess: @escaping (([Currency])->Void))
     {
         //https://code.bradymower.com/swift-3-apis-network-requests-json-getting-the-data-4aaae8a5efc0
         //let url = URL(string: strURL)!
-        let request = createPostRequest(strUrl: strUrlData)!
+        let request = createPostRequest(strUrl: ApiURL.strUrlData.rawValue)!
         let task = URLSession.shared.dataTask(with: request){
             (data, response, error) in
             guard error == nil else {
@@ -38,8 +42,11 @@ class BankDataDownloadService{
                 do{
                     //print(response)
                     let jsonArray: JSON = try JSONSerialization.jsonObject(with: usableData, options: []) as! JSON
-                    print(jsonArray)
-                    //let repositories: [Repository] = jsonArray.map(Repository.init)
+                    //print(jsonArray)
+                    let jsonCurrencies = jsonArray["currencies"] as? JSONArray
+                    let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
+                    onSuccess(currencies)
+                    //print(jsonCurrencies)
                     //onSuccess(repositories)
                 }
                 catch let error{
@@ -53,7 +60,7 @@ class BankDataDownloadService{
     
     private func getCookies( onSuccess: @escaping (()->Void)){
         
-        let request = createPostRequest(strUrl: strUrlAuthentication)!
+        let request = createPostRequest(strUrl: ApiURL.strUrlAuthentication.rawValue)!
         let task = URLSession.shared.dataTask(with: request){
             (data, response, error) in
             guard error == nil else {

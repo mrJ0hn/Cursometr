@@ -10,10 +10,11 @@ import UIKit
 
 class ItemViewController: UIViewController{
 
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgLeaveFeedback: UIImageView!
     
     var itemIndex: Int = 0
-    var itemTitle = String()
+    var strTitle: String? = String()
     
     enum SegueIdentifier: String {
         case leaveFeedbackViewController = "LeaveFeedbackViewController"
@@ -27,16 +28,17 @@ class ItemViewController: UIViewController{
         let imgLeaveFeedbackTap = UITapGestureRecognizer(target: self, action: #selector(imgLeaveFeedbackTapped))
         imgLeaveFeedback.addGestureRecognizer(imgLeaveFeedbackTap)
         imgLeaveFeedback.isUserInteractionEnabled = true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        lblTitle.text = strTitle
+        
     }
     
-    func setConfig(title: String)
+    func setConfig(title: String){
+        self.strTitle = title
+    }
+    
+    func setConfig(currency: Currency)
     {
-        itemTitle  = title
+        self.strTitle = currency.name
     }
     
     func imgLeaveFeedbackTapped()
