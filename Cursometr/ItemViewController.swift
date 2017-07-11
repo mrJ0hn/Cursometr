@@ -15,9 +15,11 @@ class ItemViewController: UIViewController{
     
     var itemIndex: Int = 0
     var strTitle: String? = String()
+    var currency : Currency?
     
     enum SegueIdentifier: String {
         case leaveFeedbackViewController = "LeaveFeedbackViewController"
+        case bankDetailsTableViewController = "BankDetailsTableViewController"
     }
     
     //@IBOutlet weak var lblTitle: UILabel!
@@ -38,12 +40,13 @@ class ItemViewController: UIViewController{
     
     func setConfig(currency: Currency)
     {
+        self.currency = currency
         self.strTitle = currency.name
     }
     
     func imgLeaveFeedbackTapped()
     {
-            performSegue(withIdentifier: SegueIdentifier.leaveFeedbackViewController.rawValue, sender: self)
+        performSegue(withIdentifier: SegueIdentifier.leaveFeedbackViewController.rawValue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,11 +55,15 @@ class ItemViewController: UIViewController{
                 return
         }
         switch sid {
+        case .bankDetailsTableViewController:
+            let vc = segue.destination as! BankDetailsTableViewController
+            if let currency = currency{
+                vc.setConfig(exchanges: currency.sources)
+            }
         case .leaveFeedbackViewController:
-            let vc = segue.destination as! LeaveFeedbackViewController
+            let _ = segue.destination as! LeaveFeedbackViewController
         default:
             break
         }
-
     }
 }

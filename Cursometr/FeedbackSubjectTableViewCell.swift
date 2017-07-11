@@ -1,20 +1,16 @@
 //
-//  BankDataTableViewCell.swift
+//  FeedbackSubjectTableViewCell.swift
 //  Cursometr
 //
-//  Created by iMacAir on 09.07.17.
+//  Created by iMacAir on 11.07.17.
 //  Copyright © 2017 iMacAir. All rights reserved.
 //
 
 import UIKit
 
-class BankDetailsTableViewCell: UITableViewCell {
-    @IBOutlet weak var lblNameExchange: UILabel!
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        //customInit()
-    }
+class FeedbackSubjectTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var lblTitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +23,7 @@ class BankDetailsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setConfig(exchange: Exchange){
-        lblNameExchange.text = exchange.name
+    func setConfig(title: String){
+        lblTitle.text = title
     }
 }

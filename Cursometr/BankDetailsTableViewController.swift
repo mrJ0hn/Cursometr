@@ -10,35 +10,32 @@ import UIKit
 
 class BankDetailsTableViewController: UITableViewController {
     @IBOutlet var tblView: UITableView!
-    var countItems : Int = 3
+    var exchanges : [Exchange] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tblView.refreshControl = refreshControl
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countItems
+        return exchanges.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankDetailsTableViewCell", for: indexPath) as? BankDetailsTableViewCell
-
+        cell?.setConfig(exchange: exchanges[indexPath.row])
+        
         return cell!
     }
     
-    func setConfig(){
-        countItems = 5
-        tblView.reloadData()
+    func setConfig(exchanges: [Exchange]){
+        self.exchanges = exchanges
+    }
+    
+    func refresh(_ refreshControl: UIRefreshControl) {
+        // Do your job, when done:
+        refreshControl.endRefreshing()
     }
 }

@@ -11,6 +11,8 @@
 		DC4F85291F10327F00A05586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F85271F10327F00A05586 /* Main.storyboard */; };
 		DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */; };
 		DC4F85311F10327F00A05586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */; };
+		DC9FB9891F1561F900E1111E /* ChooseSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */; };
+		DC9FB98B1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FB98A1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift */; };
 		DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */; };
 		DCA2D51C1F12182600F44DA2 /* BankDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */; };
 		DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */; };
@@ -29,6 +31,8 @@
 		DC4F852B1F10327F00A05586 /* Cursometr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cursometr.xcdatamodel; sourceTree = "<group>"; };
 		DC4F85301F10327F00A05586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC4F85321F10327F00A05586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSubjectViewController.swift; sourceTree = "<group>"; };
+		DC9FB98A1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSubjectTableViewCell.swift; sourceTree = "<group>"; };
 		DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewController.swift; sourceTree = "<group>"; };
 		DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 				DCC183AC1F10D712009A6ABC /* ViewController.swift */,
 				DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */,
 				DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */,
+				DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */,
 			);
 			name = "View controller";
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */,
+				DC9FB98A1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -197,7 +203,9 @@
 				DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */,
 				DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */,
 				DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */,
+				DC9FB98B1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift in Sources */,
 				DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */,
+				DC9FB9891F1561F900E1111E /* ChooseSubjectViewController.swift in Sources */,
 				DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */,
 				DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */,
 				DCBF4ABA1F14AE9100A8AA8E /* Exchange.swift in Sources */,
