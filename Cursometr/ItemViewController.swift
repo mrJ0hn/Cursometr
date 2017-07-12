@@ -22,9 +22,6 @@ class ItemViewController: UIViewController{
         case bankDetailsTableViewController = "BankDetailsTableViewController"
     }
     
-    //@IBOutlet weak var lblTitle: UILabel!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let imgLeaveFeedbackTap = UITapGestureRecognizer(target: self, action: #selector(imgLeaveFeedbackTapped))
@@ -49,6 +46,13 @@ class ItemViewController: UIViewController{
         performSegue(withIdentifier: SegueIdentifier.leaveFeedbackViewController.rawValue, sender: self)
     }
     
+    @IBAction func cancelFeedback(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func saveFeedback(segue: UIStoryboardSegue) {
+        //Implement later...
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let id = segue.identifier,
             let sid = SegueIdentifier(rawValue: id) else {
@@ -60,8 +64,6 @@ class ItemViewController: UIViewController{
             if let currency = currency{
                 vc.setConfig(exchanges: currency.sources)
             }
-        case .leaveFeedbackViewController:
-            let _ = segue.destination as! LeaveFeedbackViewController
         default:
             break
         }

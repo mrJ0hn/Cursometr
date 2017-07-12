@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bankDataDownloadService.getData(onSuccess: { [weak self] (currencies) in
+        bankDataDownloadService.getCurrencySubscription(onSuccess: { [weak self] (currencies) in
             DispatchQueue.main.async {
                 self?.currencies = currencies
                 self?.updatePageViewController()

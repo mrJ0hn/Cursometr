@@ -12,18 +12,34 @@ struct Exchange {
     let id: Int
     let name: String
     let subscribed: Bool
+    let prices: [Price]
 }
 
 extension Exchange {
     
+//    init(json: JSON){
+//        guard let id = json["id"] as? Int,
+//            let name = json["name"] as? String,
+//            let subscribed = json["subscribed"] as? Bool else{
+//                fatalError()
+//        }
+//        self.id = id
+//        self.name = name
+//        self.subscribed = subscribed
+//        self.prices = [Price(),Price(),Price()]
+//    }
+    
     init(json: JSON){
         guard let id = json["id"] as? Int,
             let name = json["name"] as? String,
-            let subscribed = json["subscribed"] as? Bool else{
+            let prices = json["ranges"] as? JSONArray
+            //let subscribed = json["subscribed"] as? Bool
+        else{
                 fatalError()
         }
         self.id = id
         self.name = name
-        self.subscribed = subscribed
+        self.subscribed = false
+        self.prices = prices.map(Price.init)
     }
 }

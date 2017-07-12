@@ -22,24 +22,8 @@ class LeaveFeedbackViewController: UIViewController {
         let imgSourceTap = UITapGestureRecognizer(target: self, action: #selector(imgSourceTapped))
         imgSource.addGestureRecognizer(imgSourceTap)
         imgSource.isUserInteractionEnabled = true
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelClicked))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send", style: .plain, target: self, action: #selector(sendFeedback))
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    func cancelClicked(){
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func sendFeedback(){
-        
-    }
     
     func imgSourceTapped(){
         performSegue(withIdentifier: SegueIdentifier.chooseSubjectViewController.rawValue, sender: self)
