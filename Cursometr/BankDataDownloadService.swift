@@ -11,7 +11,7 @@ import UIKit
 typealias JSONArray = [JSON]
 typealias JSON = [String:AnyObject]
 
-class BankDataDownloadService{
+class BankDataDownloadService {
     
     enum ApiURL: String{
         case strUrlAuthentication = "http://currency.btc-solutions.ru:8080/api/Account"
@@ -35,7 +35,7 @@ class BankDataDownloadService{
                 onSuccess(currencies)
             })
         }
-
+        
     }
     
     func getCurrencyList(onSuccess: @escaping (([Currency])->Void))

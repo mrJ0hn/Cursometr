@@ -40,6 +40,9 @@ extension Exchange {
         self.id = id
         self.name = name
         self.subscribed = false
-        self.prices = prices.map(Price.init)
+        var precis: [Price] = prices.map(Price.init)
+        precis.append(contentsOf: precis)
+        precis.append(contentsOf: precis)
+        self.prices = precis
     }
 }

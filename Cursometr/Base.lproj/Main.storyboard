@@ -88,6 +88,7 @@
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="UUw-f8-Gkr" firstAttribute="centerY" secondItem="15V-Ig-ltN" secondAttribute="centerY" id="442-xd-T4F"/>
                                     <constraint firstItem="ubY-ag-Bgy" firstAttribute="leading" secondItem="gGf-Z9-CA2" secondAttribute="leading" id="7kq-yM-Fj4"/>
@@ -157,17 +158,16 @@
         <scene sceneID="79u-4Z-46q">
             <objects>
                 <viewController id="6YA-tf-qff" customClass="BankDetailsTableViewController" customModule="Cursometr" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="80" sectionHeaderHeight="18" sectionFooterHeight="18" id="BnG-eB-jEH">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="80" sectionHeaderHeight="18" sectionFooterHeight="18" id="BnG-eB-jEH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                        <color key="separatorColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BankDetailsTableViewHeaderCell" rowHeight="50" id="a0R-V7-5B7" customClass="BankDetailsTableViewHeaderCell" customModule="Cursometr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="56" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a0R-V7-5B7" id="pBm-4U-Beg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Bank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hU1-6Q-lJf">
@@ -191,7 +191,7 @@
                                 <rect key="frame" x="0.0" y="106" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D9u-6T-sum" id="xGP-WE-lgk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geG-3K-qex">
@@ -275,15 +275,25 @@
                                                         <constraint firstItem="in7-gt-1HN" firstAttribute="leading" secondItem="ZJK-Xd-dYP" secondAttribute="leading" constant="16" id="voW-c8-fJ1"/>
                                                     </constraints>
                                                 </view>
+                                                <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Bu-xs-6PP">
+                                                    <rect key="frame" x="0.0" y="98.5" width="343" height="1"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="JZ4-4L-Yow"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="0.060935110856269112" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="1Bu-xs-6PP" secondAttribute="bottom" id="3jB-m5-S8E"/>
+                                                <constraint firstItem="1Bu-xs-6PP" firstAttribute="leading" secondItem="geG-3K-qex" secondAttribute="leading" id="Fk9-MP-n0e"/>
                                                 <constraint firstItem="ZJK-Xd-dYP" firstAttribute="top" secondItem="geG-3K-qex" secondAttribute="top" id="HxP-Nq-wHm"/>
                                                 <constraint firstAttribute="bottom" secondItem="shr-jh-UhG" secondAttribute="bottom" id="JJn-9V-Fsc"/>
                                                 <constraint firstItem="ZJK-Xd-dYP" firstAttribute="leading" secondItem="shr-jh-UhG" secondAttribute="trailing" id="JNO-lZ-yvM"/>
                                                 <constraint firstItem="shr-jh-UhG" firstAttribute="leading" secondItem="geG-3K-qex" secondAttribute="leading" id="OEg-rT-KTm"/>
                                                 <constraint firstItem="shr-jh-UhG" firstAttribute="top" secondItem="geG-3K-qex" secondAttribute="top" id="R0r-H9-JNB"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZJK-Xd-dYP" secondAttribute="trailing" id="Twn-Pu-8Tk"/>
+                                                <constraint firstAttribute="trailing" secondItem="1Bu-xs-6PP" secondAttribute="trailing" id="V4y-Pg-3XA"/>
                                                 <constraint firstAttribute="bottom" secondItem="ZJK-Xd-dYP" secondAttribute="bottom" id="eqk-tf-ahZ"/>
                                                 <constraint firstItem="ZJK-Xd-dYP" firstAttribute="leading" secondItem="shr-jh-UhG" secondAttribute="trailing" id="yJQ-CP-wyB"/>
                                             </constraints>
@@ -308,6 +318,7 @@
                                     <outlet property="lblPurchasePrice" destination="azV-of-owB" id="GTo-Vn-bbl"/>
                                     <outlet property="lblSalePrice" destination="in7-gt-1HN" id="MQv-R9-NFm"/>
                                     <outlet property="viewCornerRadius" destination="geG-3K-qex" id="BTy-2A-PW1"/>
+                                    <outlet property="viewSeparator" destination="1Bu-xs-6PP" id="6sd-aF-ZlO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -362,7 +373,7 @@
                                     <constraint firstAttribute="height" constant="1" id="22t-ih-L0U"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello world" translatesAutoresizingMaskIntoConstraints="NO" id="x6y-sa-73m">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Welcome" translatesAutoresizingMaskIntoConstraints="NO" id="x6y-sa-73m">
                                 <rect key="frame" x="16" y="154" width="343" height="449"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
@@ -430,13 +441,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="69" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qbr-I6-mKi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="69" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qbr-I6-mKi">
                                 <rect key="frame" x="16" y="70.5" width="343" height="532.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedbackSubjectTableViewCell" rowHeight="69" id="ElR-gK-cUk" customClass="FeedbackSubjectTableViewCell" customModule="Cursometr" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedbackSubjectTableViewCell" rowHeight="69" id="ElR-gK-cUk" customClass="FeedbackSubjectTableViewCell" customModule="Cursometr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ElR-gK-cUk" id="j5Q-tB-fa6">
@@ -449,14 +460,21 @@
                                                     <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa2-eo-XuA" customClass="CustomCheckBox" customModule="Cursometr" customModuleProvider="target">
+                                                    <rect key="frame" x="320" y="24" width="15" height="22"/>
+                                                    <state key="normal" image="icn_checkmark"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                             <constraints>
+                                                <constraint firstItem="pa2-eo-XuA" firstAttribute="centerY" secondItem="j5Q-tB-fa6" secondAttribute="centerY" id="DWI-G4-Gpo"/>
                                                 <constraint firstItem="vNQ-Bd-Oig" firstAttribute="leading" secondItem="j5Q-tB-fa6" secondAttribute="leadingMargin" id="H6R-Na-8b6"/>
+                                                <constraint firstItem="pa2-eo-XuA" firstAttribute="trailing" secondItem="j5Q-tB-fa6" secondAttribute="trailingMargin" id="I29-3G-y6q"/>
                                                 <constraint firstItem="vNQ-Bd-Oig" firstAttribute="centerY" secondItem="j5Q-tB-fa6" secondAttribute="centerY" id="VmO-CR-0Pg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="chkBxIsSelected" destination="pa2-eo-XuA" id="RGh-6O-pjN"/>
                                             <outlet property="lblTitle" destination="vNQ-Bd-Oig" id="bkF-De-9Qs"/>
                                         </connections>
                                     </tableViewCell>
@@ -504,6 +522,7 @@
     </scenes>
     <resources>
         <image name="icn_arrow_right" width="12" height="20"/>
+        <image name="icn_checkmark" width="15" height="11"/>
         <image name="icn_leave_feedback" width="34" height="34"/>
         <image name="icn_notification_green" width="13" height="16"/>
     </resources>

@@ -10,6 +10,7 @@ import UIKit
 
 class BankDetailsTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var viewSeparator: UIView!
     @IBOutlet weak var lblFrom: UILabel!
     @IBOutlet weak var lblPurchasePrice: UILabel!
     @IBOutlet weak var lblSalePrice: UILabel!
@@ -17,7 +18,6 @@ class BankDetailsTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //customInit()
     }
     
     override func awakeFromNib() {
@@ -34,7 +34,7 @@ class BankDetailsTableViewCell: UITableViewCell {
     func setConfig(price: Price){
         lblPurchasePrice.text = String(price.buyPriceNow)
         lblSalePrice.text = String(price.salePriceNow)
-        lblFrom.text = lblFrom.text! + String(price.range)
+        lblFrom.text = "Form \(price.range)"
     }
     
     func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
@@ -44,5 +44,21 @@ class BankDetailsTableViewCell: UITableViewCell {
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         viewCornerRadius.layer.mask = mask
+    }
+    
+    func hideSeparator(){
+//        let separator : UIView = UIView()
+//        separator.translatesAutoresizingMaskIntoConstraints = false
+//        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+//        separator.backgroundColor = UIColor.gray
+//        viewCornerRadius.addSubview(separator)
+//        separator.bottomAnchor.constraint(equalTo: viewCornerRadius.bottomAnchor).isActive = true
+//        separator.leftAnchor.constraint(equalTo: viewCornerRadius.leftAnchor).isActive = true
+//        separator.rightAnchor.constraint(equalTo: viewCornerRadius.rightAnchor).isActive = true
+        viewSeparator.isHidden = true
+    }
+    
+    func showSeparator(){
+        viewSeparator.isHidden = false
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class BankDetailsTableViewController: UITableViewController {
     @IBOutlet var tblView: UITableView!
     var exchanges : [Exchange] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let refreshControl = UIRefreshControl()
@@ -36,20 +36,31 @@ class BankDetailsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exchanges[section].prices.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankDetailsTableViewCell", for: indexPath) as? BankDetailsTableViewCell
         cell?.setConfig(price: exchanges[indexPath.section].prices[indexPath.row])
         if indexPath.row == 0{
+            //if only one cell
             if indexPath.row == exchanges[indexPath.section].prices.count-1 {
-                cell!.roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)}
-                else{
-                    cell!.roundCorners([.topLeft, .topRight], radius: 10)
-                }
+                cell!.roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
+                cell!.hideSeparator()
+            }
+            //if first cell
+            else{
+                cell!.roundCorners([.topLeft, .topRight], radius: 10)
+                cell!.showSeparator()
+            }
             
         }
-        else if indexPath.row == exchanges[indexPath.section].prices.count-1 {
+        //if last cell
+        else if indexPath.row == exchanges[indexPath.section].prices.count-1 {  
             cell!.roundCorners([.bottomLeft, .bottomRight], radius: 10)
+            cell!.hideSeparator()
+        }
+        //if center cell
+        else{
+            cell!.showSeparator()
         }
         return cell!
     }
