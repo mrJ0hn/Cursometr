@@ -10,6 +10,7 @@ import UIKit
 
 class ItemViewController: UIViewController{
 
+    @IBOutlet weak var viewQuotations: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgLeaveFeedback: UIImageView!
     
@@ -20,6 +21,7 @@ class ItemViewController: UIViewController{
     enum SegueIdentifier: String {
         case leaveFeedbackViewController = "LeaveFeedbackViewController"
         case bankDetailsTableViewController = "BankDetailsTableViewController"
+        case quotationsViewController = "QuotationsViewController"
     }
     
     override func viewDidLoad() {
@@ -27,8 +29,11 @@ class ItemViewController: UIViewController{
         let imgLeaveFeedbackTap = UITapGestureRecognizer(target: self, action: #selector(imgLeaveFeedbackTapped))
         imgLeaveFeedback.addGestureRecognizer(imgLeaveFeedbackTap)
         imgLeaveFeedback.isUserInteractionEnabled = true
-        lblTitle.text = strTitle
         
+        let viewQuotationsTap = UITapGestureRecognizer(target: self, action: #selector(viewQuotationsTapped))
+        viewQuotations.addGestureRecognizer(viewQuotationsTap)
+        viewQuotations.isUserInteractionEnabled = true
+        lblTitle.text = strTitle
     }
     
     func setConfig(title: String){
@@ -39,6 +44,10 @@ class ItemViewController: UIViewController{
     {
         self.currency = currency
         self.strTitle = currency.name
+    }
+    
+    func viewQuotationsTapped(){
+        performSegue(withIdentifier: SegueIdentifier.quotationsViewController.rawValue, sender: self)
     }
     
     func imgLeaveFeedbackTapped()

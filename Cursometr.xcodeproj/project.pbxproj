@@ -14,6 +14,8 @@
 		DC746D721F18D9C9004641CE /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D711F18D9C9004641CE /* CustomTextView.swift */; };
 		DC746D741F18E034004641CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D731F18E034004641CE /* Constants.swift */; };
 		DC892BC51F17516200A7723E /* CustomCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC892BC41F17516200A7723E /* CustomCheckBox.swift */; };
+		DC901F311F19232200A28D3A /* QuotationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC901F301F19232200A28D3A /* QuotationsViewController.swift */; };
+		DC901F331F19233F00A28D3A /* QuotationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */; };
 		DC9D0B021F163444009C5CBE /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D0B011F163444009C5CBE /* Price.swift */; };
 		DC9D0B041F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D0B031F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift */; };
 		DC9FB9891F1561F900E1111E /* ChooseSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */; };
@@ -39,6 +41,8 @@
 		DC746D711F18D9C9004641CE /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		DC746D731F18E034004641CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DC892BC41F17516200A7723E /* CustomCheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCheckBox.swift; sourceTree = "<group>"; };
+		DC901F301F19232200A28D3A /* QuotationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotationsViewController.swift; sourceTree = "<group>"; };
+		DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotationsTableViewCell.swift; sourceTree = "<group>"; };
 		DC9D0B011F163444009C5CBE /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		DC9D0B031F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewHeaderCell.swift; sourceTree = "<group>"; };
 		DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSubjectViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */,
 				DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */,
 				DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */,
+				DC901F301F19232200A28D3A /* QuotationsViewController.swift */,
 			);
 			name = "View controller";
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 				DC9D0B031F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift */,
 				DC892BC41F17516200A7723E /* CustomCheckBox.swift */,
 				DC746D711F18D9C9004641CE /* CustomTextView.swift */,
+				DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -215,10 +221,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCBF4AB81F14ACC500A8AA8E /* Currency.swift in Sources */,
+				DC901F311F19232200A28D3A /* QuotationsViewController.swift in Sources */,
 				DCA2D51C1F12182600F44DA2 /* BankDetailsTableViewController.swift in Sources */,
 				DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */,
 				DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */,
 				DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */,
+				DC901F331F19233F00A28D3A /* QuotationsTableViewCell.swift in Sources */,
 				DC9D0B041F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift in Sources */,
 				DC9FB98B1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift in Sources */,
 				DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */,

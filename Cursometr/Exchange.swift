@@ -31,18 +31,25 @@ extension Exchange {
     
     init(json: JSON){
         guard let id = json["id"] as? Int,
-            let name = json["name"] as? String,
-            let prices = json["ranges"] as? JSONArray
+            let name = json["name"] as? String
+            //let prices = json["ranges"] as? JSONArray
             //let subscribed = json["subscribed"] as? Bool
         else{
                 fatalError("extension Exchange: init(json:)")
         }
         self.id = id
         self.name = name
-        self.subscribed = false
-        var precis: [Price] = prices.map(Price.init)
-        precis.append(contentsOf: precis)
-        precis.append(contentsOf: precis)
-        self.prices = precis
+        if let subscribed = (json["subscribed"] as? Bool){
+            self.subscribed = subscribed
+        }
+        else{
+            self.subscribed = false
+        }
+        if let prices = (json["ranges"] as? JSONArray){
+            self.prices = prices.map(Price.init)
+        }
+        else{
+            self.prices = []
+        }
     }
 }

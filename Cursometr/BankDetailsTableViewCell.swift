@@ -12,6 +12,7 @@ class BankDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewSeparator: UIView!
     @IBOutlet weak var lblFrom: UILabel!
+    @IBOutlet weak var viewSalePrice: UIView!
     @IBOutlet weak var lblPurchasePrice: UILabel!
     @IBOutlet weak var lblSalePrice: UILabel!
     @IBOutlet weak var viewCornerRadius: UIView!
@@ -29,7 +30,13 @@ class BankDetailsTableViewCell: UITableViewCell {
 
     func setConfig(price: Price){
         lblPurchasePrice.text = String(price.buyPriceNow)
-        lblSalePrice.text = String(price.salePriceNow)
+        if !price.showSellPrice{
+            lblSalePrice.text = String(price.salePriceNow)
+            viewSalePrice.isHidden = true
+        }
+        else{
+            viewSalePrice.isHidden = false
+        }
         lblFrom.text = "Form \(price.range)"
     }
     

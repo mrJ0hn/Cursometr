@@ -22,11 +22,6 @@ class ChooseSubjectViewController: UIViewController, UITableViewDataSource, UITa
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sources.count
     }
@@ -42,7 +37,7 @@ class ChooseSubjectViewController: UIViewController, UITableViewDataSource, UITa
         return indexPath
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 0
+//    }
 }
