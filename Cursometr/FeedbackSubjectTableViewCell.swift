@@ -27,7 +27,7 @@ class FeedbackSubjectTableViewCell: UITableViewCell {
         else{
             chkBxIsSelected.changeStatus()
         }
-        lblTitle.textColor = chkBxIsSelected.isChecked ? UIColor.white : Settings.Color.gray
+        lblTitle.textColor = chkBxIsSelected.isChecked ? UIColor.white : Constatns.Color.gray
         // Configure the view for the selected state
     }
 
