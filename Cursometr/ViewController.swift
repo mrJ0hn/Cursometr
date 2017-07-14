@@ -11,13 +11,12 @@ import UIKit
 class ViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController: UIPageViewController?
-    let bankDataDownloadService = BankDataDownloadService()
     var currencies : [Currency] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bankDataDownloadService.getCurrencySubscription(onSuccess: { [weak self] (currencies) in
+        BankDataDownloadService.shared.getCurrencySubscription(onSuccess: { [weak self] (currencies) in
             DispatchQueue.main.async {
                 self?.currencies = currencies
                 self?.updatePageViewController()
@@ -79,14 +78,6 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }
-    
-//    func currentControllerIndex() -> Int{
-//        let pageItemController = self.currentControllerIndex()
-//        if let controller = pageItemController as? ItemViewController {
-//            return controller.itemIndex
-//        }
-//        return -1
-//    }
     
     func currentController() -> UIViewController? {
         if (self.pageViewController?.viewControllers?.count)! > 0 {

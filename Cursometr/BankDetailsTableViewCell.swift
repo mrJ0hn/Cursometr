@@ -16,10 +16,6 @@ class BankDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var lblSalePrice: UILabel!
     @IBOutlet weak var viewCornerRadius: UIView!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -47,18 +43,36 @@ class BankDetailsTableViewCell: UITableViewCell {
     }
     
     func hideSeparator(){
-//        let separator : UIView = UIView()
-//        separator.translatesAutoresizingMaskIntoConstraints = false
-//        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-//        separator.backgroundColor = UIColor.gray
-//        viewCornerRadius.addSubview(separator)
-//        separator.bottomAnchor.constraint(equalTo: viewCornerRadius.bottomAnchor).isActive = true
-//        separator.leftAnchor.constraint(equalTo: viewCornerRadius.leftAnchor).isActive = true
-//        separator.rightAnchor.constraint(equalTo: viewCornerRadius.rightAnchor).isActive = true
         viewSeparator.isHidden = true
     }
     
     func showSeparator(){
         viewSeparator.isHidden = false
+    }
+    
+    
+    func setUIConfig(row: Int, count: Int){
+        if row == 0{
+            //if only one cell
+            if row == count-1 {
+                roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
+                hideSeparator()
+            }
+                //if first cell
+            else{
+                roundCorners([.topLeft, .topRight], radius: 10)
+                showSeparator()
+            }
+        }
+            //if last cell
+        else if row == count-1 {
+            roundCorners([.bottomLeft, .bottomRight], radius: 10)
+            hideSeparator()
+        }
+            //if center cell
+        else{
+            roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 0)
+            showSeparator()
+        }
     }
 }

@@ -21,7 +21,7 @@ extension Currency{
             let name = json["name"] as? String,
             let fullName = json["fullName"] as? String
             else {
-                fatalError()
+                fatalError("extension Currency: init(json:)")
         }
         
         self.id = id

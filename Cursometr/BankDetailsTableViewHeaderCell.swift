@@ -22,8 +22,7 @@ class BankDetailsTableViewHeaderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setConfig(title: String){
+    func set(title: String){
         lblTitle.text = title
     }
-
 }

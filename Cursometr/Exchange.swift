@@ -35,7 +35,7 @@ extension Exchange {
             let prices = json["ranges"] as? JSONArray
             //let subscribed = json["subscribed"] as? Bool
         else{
-                fatalError()
+                fatalError("extension Exchange: init(json:)")
         }
         self.id = id
         self.name = name

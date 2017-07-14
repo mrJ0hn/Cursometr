@@ -12,11 +12,13 @@ class ChooseSubjectViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var tblView: UITableView!
     let sources : [String] = ["Add source", "Add quotation", "Add function", "Another"]
+    var selectedItem : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tblView.delegate = self
         tblView.dataSource = self
+        tblView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
     
@@ -34,5 +36,13 @@ class ChooseSubjectViewController: UIViewController, UITableViewDataSource, UITa
         cell.setConfig(title: sources[indexPath.row])
         return cell
     }
+
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedItem = sources[indexPath.row]
+        return indexPath
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
 }

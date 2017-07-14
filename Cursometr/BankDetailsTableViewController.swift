@@ -15,13 +15,14 @@ class BankDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tblView.refreshControl = refreshControl
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        //let  headerCell = tableView.dequeueReusableCell(withIdentifier: <#T##String#>, for: <#T##IndexPath#>)
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: "BankDetailsTableViewHeaderCell") as! BankDetailsTableViewHeaderCell
-        headerCell.setConfig(title: exchanges[section].name)
+        headerCell.set(title: exchanges[section].name)
         return headerCell
     }
     
@@ -39,29 +40,9 @@ class BankDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankDetailsTableViewCell", for: indexPath) as? BankDetailsTableViewCell
-        cell?.setConfig(price: exchanges[indexPath.section].prices[indexPath.row])
-        if indexPath.row == 0{
-            //if only one cell
-            if indexPath.row == exchanges[indexPath.section].prices.count-1 {
-                cell!.roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
-                cell!.hideSeparator()
-            }
-            //if first cell
-            else{
-                cell!.roundCorners([.topLeft, .topRight], radius: 10)
-                cell!.showSeparator()
-            }
-            
-        }
-        //if last cell
-        else if indexPath.row == exchanges[indexPath.section].prices.count-1 {  
-            cell!.roundCorners([.bottomLeft, .bottomRight], radius: 10)
-            cell!.hideSeparator()
-        }
-        //if center cell
-        else{
-            cell!.showSeparator()
-        }
+        let price = exchanges[indexPath.section].prices[indexPath.row]
+        cell?.setConfig(price: price)
+        cell?.setUIConfig(row: indexPath.row, count: exchanges[indexPath.section].prices.count)
         return cell!
     }
     

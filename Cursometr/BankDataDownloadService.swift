@@ -11,12 +11,37 @@ import UIKit
 typealias JSONArray = [JSON]
 typealias JSON = [String:AnyObject]
 
+class NetworkController{
+    
+    static func request(request: URLRequest, onSuccess: @escaping ((JSON, URLResponse)->Void), onError: @escaping ((Error)->Void)){
+        let task = URLSession.shared.dataTask(with: request){
+            (data, response, error) in
+            guard error == nil else {
+                onError(error!)
+                return
+            }
+            if let usableData = data{
+                do{
+                    let jsonArray: JSON = try JSONSerialization.jsonObject(with: usableData, options: []) as! JSON
+                    onSuccess(jsonArray, response!)
+                }
+                catch{
+                    onError(error)
+                }
+            }
+        }
+        task.resume()
+    }
+}
+
 class BankDataDownloadService {
+    static let shared = BankDataDownloadService()
     
     enum ApiURL: String{
         case strUrlAuthentication = "http://currency.btc-solutions.ru:8080/api/Account"
         case strUrlCurrencySubscription = "http://currency.btc-solutions.ru:8080/api/CurrencySubscription"
         case strUrlCurrencyList = "http://currency.btc-solutions.ru:8080/api/CurrencyList"
+        case strURLFeedback = "http://currency.btc-solutions.ru:8080/api/Feedback"
     }
     
     var isCookiesLoad = false
@@ -35,7 +60,6 @@ class BankDataDownloadService {
                 onSuccess(currencies)
             })
         }
-        
     }
     
     func getCurrencyList(onSuccess: @escaping (([Currency])->Void))
@@ -54,87 +78,76 @@ class BankDataDownloadService {
         }
     }
     
+    func sendFeedback(title: String, body: String, onSuccess: @escaping (()->())){
+        let json : JSON = ["title" : title as AnyObject, "body" : body as AnyObject]
+        let request = createPostRequest(strUrl: ApiURL.strURLFeedback.rawValue, json: json)!
+        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
+            print(jsonArray)
+            onSuccess()
+        }
+        let error : (Error) -> Void = {(error) in
+            print(error)
+        }
+        NetworkController.request(request: request, onSuccess: success, onError: error)
+    }
+    
     private func loadingCurrencyList(onSuccess: @escaping (([Currency])->Void))
     {
-        let request = createPostRequest(strUrl: ApiURL.strUrlCurrencyList.rawValue)!
-        let task = URLSession.shared.dataTask(with: request){
-            (data, response, error) in
-            guard error == nil else {
-                return
-            }
-            if let usableData = data{
-                do{
-                    let jsonArray: JSON = try JSONSerialization.jsonObject(with: usableData, options: []) as! JSON
-                    let jsonCurrencies = jsonArray["currencies"] as? JSONArray
-                    let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
-                    onSuccess(currencies)
-                }
-                catch let error{
-                    print(error)
-                }
-            }
+        let userId = UIDevice.current.identifierForVendor!.uuidString.replacingOccurrences(of: "-", with: "")
+        let json : JSON = ["userId" : userId as AnyObject]
+        let request = createPostRequest(strUrl: ApiURL.strUrlCurrencyList.rawValue, json: json)!
+        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
+            let jsonCurrencies = jsonArray["currencies"] as? JSONArray
+            let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
+            onSuccess(currencies)
         }
-        task.resume()
+        let error : (Error) -> Void = {(error) in
+            print(error)
+        }
+        NetworkController.request(request: request, onSuccess: success, onError: error)
     }
     
     private func loadingCurrencySubscription(onSuccess: @escaping (([Currency])->Void)){
         let url = URL(string: ApiURL.strUrlCurrencySubscription.rawValue)!
-        let task = URLSession.shared.dataTask(with: url){
-            (data, response, error) in
-            guard error == nil else {
-                return
-            }
-            if let usableData = data{
-                do{
-                    let jsonArray: JSON = try JSONSerialization.jsonObject(with: usableData, options: []) as! JSON
-                    //print(jsonArray)
-                    let jsonCurrencies = jsonArray["subscriptionCategories"] as? JSONArray
-                    let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
-                    onSuccess(currencies)
-                }
-                catch let error{
-                    print(error)
-                }
-            }
+        let request = URLRequest(url: url)
+        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
+            let jsonCurrencies = jsonArray["subscriptionCategories"] as? JSONArray
+            let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
+            onSuccess(currencies)
         }
-        task.resume()
+        let error : (Error) -> Void = {(error) in
+            print(error)
+        }
+        NetworkController.request(request: request, onSuccess: success, onError: error)
     }
     
     private func getCookies(onSuccess: @escaping (()->Void)){
-        
-        let request = createPostRequest(strUrl: ApiURL.strUrlAuthentication.rawValue)!
-        let task = URLSession.shared.dataTask(with: request){
-            (data, response, error) in
-            guard error == nil else {
-                return
-            }
-            if let usableData = data{
-                do{
-                    let jsonArray: JSON = try JSONSerialization.jsonObject(with: usableData, options: []) as! JSON
-                    print(jsonArray)
-                    self.setCookies(response: response!)
-                    onSuccess()
-                }
-                catch let error{
-                    print(error)
-                }
-            }
-        }
-        task.resume()
-    }
-    
-    private func createPostRequest(strUrl: String) -> URLRequest?
-    {
         let userId = UIDevice.current.identifierForVendor!.uuidString.replacingOccurrences(of: "-", with: "")
         print(userId)
-        let rowJson : [String:String] = ["userId" : userId]
+        let json : JSON = ["userId" : userId as AnyObject]
+        let request = createPostRequest(strUrl: ApiURL.strUrlAuthentication.rawValue, json: json)!
+        let success : (JSON, URLResponse)->Void = { (_, response) in
+            self.setCookies(response: response)
+            onSuccess()
+        }
+        let error : (Error) -> Void = {(error) in
+            print(error)
+        }
+        NetworkController.request(request: request, onSuccess: success, onError: error)
+    }
+    
+    private func createPostRequest(strUrl: String, json: JSON?) -> URLRequest?
+    {
+        //let rowJson : [String:String] = ["userId" : userId]
         let url = URL(string: strUrl)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: rowJson, options: .prettyPrinted)
+            if json != nil{
+                request.httpBody = try JSONSerialization.data(withJSONObject: json!, options: .prettyPrinted)
+            }
         }
-        catch let error{
+        catch{
             print(error)
             return nil
         }

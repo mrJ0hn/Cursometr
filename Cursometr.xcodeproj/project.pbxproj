@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC1D27151F17FC37003DB29A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D27141F17FC37003DB29A /* Settings.swift */; };
 		DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F85231F10327F00A05586 /* AppDelegate.swift */; };
 		DC4F85291F10327F00A05586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F85271F10327F00A05586 /* Main.storyboard */; };
 		DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC1D27141F17FC37003DB29A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DC4F85201F10327F00A05586 /* Cursometr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cursometr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4F85231F10327F00A05586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC4F85281F10327F00A05586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,9 +83,11 @@
 		DC4F85221F10327F00A05586 /* Cursometr */ = {
 			isa = PBXGroup;
 			children = (
+				DCAD9CB11F12C4430051D209 /* Application */,
 				DCFD6A241F13EDAE00E8FACD /* Model */,
 				DCAD9CB01F12C4150051D209 /* View */,
 				DCAD9CAF1F12C36F0051D209 /* View controller */,
+				DC1D27141F17FC37003DB29A /* Settings.swift */,
 			);
 			path = Cursometr;
 			sourceTree = "<group>";
@@ -130,7 +134,6 @@
 				DCBF4AB71F14ACC500A8AA8E /* Currency.swift */,
 				DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */,
 				DC9D0B011F163444009C5CBE /* Price.swift */,
-				DCAD9CB11F12C4430051D209 /* Application */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */,
 				DC9FB9891F1561F900E1111E /* ChooseSubjectViewController.swift in Sources */,
 				DC9D0B021F163444009C5CBE /* Price.swift in Sources */,
+				DC1D27151F17FC37003DB29A /* Settings.swift in Sources */,
 				DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */,
 				DC892BC51F17516200A7723E /* CustomCheckBox.swift in Sources */,
 				DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */,

@@ -22,7 +22,7 @@ extension Price{
             let buyPriceNow = json["buyPriceNow"] as? Double,
             let salePriceNow = json["salePriceNow"] as? Double
             else{
-                fatalError()
+                fatalError("extension Price: init(json:)")
         }
         self.id = id
         self.range = range

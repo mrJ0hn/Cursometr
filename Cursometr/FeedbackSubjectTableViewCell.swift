@@ -14,8 +14,6 @@ class FeedbackSubjectTableViewCell: UITableViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     
     var lastSelectedCell : CustomCheckBox? = nil
-    let grayColor : UIColor = UIColor( red: 1, green: 1, blue:1, alpha: 0.8 )
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,7 +27,7 @@ class FeedbackSubjectTableViewCell: UITableViewCell {
         else{
             chkBxIsSelected.changeStatus()
         }
-        lblTitle.textColor = chkBxIsSelected.isChecked ? UIColor.white : grayColor
+        lblTitle.textColor = chkBxIsSelected.isChecked ? UIColor.white : Settings.Color.gray
         // Configure the view for the selected state
     }
 
