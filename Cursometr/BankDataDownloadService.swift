@@ -12,7 +12,6 @@ typealias JSONArray = [JSON]
 typealias JSON = [String:AnyObject]
 
 class NetworkController{
-    
     static func request(request: URLRequest, onSuccess: @escaping ((JSON, URLResponse)->Void), onError: @escaping ((Error)->Void)){
         let task = URLSession.shared.dataTask(with: request){
             (data, response, error) in
@@ -44,13 +43,19 @@ class BankDataDownloadService {
         case strURLFeedback = "http://currency.btc-solutions.ru:8080/api/Feedback"
     }
     
+    enum HttpMethod: String{
+        case post = "POST"
+        case delete = "DELETE"
+    }
+    
     var isCookiesLoad = false
     
-    func getCurrencySubscription(onSuccess: @escaping (([Currency])->Void)){
+    func getCurrencySubscription(onSuccess: @escaping ([Currency])->Void){
         if !isCookiesLoad{
             getCookies(onSuccess: {
                 self.loadingCurrencySubscription(onSuccess: {(currencies) in
                     onSuccess(currencies)
+                    //onSuccess([Currency]())
                 })
             })
             isCookiesLoad = true
@@ -62,7 +67,7 @@ class BankDataDownloadService {
         }
     }
     
-    func getCurrencyList(onSuccess: @escaping (([Currency])->Void))
+    func getCurrencyList(onSuccess: @escaping ([Currency])->Void)
     {
         if !isCookiesLoad{
             getCookies(onSuccess: {
@@ -78,9 +83,37 @@ class BankDataDownloadService {
         }
     }
     
-    func sendFeedback(title: String, body: String, onSuccess: @escaping (()->())){
+    func sendFeedback(title: String, body: String, onSuccess: @escaping ()->()){
         let json : JSON = ["title" : title as AnyObject, "body" : body as AnyObject]
-        let request = createPostRequest(strUrl: ApiURL.strURLFeedback.rawValue, json: json)!
+        let request = createJsonRequest(strUrl: ApiURL.strURLFeedback.rawValue, json: json, httpMethod: HttpMethod.post)!
+        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
+            print(jsonArray)
+            onSuccess()
+        }
+        let error : (Error) -> Void = {(error) in
+            print(error)
+        }
+        NetworkController.request(request: request, onSuccess: success, onError: error)
+    }
+    
+    func addCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping ()->()){
+        let json : JSON = ["categoryId" : categoryId as AnyObject, "sourceId" : sourceId as AnyObject]
+        let request = createJsonRequest(strUrl: ApiURL.strUrlCurrencySubscription.rawValue, json: json,
+                                        httpMethod: HttpMethod.post)!
+        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
+            print(jsonArray)
+            onSuccess()
+        }
+        let error : (Error) -> Void = {(error) in
+            print(error)
+        }
+        NetworkController.request(request: request, onSuccess: success, onError: error)
+    }
+    
+    func deleteCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping ()->()){
+        let json : JSON = ["categoryId" : categoryId as AnyObject, "sourceId" : sourceId as AnyObject]
+        let request = createJsonRequest(strUrl: ApiURL.strUrlCurrencySubscription.rawValue, json: json,
+                                        httpMethod: HttpMethod.delete)!
         let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
             print(jsonArray)
             onSuccess()
@@ -95,7 +128,8 @@ class BankDataDownloadService {
     {
         let userId = UIDevice.current.identifierForVendor!.uuidString.replacingOccurrences(of: "-", with: "")
         let json : JSON = ["userId" : userId as AnyObject]
-        let request = createPostRequest(strUrl: ApiURL.strUrlCurrencyList.rawValue, json: json)!
+        let request = createJsonRequest(strUrl: ApiURL.strUrlCurrencyList.rawValue, json: json,
+                                        httpMethod: HttpMethod.post)!
         let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
             let jsonCurrencies = jsonArray["currencies"] as? JSONArray
             let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
@@ -125,7 +159,8 @@ class BankDataDownloadService {
         let userId = UIDevice.current.identifierForVendor!.uuidString.replacingOccurrences(of: "-", with: "")
         print(userId)
         let json : JSON = ["userId" : userId as AnyObject]
-        let request = createPostRequest(strUrl: ApiURL.strUrlAuthentication.rawValue, json: json)!
+        let request = createJsonRequest(strUrl: ApiURL.strUrlAuthentication.rawValue, json: json,
+                                        httpMethod: HttpMethod.post)!
         let success : (JSON, URLResponse)->Void = { (_, response) in
             self.setCookies(response: response)
             onSuccess()
@@ -136,12 +171,11 @@ class BankDataDownloadService {
         NetworkController.request(request: request, onSuccess: success, onError: error)
     }
     
-    private func createPostRequest(strUrl: String, json: JSON?) -> URLRequest?
+    private func createJsonRequest(strUrl: String, json: JSON?, httpMethod: HttpMethod) -> URLRequest?
     {
-        //let rowJson : [String:String] = ["userId" : userId]
         let url = URL(string: strUrl)!
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = httpMethod.rawValue
         do{
             if json != nil{
                 request.httpBody = try JSONSerialization.data(withJSONObject: json!, options: .prettyPrinted)

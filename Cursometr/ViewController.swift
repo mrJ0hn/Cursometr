@@ -96,7 +96,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
         else{
             let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: "ItemController") as! ItemViewController
             pageItemController.itemIndex = itemIndex
-            pageItemController.setConfig(title: "No data")
+            pageItemController.setConfig(title: "No currency")
             return pageItemController
         }
         //return nil

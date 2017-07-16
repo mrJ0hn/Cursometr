@@ -12,7 +12,7 @@ struct Currency{
     let id: Int
     let name: String
     let fullName: String
-    let sources: [Exchange]
+    var sources: [Exchange]
 }
 
 extension Currency{

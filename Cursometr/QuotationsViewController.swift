@@ -8,15 +8,26 @@
 
 import UIKit
 
-class QuotationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+protocol CurrencyChangedDelegate: class {
+    func currencyChanged(currency: Currency)
+}
+
+class QuotationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CurrencyChangedDelegate  {
     
     @IBOutlet weak var tblView: UITableView!
     var currencies : [Currency] = []
+    var indexSelectedCurrency: Int? = nil
+    
+    enum SegueIdentifier: String {
+        case chooseSourceViewController = "ChooseSourceViewController"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tblView.dataSource = self
         tblView.delegate = self
+        tblView.tableFooterView = UIView(frame: .zero)
+        tblView.tableFooterView?.isHidden = true
         BankDataDownloadService.shared.getCurrencyList(onSuccess: { (currencies) in
             DispatchQueue.main.async {
                 self.currencies = currencies
@@ -36,12 +47,32 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
-    //    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    //        selectedItem = currencies[indexPath.row]
-    //        return indexPath
-    //    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexSelectedCurrency = indexPath.row
+        performSegue(withIdentifier: SegueIdentifier.chooseSourceViewController.rawValue, sender: self)
+    }
     
-    //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    //        return 0
-    //    }
+    @IBAction func unwindToLeaveFeedbackViewController(sender: UIStoryboardSegue) {
+        if let chooseSourceViewController = sender.source as? ChooseSourceViewController {
+            currencies[indexSelectedCurrency!] = chooseSourceViewController.currency!
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier,
+            let sid = SegueIdentifier(rawValue: id) else {
+                return
+        }
+        switch sid {
+        case .chooseSourceViewController:
+            let vc = segue.destination as! ChooseSourceViewController
+            vc.currency = currencies[indexSelectedCurrency!]
+            vc.delegate = self
+        }
+    }
+    
+    func currencyChanged(currency: Currency){
+        currencies[indexSelectedCurrency!] = currency
+        tblView.reloadData()
+    }
 }

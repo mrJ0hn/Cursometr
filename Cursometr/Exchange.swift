@@ -11,7 +11,7 @@ import Foundation
 struct Exchange {
     let id: Int
     let name: String
-    let subscribed: Bool
+    var subscribed: Bool
     let prices: [Price]
 }
 

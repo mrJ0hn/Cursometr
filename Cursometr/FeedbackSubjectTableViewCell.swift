@@ -19,16 +19,21 @@ class FeedbackSubjectTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        if !selected{
-            chkBxIsSelected.setStatus(isChecked: false)
-        }
-        else{
-            chkBxIsSelected.changeStatus()
-        }
-        lblTitle.textColor = chkBxIsSelected.isChecked ? UIColor.white : Constatns.Color.gray
-        // Configure the view for the selected state
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//        if !selected{
+//            chkBxIsSelected.setStatus(isChecked: false)
+//        }
+//        else{
+//            chkBxIsSelected.changeStatus()
+//        }
+//        lblTitle.textColor = chkBxIsSelected.isChecked ? UIColor.white : Constatns.Color.gray
+//        // Configure the view for the selected state
+//    }
+    
+    func setSelected(){
+        lblTitle.textColor = UIColor.white
+        chkBxIsSelected.setStatus(isChecked: true)
     }
 
     func setConfig(title: String){

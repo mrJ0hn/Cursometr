@@ -30,8 +30,9 @@ class BankDetailsTableViewCell: UITableViewCell {
 
     func setConfig(price: Price){
         lblPurchasePrice.text = String(price.buyPriceNow)
-        if !price.showSellPrice{
-            lblSalePrice.text = String(price.salePriceNow)
+        lblSalePrice.text = String(price.salePriceNow)
+        //if !price.showSellPrice{
+        if price.buyPriceNow == price.salePriceNow{
             viewSalePrice.isHidden = true
         }
         else{

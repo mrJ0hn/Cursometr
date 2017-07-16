@@ -10,6 +10,7 @@ import UIKit
 
 class ItemViewController: UIViewController{
 
+    @IBOutlet weak var viewNoCurrency: UIView!
     @IBOutlet weak var viewQuotations: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgLeaveFeedback: UIImageView!
@@ -34,6 +35,9 @@ class ItemViewController: UIViewController{
         viewQuotations.addGestureRecognizer(viewQuotationsTap)
         viewQuotations.isUserInteractionEnabled = true
         lblTitle.text = strTitle
+        if currency != nil{
+            self.viewNoCurrency.isHidden = true
+        }
     }
     
     func setConfig(title: String){

@@ -19,7 +19,6 @@ class CustomTextView: UITextView, UITextViewDelegate {
     }
     
     override func awakeFromNib() {
-        print("CustomTextView")
         self.text = strPlaceholder
         self.textColor =  UIColor.gray
         self.delegate = self

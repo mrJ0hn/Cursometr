@@ -10,6 +10,7 @@ import UIKit
 
 struct Constatns{
     struct Color {
-        static let gray: UIColor = UIColor( red: 1, green: 1, blue:1, alpha: 0.8 )
+        static let gray: UIColor = UIColor( red: 1, green: 1, blue:1, alpha: 0.5 )
+        static let aqua : UIColor = UIColor(red: 90/255.0, green: 200/255.0, blue: 250/255.0, alpha: 1)
     }
 }

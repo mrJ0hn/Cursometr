@@ -14,6 +14,8 @@
 		DC746D721F18D9C9004641CE /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D711F18D9C9004641CE /* CustomTextView.swift */; };
 		DC746D741F18E034004641CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D731F18E034004641CE /* Constants.swift */; };
 		DC892BC51F17516200A7723E /* CustomCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC892BC41F17516200A7723E /* CustomCheckBox.swift */; };
+		DC8C60541F1B50C200779F28 /* ChooseSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C60531F1B50C200779F28 /* ChooseSourceViewController.swift */; };
+		DC8C60581F1B528F00779F28 /* ChooseSourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */; };
 		DC901F311F19232200A28D3A /* QuotationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC901F301F19232200A28D3A /* QuotationsViewController.swift */; };
 		DC901F331F19233F00A28D3A /* QuotationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */; };
 		DC9D0B021F163444009C5CBE /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D0B011F163444009C5CBE /* Price.swift */; };
@@ -22,6 +24,7 @@
 		DC9FB98B1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FB98A1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift */; };
 		DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */; };
 		DCA2D51C1F12182600F44DA2 /* BankDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */; };
+		DCA932361F1A160100355435 /* SourcesFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA932351F1A160100355435 /* SourcesFeedback.swift */; };
 		DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */; };
 		DCAFEE421F115E7400263C7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCAFEE411F115E7400263C7B /* Assets.xcassets */; };
 		DCBF4AB81F14ACC500A8AA8E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBF4AB71F14ACC500A8AA8E /* Currency.swift */; };
@@ -41,6 +44,8 @@
 		DC746D711F18D9C9004641CE /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		DC746D731F18E034004641CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DC892BC41F17516200A7723E /* CustomCheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCheckBox.swift; sourceTree = "<group>"; };
+		DC8C60531F1B50C200779F28 /* ChooseSourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSourceViewController.swift; sourceTree = "<group>"; };
+		DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSourceTableViewCell.swift; sourceTree = "<group>"; };
 		DC901F301F19232200A28D3A /* QuotationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotationsViewController.swift; sourceTree = "<group>"; };
 		DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotationsTableViewCell.swift; sourceTree = "<group>"; };
 		DC9D0B011F163444009C5CBE /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 		DC9FB98A1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSubjectTableViewCell.swift; sourceTree = "<group>"; };
 		DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewController.swift; sourceTree = "<group>"; };
+		DCA932351F1A160100355435 /* SourcesFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourcesFeedback.swift; sourceTree = "<group>"; };
 		DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackViewController.swift; sourceTree = "<group>"; };
 		DCAFEE411F115E7400263C7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCBF4AB71F14ACC500A8AA8E /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -107,6 +113,7 @@
 				DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */,
 				DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */,
 				DC901F301F19232200A28D3A /* QuotationsViewController.swift */,
+				DC8C60531F1B50C200779F28 /* ChooseSourceViewController.swift */,
 			);
 			name = "View controller";
 			sourceTree = "<group>";
@@ -120,6 +127,7 @@
 				DC892BC41F17516200A7723E /* CustomCheckBox.swift */,
 				DC746D711F18D9C9004641CE /* CustomTextView.swift */,
 				DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */,
+				DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -143,6 +151,7 @@
 				DCBF4AB71F14ACC500A8AA8E /* Currency.swift */,
 				DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */,
 				DC9D0B011F163444009C5CBE /* Price.swift */,
+				DCA932351F1A160100355435 /* SourcesFeedback.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -221,6 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCBF4AB81F14ACC500A8AA8E /* Currency.swift in Sources */,
+				DC8C60541F1B50C200779F28 /* ChooseSourceViewController.swift in Sources */,
+				DCA932361F1A160100355435 /* SourcesFeedback.swift in Sources */,
 				DC901F311F19232200A28D3A /* QuotationsViewController.swift in Sources */,
 				DCA2D51C1F12182600F44DA2 /* BankDetailsTableViewController.swift in Sources */,
 				DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */,
@@ -233,6 +244,7 @@
 				DC9FB9891F1561F900E1111E /* ChooseSubjectViewController.swift in Sources */,
 				DC746D721F18D9C9004641CE /* CustomTextView.swift in Sources */,
 				DC9D0B021F163444009C5CBE /* Price.swift in Sources */,
+				DC8C60581F1B528F00779F28 /* ChooseSourceTableViewCell.swift in Sources */,
 				DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */,
 				DC892BC51F17516200A7723E /* CustomCheckBox.swift in Sources */,
 				DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */,

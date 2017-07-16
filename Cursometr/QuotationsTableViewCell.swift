@@ -16,16 +16,19 @@ class QuotationsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        imgViewCurrencyIsSelected.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     func setConfig(currency: Currency){
+        lblSubscribedExchanges.text = ""
+        lblCurrency.textColor = Constatns.Color.gray
+        imgViewCurrencyIsSelected.isHidden = true
+        
         lblCurrency.text = currency.fullName
         for exchange in currency.sources{
             if exchange.subscribed{
@@ -35,6 +38,7 @@ class QuotationsTableViewCell: UITableViewCell {
                 else{
                     lblSubscribedExchanges.text = exchange.name
                     imgViewCurrencyIsSelected.isHidden = false
+                    lblCurrency.textColor = UIColor.white
                 }
             }
         }
