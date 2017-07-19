@@ -28,7 +28,7 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
         tblView.delegate = self
         tblView.tableFooterView = UIView(frame: .zero)
         tblView.tableFooterView?.isHidden = true
-        BankDataDownloadService.shared.getCurrencyList(onSuccess: { (currencies) in
+        CurrencyListService.shared.getCurrencyList(onSuccess: { (currencies) in
             DispatchQueue.main.async {
                 self.currencies = currencies
                 self.tblView.reloadData()
@@ -42,7 +42,7 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tblView.dequeueReusableCell(withIdentifier: "QuotationsTableViewCell", for: indexPath) as! QuotationsTableViewCell
+        let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: QuotationsTableViewCell.self), for: indexPath) as! QuotationsTableViewCell
         cell.setConfig(currency: currencies[indexPath.row])
         return cell
     }
@@ -72,6 +72,18 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func currencyChanged(currency: Currency){
+        var changedCurrencies = [Subscription]()
+        var countSubcribed = 0
+        let prevCurrency = currencies[indexSelectedCurrency!]
+        for i in 0...currency.sources.count-1{
+            if prevCurrency.sources[i].subscribed != currency.sources[i].subscribed{
+                changedCurrencies.append((currency.sources[i].id, currency.sources[i].subscribed ? .add : .delete))
+            }
+            if currency.sources[i].subscribed{
+                countSubcribed+=1
+            }
+        }
+        CurrencySubscriptionService.shared.changeCurrencySubscription(categoryId: currency.id, subscriptions: changedCurrencies, deleteAll: countSubcribed == 0)
         currencies[indexSelectedCurrency!] = currency
         tblView.reloadData()
     }

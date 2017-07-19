@@ -49,7 +49,7 @@ class LeaveFeedbackViewController: UIViewController {
     
     func sendFeedback(){
         if !txtMessage.text.isEmpty{
-            BankDataDownloadService.shared.sendFeedback(title: lblSubjectFeedback.text!, body: txtMessage.text, onSuccess: {
+            SendFeedbackService.shared.sendFeedback(title: lblSubjectFeedback.text!, body: txtMessage.text, onSuccess: {
                 self.dismiss(animated: true, completion: nil)
             })
         }

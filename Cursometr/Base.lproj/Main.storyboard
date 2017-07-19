@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u32-Fi-wvr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wk2-xj-HvM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,37 +12,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Cursometr" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="9bP-fu-0Oq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="391" y="36"/>
-        </scene>
-        <!--Page View Controller-->
+        <!--Page View Contoller-->
         <scene sceneID="EsK-Lu-sZK">
             <objects>
-                <pageViewController storyboardIdentifier="PageController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="FK8-F0-Vud" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="PageController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="FK8-F0-Vud" customClass="PageViewContoller" customModule="Cursometr" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uEg-2T-Onv"/>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMq-5k-sy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="36"/>
+            <point key="canvasLocation" x="1050" y="36"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="huY-ri-FPG">
             <objects>
-                <viewController storyboardIdentifier="ItemController" id="GgM-IL-hWj" customClass="ItemViewController" customModule="Cursometr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemViewController" id="GgM-IL-hWj" customClass="ItemViewController" customModule="Cursometr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sPa-Cv-eny"/>
                         <viewControllerLayoutGuide type="bottom" id="TaB-GA-K90"/>
@@ -186,26 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Yz-qv-CwF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1821.5" y="34.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="cPU-WK-Y2T">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u32-Fi-wvr" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="H0X-gf-TUT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7xv-H1-a0O"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="goA-tH-lly" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-415" y="36"/>
+            <point key="canvasLocation" x="1822" y="36"/>
         </scene>
         <!--Bank Details Table View Controller-->
         <scene sceneID="79u-4Z-46q">
@@ -376,7 +340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYk-xd-lGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2798" y="34"/>
+            <point key="canvasLocation" x="2798" y="36"/>
         </scene>
         <!--Quotations View Controller-->
         <scene sceneID="SwC-Nx-2PY">
@@ -773,6 +737,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDU-7C-WCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1821.5999999999999" y="800.14992503748135"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Zed-Co-4I7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wk2-xj-HvM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="q56-4P-k8p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FK8-F0-Vud" kind="relationship" relationship="rootViewController" id="K06-Xu-o7M"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zdu-MJ-Y22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="223" y="36"/>
         </scene>
     </scenes>
     <resources>

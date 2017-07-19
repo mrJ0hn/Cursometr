@@ -28,16 +28,10 @@ class BankDetailsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setConfig(price: Price){
+    func setConfig(price: Price, showSellPrice: Bool){
         lblPurchasePrice.text = String(price.buyPriceNow)
         lblSalePrice.text = String(price.salePriceNow)
-        //if !price.showSellPrice{
-        if price.buyPriceNow == price.salePriceNow{
-            viewSalePrice.isHidden = true
-        }
-        else{
-            viewSalePrice.isHidden = false
-        }
+        viewSalePrice.isHidden = showSellPrice
         lblFrom.text = "Form \(price.range)"
     }
     

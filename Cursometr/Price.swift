@@ -13,7 +13,6 @@ struct Price{
     let range: Int
     let buyPriceNow: Double
     let salePriceNow: Double
-    let showSellPrice: Bool
 }
 extension Price{
     
@@ -21,8 +20,7 @@ extension Price{
         guard let id = json["id"] as? Int,
             let range = json["range"] as? Int,
             let buyPriceNow = json["buyPriceNow"] as? Double,
-            let salePriceNow = json["salePriceNow"] as? Double,
-            let showSellPrice = json["showSellPrice"] as? Bool
+            let salePriceNow = json["salePriceNow"] as? Double
             else{
                 fatalError("extension Price: init(json:)")
         }
@@ -30,6 +28,5 @@ extension Price{
         self.range = range
         self.buyPriceNow = buyPriceNow
         self.salePriceNow = salePriceNow
-        self.showSellPrice = showSellPrice
     }
 }

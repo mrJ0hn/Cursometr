@@ -19,7 +19,8 @@ extension Currency{
     init(json: JSON){
         guard let id = json["id"] as? Int,
             let name = json["name"] as? String,
-            let fullName = json["fullName"] as? String
+            let fullName = json["fullName"] as? String,
+            let json = json["sources"] as? JSONArray
             else {
                 fatalError("extension Currency: init(json:)")
         }
@@ -27,6 +28,6 @@ extension Currency{
         self.id = id
         self.name = name
         self.fullName = fullName
-        self.sources = (json["sources"] as? JSONArray)!.map(Exchange.init)
+        self.sources = json.map(Exchange.init)
     }
 }

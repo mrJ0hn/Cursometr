@@ -28,7 +28,7 @@ class ChooseSubjectViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tblView.dequeueReusableCell(withIdentifier: "FeedbackSubjectTableViewCell", for: indexPath) as! FeedbackSubjectTableViewCell
+        let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: FeedbackSubjectTableViewCell.self), for: indexPath) as! FeedbackSubjectTableViewCell
         cell.setConfig(title: sources[indexPath.row])
         if indexPath.row == selectedItem.rawValue{
             cell.setSelected()

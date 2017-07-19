@@ -11,36 +11,15 @@ import UIKit
 typealias JSONArray = [JSON]
 typealias JSON = [String:AnyObject]
 
-class NetworkController{
-    static func request(request: URLRequest, onSuccess: @escaping ((JSON, URLResponse)->Void), onError: @escaping ((Error)->Void)){
-        let task = URLSession.shared.dataTask(with: request){
-            (data, response, error) in
-            guard error == nil else {
-                onError(error!)
-                return
-            }
-            if let usableData = data{
-                do{
-                    let jsonArray: JSON = try JSONSerialization.jsonObject(with: usableData, options: []) as! JSON
-                    onSuccess(jsonArray, response!)
-                }
-                catch{
-                    onError(error)
-                }
-            }
-        }
-        task.resume()
-    }
-}
-
 class BankDataDownloadService {
-    static let shared = BankDataDownloadService()
-    
+    var isCookiesLoad = false
+
     enum ApiURL: String{
         case strUrlAuthentication = "http://currency.btc-solutions.ru:8080/api/Account"
         case strUrlCurrencySubscription = "http://currency.btc-solutions.ru:8080/api/CurrencySubscription"
         case strUrlCurrencyList = "http://currency.btc-solutions.ru:8080/api/CurrencyList"
         case strURLFeedback = "http://currency.btc-solutions.ru:8080/api/Feedback"
+        case strUrlCategory = "http://currency.btc-solutions.ru:8080/api/Category"
     }
     
     enum HttpMethod: String{
@@ -48,114 +27,7 @@ class BankDataDownloadService {
         case delete = "DELETE"
     }
     
-    var isCookiesLoad = false
-    
-    func getCurrencySubscription(onSuccess: @escaping ([Currency])->Void){
-        if !isCookiesLoad{
-            getCookies(onSuccess: {
-                self.loadingCurrencySubscription(onSuccess: {(currencies) in
-                    onSuccess(currencies)
-                    //onSuccess([Currency]())
-                })
-            })
-            isCookiesLoad = true
-        }
-        else{
-            loadingCurrencySubscription(onSuccess: {(currencies) in
-                onSuccess(currencies)
-            })
-        }
-    }
-    
-    func getCurrencyList(onSuccess: @escaping ([Currency])->Void)
-    {
-        if !isCookiesLoad{
-            getCookies(onSuccess: {
-                self.loadingCurrencyList(onSuccess: { (currencies) in
-                    onSuccess(currencies)
-                })
-            })
-        }
-        else{
-            loadingCurrencyList(onSuccess: { (currencies) in
-                onSuccess(currencies)
-            })
-        }
-    }
-    
-    func sendFeedback(title: String, body: String, onSuccess: @escaping ()->()){
-        let json : JSON = ["title" : title as AnyObject, "body" : body as AnyObject]
-        let request = createJsonRequest(strUrl: ApiURL.strURLFeedback.rawValue, json: json, httpMethod: HttpMethod.post)!
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
-            print(jsonArray)
-            onSuccess()
-        }
-        let error : (Error) -> Void = {(error) in
-            print(error)
-        }
-        NetworkController.request(request: request, onSuccess: success, onError: error)
-    }
-    
-    func addCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping ()->()){
-        let json : JSON = ["categoryId" : categoryId as AnyObject, "sourceId" : sourceId as AnyObject]
-        let request = createJsonRequest(strUrl: ApiURL.strUrlCurrencySubscription.rawValue, json: json,
-                                        httpMethod: HttpMethod.post)!
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
-            print(jsonArray)
-            onSuccess()
-        }
-        let error : (Error) -> Void = {(error) in
-            print(error)
-        }
-        NetworkController.request(request: request, onSuccess: success, onError: error)
-    }
-    
-    func deleteCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping ()->()){
-        let json : JSON = ["categoryId" : categoryId as AnyObject, "sourceId" : sourceId as AnyObject]
-        let request = createJsonRequest(strUrl: ApiURL.strUrlCurrencySubscription.rawValue, json: json,
-                                        httpMethod: HttpMethod.delete)!
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
-            print(jsonArray)
-            onSuccess()
-        }
-        let error : (Error) -> Void = {(error) in
-            print(error)
-        }
-        NetworkController.request(request: request, onSuccess: success, onError: error)
-    }
-    
-    private func loadingCurrencyList(onSuccess: @escaping (([Currency])->Void))
-    {
-        let userId = UIDevice.current.identifierForVendor!.uuidString.replacingOccurrences(of: "-", with: "")
-        let json : JSON = ["userId" : userId as AnyObject]
-        let request = createJsonRequest(strUrl: ApiURL.strUrlCurrencyList.rawValue, json: json,
-                                        httpMethod: HttpMethod.post)!
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
-            let jsonCurrencies = jsonArray["currencies"] as? JSONArray
-            let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
-            onSuccess(currencies)
-        }
-        let error : (Error) -> Void = {(error) in
-            print(error)
-        }
-        NetworkController.request(request: request, onSuccess: success, onError: error)
-    }
-    
-    private func loadingCurrencySubscription(onSuccess: @escaping (([Currency])->Void)){
-        let url = URL(string: ApiURL.strUrlCurrencySubscription.rawValue)!
-        let request = URLRequest(url: url)
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
-            let jsonCurrencies = jsonArray["subscriptionCategories"] as? JSONArray
-            let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
-            onSuccess(currencies)
-        }
-        let error : (Error) -> Void = {(error) in
-            print(error)
-        }
-        NetworkController.request(request: request, onSuccess: success, onError: error)
-    }
-    
-    private func getCookies(onSuccess: @escaping (()->Void)){
+    func getCookies(onSuccess: @escaping ()->()){
         let userId = UIDevice.current.identifierForVendor!.uuidString.replacingOccurrences(of: "-", with: "")
         print(userId)
         let json : JSON = ["userId" : userId as AnyObject]
@@ -168,10 +40,10 @@ class BankDataDownloadService {
         let error : (Error) -> Void = {(error) in
             print(error)
         }
-        NetworkController.request(request: request, onSuccess: success, onError: error)
+        NetworkController.shared.request(request: request, onSuccess: success, onError: error)
     }
     
-    private func createJsonRequest(strUrl: String, json: JSON?, httpMethod: HttpMethod) -> URLRequest?
+    func createJsonRequest(strUrl: String, json: JSON?, httpMethod: HttpMethod) -> URLRequest?
     {
         let url = URL(string: strUrl)!
         var request = URLRequest(url: url)
@@ -190,7 +62,7 @@ class BankDataDownloadService {
         return request
     }
     
-    private func setCookies(response: URLResponse?){
+    func setCookies(response: URLResponse?){
         if let httpResponce = response as? HTTPURLResponse{
             if let url = httpResponce.url,
                 let allHeaderFiels = httpResponce.allHeaderFields as? [String:String]{
@@ -201,4 +73,5 @@ class BankDataDownloadService {
             }
         }
     }
+    
 }

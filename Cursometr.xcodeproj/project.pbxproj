@@ -11,6 +11,7 @@
 		DC4F85291F10327F00A05586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F85271F10327F00A05586 /* Main.storyboard */; };
 		DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */; };
 		DC4F85311F10327F00A05586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */; };
+		DC744EB41F1D10A400C45B31 /* PageViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC744EB31F1D10A400C45B31 /* PageViewContoller.swift */; };
 		DC746D721F18D9C9004641CE /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D711F18D9C9004641CE /* CustomTextView.swift */; };
 		DC746D741F18E034004641CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D731F18E034004641CE /* Constants.swift */; };
 		DC892BC51F17516200A7723E /* CustomCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC892BC41F17516200A7723E /* CustomCheckBox.swift */; };
@@ -18,6 +19,8 @@
 		DC8C60581F1B528F00779F28 /* ChooseSourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */; };
 		DC901F311F19232200A28D3A /* QuotationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC901F301F19232200A28D3A /* QuotationsViewController.swift */; };
 		DC901F331F19233F00A28D3A /* QuotationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */; };
+		DC953A751F1CBE8B008FB250 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953A741F1CBE8B008FB250 /* TableView.swift */; };
+		DC953A771F1CC16F008FB250 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953A761F1CC16F008FB250 /* NetworkController.swift */; };
 		DC9D0B021F163444009C5CBE /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D0B011F163444009C5CBE /* Price.swift */; };
 		DC9D0B041F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D0B031F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift */; };
 		DC9FB9891F1561F900E1111E /* ChooseSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */; };
@@ -31,6 +34,9 @@
 		DCBF4ABA1F14AE9100A8AA8E /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */; };
 		DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */; };
 		DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AC1F10D712009A6ABC /* ViewController.swift */; };
+		DCF190021F1E0F3800A51499 /* CurrencySubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF190011F1E0F3800A51499 /* CurrencySubscriptionService.swift */; };
+		DCF190051F1E13C600A51499 /* CurrencyListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF190041F1E13C600A51499 /* CurrencyListService.swift */; };
+		DCF190091F1E156400A51499 /* SendFeedbackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF190081F1E156400A51499 /* SendFeedbackService.swift */; };
 		DCFD6A261F13EDEE00E8FACD /* BankDataDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFD6A251F13EDEE00E8FACD /* BankDataDownloadService.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +47,7 @@
 		DC4F852B1F10327F00A05586 /* Cursometr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cursometr.xcdatamodel; sourceTree = "<group>"; };
 		DC4F85301F10327F00A05586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC4F85321F10327F00A05586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC744EB31F1D10A400C45B31 /* PageViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewContoller.swift; sourceTree = "<group>"; };
 		DC746D711F18D9C9004641CE /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		DC746D731F18E034004641CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DC892BC41F17516200A7723E /* CustomCheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCheckBox.swift; sourceTree = "<group>"; };
@@ -48,6 +55,8 @@
 		DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSourceTableViewCell.swift; sourceTree = "<group>"; };
 		DC901F301F19232200A28D3A /* QuotationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotationsViewController.swift; sourceTree = "<group>"; };
 		DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotationsTableViewCell.swift; sourceTree = "<group>"; };
+		DC953A741F1CBE8B008FB250 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		DC953A761F1CC16F008FB250 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		DC9D0B011F163444009C5CBE /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		DC9D0B031F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewHeaderCell.swift; sourceTree = "<group>"; };
 		DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSubjectViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +70,9 @@
 		DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		DCC183AC1F10D712009A6ABC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DCF190011F1E0F3800A51499 /* CurrencySubscriptionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySubscriptionService.swift; sourceTree = "<group>"; };
+		DCF190041F1E13C600A51499 /* CurrencyListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyListService.swift; sourceTree = "<group>"; };
+		DCF190081F1E156400A51499 /* SendFeedbackService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFeedbackService.swift; sourceTree = "<group>"; };
 		DCFD6A251F13EDEE00E8FACD /* BankDataDownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDataDownloadService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,13 +107,23 @@
 		DC4F85221F10327F00A05586 /* Cursometr */ = {
 			isa = PBXGroup;
 			children = (
+				DC953A731F1CBE7B008FB250 /* Extensions */,
 				DCAD9CB11F12C4430051D209 /* Application */,
+				DCF190001F1E0F1100A51499 /* NetworkService */,
 				DCFD6A241F13EDAE00E8FACD /* Model */,
 				DCAD9CB01F12C4150051D209 /* View */,
 				DCAD9CAF1F12C36F0051D209 /* View controller */,
 				DC746D731F18E034004641CE /* Constants.swift */,
 			);
 			path = Cursometr;
+			sourceTree = "<group>";
+		};
+		DC953A731F1CBE7B008FB250 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DC953A741F1CBE8B008FB250 /* TableView.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		DCAD9CAF1F12C36F0051D209 /* View controller */ = {
@@ -114,6 +136,7 @@
 				DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */,
 				DC901F301F19232200A28D3A /* QuotationsViewController.swift */,
 				DC8C60531F1B50C200779F28 /* ChooseSourceViewController.swift */,
+				DC744EB31F1D10A400C45B31 /* PageViewContoller.swift */,
 			);
 			name = "View controller";
 			sourceTree = "<group>";
@@ -144,10 +167,21 @@
 			name = Application;
 			sourceTree = "<group>";
 		};
-		DCFD6A241F13EDAE00E8FACD /* Model */ = {
+		DCF190001F1E0F1100A51499 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
 				DCFD6A251F13EDEE00E8FACD /* BankDataDownloadService.swift */,
+				DC953A761F1CC16F008FB250 /* NetworkController.swift */,
+				DCF190011F1E0F3800A51499 /* CurrencySubscriptionService.swift */,
+				DCF190041F1E13C600A51499 /* CurrencyListService.swift */,
+				DCF190081F1E156400A51499 /* SendFeedbackService.swift */,
+			);
+			name = NetworkService;
+			sourceTree = "<group>";
+		};
+		DCFD6A241F13EDAE00E8FACD /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				DCBF4AB71F14ACC500A8AA8E /* Currency.swift */,
 				DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */,
 				DC9D0B011F163444009C5CBE /* Price.swift */,
@@ -229,19 +263,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF190091F1E156400A51499 /* SendFeedbackService.swift in Sources */,
 				DCBF4AB81F14ACC500A8AA8E /* Currency.swift in Sources */,
+				DCF190021F1E0F3800A51499 /* CurrencySubscriptionService.swift in Sources */,
 				DC8C60541F1B50C200779F28 /* ChooseSourceViewController.swift in Sources */,
 				DCA932361F1A160100355435 /* SourcesFeedback.swift in Sources */,
 				DC901F311F19232200A28D3A /* QuotationsViewController.swift in Sources */,
 				DCA2D51C1F12182600F44DA2 /* BankDetailsTableViewController.swift in Sources */,
 				DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */,
 				DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */,
+				DC744EB41F1D10A400C45B31 /* PageViewContoller.swift in Sources */,
+				DCF190051F1E13C600A51499 /* CurrencyListService.swift in Sources */,
 				DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */,
+				DC953A771F1CC16F008FB250 /* NetworkController.swift in Sources */,
 				DC901F331F19233F00A28D3A /* QuotationsTableViewCell.swift in Sources */,
 				DC9D0B041F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift in Sources */,
 				DC9FB98B1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift in Sources */,
 				DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */,
 				DC9FB9891F1561F900E1111E /* ChooseSubjectViewController.swift in Sources */,
+				DC953A751F1CBE8B008FB250 /* TableView.swift in Sources */,
 				DC746D721F18D9C9004641CE /* CustomTextView.swift in Sources */,
 				DC9D0B021F163444009C5CBE /* Price.swift in Sources */,
 				DC8C60581F1B528F00779F28 /* ChooseSourceTableViewCell.swift in Sources */,

@@ -40,8 +40,8 @@ class BankDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankDetailsTableViewCell", for: indexPath) as? BankDetailsTableViewCell
-        let price = exchanges[indexPath.section].prices[indexPath.row]
-        cell?.setConfig(price: price)
+        let exchange = exchanges[indexPath.section]
+        cell?.setConfig(price: exchange.prices[indexPath.row], showSellPrice: exchange.showSellPrice)
         cell?.setUIConfig(row: indexPath.row, count: exchanges[indexPath.section].prices.count)
         return cell!
     }
