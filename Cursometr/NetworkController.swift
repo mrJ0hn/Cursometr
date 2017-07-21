@@ -21,7 +21,6 @@ class NetworkController {
                 return
             }
             print(request)
-            sleep(2)
             if let usableData = data{
                 do{
                     let jsonArray: JSON = try JSONSerialization.jsonObject(with: usableData, options: []) as! JSON
@@ -34,7 +33,7 @@ class NetworkController {
             //self.item = nil
         }
         //item = DispatchWorkItem{
-            task.resume()
+        task.resume()
         //}
         //queue.sync(execute: item)
     }

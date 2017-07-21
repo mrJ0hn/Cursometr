@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC2B093F1F1FEB50008F1BD6 /* SegmentControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B093E1F1FEB50008F1BD6 /* SegmentControlTableViewCell.swift */; };
 		DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F85231F10327F00A05586 /* AppDelegate.swift */; };
 		DC4F85291F10327F00A05586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F85271F10327F00A05586 /* Main.storyboard */; };
 		DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */; };
@@ -14,9 +15,14 @@
 		DC744EB41F1D10A400C45B31 /* PageViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC744EB31F1D10A400C45B31 /* PageViewContoller.swift */; };
 		DC746D721F18D9C9004641CE /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D711F18D9C9004641CE /* CustomTextView.swift */; };
 		DC746D741F18E034004641CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D731F18E034004641CE /* Constants.swift */; };
+		DC83ADB41F1F6BBA00908007 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC83ADB31F1F6BBA00908007 /* Notification.swift */; };
+		DC83ADB81F1F6EA000908007 /* CustomActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC83ADB71F1F6EA000908007 /* CustomActivityIndicator.swift */; };
 		DC892BC51F17516200A7723E /* CustomCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC892BC41F17516200A7723E /* CustomCheckBox.swift */; };
 		DC8C60541F1B50C200779F28 /* ChooseSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C60531F1B50C200779F28 /* ChooseSourceViewController.swift */; };
 		DC8C60581F1B528F00779F28 /* ChooseSourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */; };
+		DC8FC94F1F1FC7C700AE5D3E /* SetNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8FC94E1F1FC7C700AE5D3E /* SetNotificationsViewController.swift */; };
+		DC8FC9511F1FC82A00AE5D3E /* ChangeCostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8FC9501F1FC82A00AE5D3E /* ChangeCostTableViewCell.swift */; };
+		DC8FC9551F1FC91900AE5D3E /* SwitchCostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8FC9541F1FC91900AE5D3E /* SwitchCostTableViewCell.swift */; };
 		DC901F311F19232200A28D3A /* QuotationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC901F301F19232200A28D3A /* QuotationsViewController.swift */; };
 		DC901F331F19233F00A28D3A /* QuotationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */; };
 		DC953A751F1CBE8B008FB250 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953A741F1CBE8B008FB250 /* TableView.swift */; };
@@ -25,15 +31,17 @@
 		DC9D0B041F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D0B031F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift */; };
 		DC9FB9891F1561F900E1111E /* ChooseSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */; };
 		DC9FB98B1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FB98A1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift */; };
+		DCA20C6A1F220BE100E50334 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA20C691F220BE100E50334 /* Image.swift */; };
+		DCA20C6C1F22129600E50334 /* AddPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA20C6B1F22129600E50334 /* AddPriceViewController.swift */; };
 		DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */; };
 		DCA2D51C1F12182600F44DA2 /* BankDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */; };
 		DCA932361F1A160100355435 /* SourcesFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA932351F1A160100355435 /* SourcesFeedback.swift */; };
+		DCAA311A1F210421008CB1E7 /* SetNotificationsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAA31191F210421008CB1E7 /* SetNotificationsTableViewHeader.swift */; };
 		DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */; };
 		DCAFEE421F115E7400263C7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCAFEE411F115E7400263C7B /* Assets.xcassets */; };
 		DCBF4AB81F14ACC500A8AA8E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBF4AB71F14ACC500A8AA8E /* Currency.swift */; };
 		DCBF4ABA1F14AE9100A8AA8E /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */; };
 		DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */; };
-		DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AC1F10D712009A6ABC /* ViewController.swift */; };
 		DCF190021F1E0F3800A51499 /* CurrencySubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF190011F1E0F3800A51499 /* CurrencySubscriptionService.swift */; };
 		DCF190051F1E13C600A51499 /* CurrencyListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF190041F1E13C600A51499 /* CurrencyListService.swift */; };
 		DCF190091F1E156400A51499 /* SendFeedbackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF190081F1E156400A51499 /* SendFeedbackService.swift */; };
@@ -41,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC2B093E1F1FEB50008F1BD6 /* SegmentControlTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentControlTableViewCell.swift; sourceTree = "<group>"; };
 		DC4F85201F10327F00A05586 /* Cursometr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cursometr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4F85231F10327F00A05586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC4F85281F10327F00A05586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,9 +59,14 @@
 		DC744EB31F1D10A400C45B31 /* PageViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewContoller.swift; sourceTree = "<group>"; };
 		DC746D711F18D9C9004641CE /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		DC746D731F18E034004641CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DC83ADB31F1F6BBA00908007 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		DC83ADB71F1F6EA000908007 /* CustomActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActivityIndicator.swift; sourceTree = "<group>"; };
 		DC892BC41F17516200A7723E /* CustomCheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCheckBox.swift; sourceTree = "<group>"; };
 		DC8C60531F1B50C200779F28 /* ChooseSourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSourceViewController.swift; sourceTree = "<group>"; };
 		DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSourceTableViewCell.swift; sourceTree = "<group>"; };
+		DC8FC94E1F1FC7C700AE5D3E /* SetNotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNotificationsViewController.swift; sourceTree = "<group>"; };
+		DC8FC9501F1FC82A00AE5D3E /* ChangeCostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeCostTableViewCell.swift; sourceTree = "<group>"; };
+		DC8FC9541F1FC91900AE5D3E /* SwitchCostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCostTableViewCell.swift; sourceTree = "<group>"; };
 		DC901F301F19232200A28D3A /* QuotationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotationsViewController.swift; sourceTree = "<group>"; };
 		DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotationsTableViewCell.swift; sourceTree = "<group>"; };
 		DC953A741F1CBE8B008FB250 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -61,15 +75,17 @@
 		DC9D0B031F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewHeaderCell.swift; sourceTree = "<group>"; };
 		DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSubjectViewController.swift; sourceTree = "<group>"; };
 		DC9FB98A1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSubjectTableViewCell.swift; sourceTree = "<group>"; };
+		DCA20C691F220BE100E50334 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		DCA20C6B1F22129600E50334 /* AddPriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPriceViewController.swift; sourceTree = "<group>"; };
 		DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsTableViewController.swift; sourceTree = "<group>"; };
 		DCA932351F1A160100355435 /* SourcesFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourcesFeedback.swift; sourceTree = "<group>"; };
+		DCAA31191F210421008CB1E7 /* SetNotificationsTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNotificationsTableViewHeader.swift; sourceTree = "<group>"; };
 		DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackViewController.swift; sourceTree = "<group>"; };
 		DCAFEE411F115E7400263C7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCBF4AB71F14ACC500A8AA8E /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
-		DCC183AC1F10D712009A6ABC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DCF190011F1E0F3800A51499 /* CurrencySubscriptionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySubscriptionService.swift; sourceTree = "<group>"; };
 		DCF190041F1E13C600A51499 /* CurrencyListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyListService.swift; sourceTree = "<group>"; };
 		DCF190081F1E156400A51499 /* SendFeedbackService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFeedbackService.swift; sourceTree = "<group>"; };
@@ -118,10 +134,27 @@
 			path = Cursometr;
 			sourceTree = "<group>";
 		};
+		DC8FC9521F1FC83900AE5D3E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */,
+				DC8FC9501F1FC82A00AE5D3E /* ChangeCostTableViewCell.swift */,
+				DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */,
+				DC9FB98A1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift */,
+				DC9D0B031F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift */,
+				DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */,
+				DC8FC9541F1FC91900AE5D3E /* SwitchCostTableViewCell.swift */,
+				DC2B093E1F1FEB50008F1BD6 /* SegmentControlTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		DC953A731F1CBE7B008FB250 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				DC953A741F1CBE8B008FB250 /* TableView.swift */,
+				DC83ADB31F1F6BBA00908007 /* Notification.swift */,
+				DCA20C691F220BE100E50334 /* Image.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -130,13 +163,14 @@
 			isa = PBXGroup;
 			children = (
 				DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */,
-				DCC183AC1F10D712009A6ABC /* ViewController.swift */,
 				DCA2D51B1F12182600F44DA2 /* BankDetailsTableViewController.swift */,
 				DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */,
 				DC9FB9881F1561F900E1111E /* ChooseSubjectViewController.swift */,
 				DC901F301F19232200A28D3A /* QuotationsViewController.swift */,
 				DC8C60531F1B50C200779F28 /* ChooseSourceViewController.swift */,
 				DC744EB31F1D10A400C45B31 /* PageViewContoller.swift */,
+				DC8FC94E1F1FC7C700AE5D3E /* SetNotificationsViewController.swift */,
+				DCA20C6B1F22129600E50334 /* AddPriceViewController.swift */,
 			);
 			name = "View controller";
 			sourceTree = "<group>";
@@ -144,13 +178,11 @@
 		DCAD9CB01F12C4150051D209 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DCA2D5191F12117600F44DA2 /* BankDetailsTableViewCell.swift */,
-				DC9FB98A1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift */,
-				DC9D0B031F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift */,
+				DC8FC9521F1FC83900AE5D3E /* Cell */,
 				DC892BC41F17516200A7723E /* CustomCheckBox.swift */,
 				DC746D711F18D9C9004641CE /* CustomTextView.swift */,
-				DC901F321F19233F00A28D3A /* QuotationsTableViewCell.swift */,
-				DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */,
+				DC83ADB71F1F6EA000908007 /* CustomActivityIndicator.swift */,
+				DCAA31191F210421008CB1E7 /* SetNotificationsTableViewHeader.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -264,16 +296,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCF190091F1E156400A51499 /* SendFeedbackService.swift in Sources */,
+				DC8FC94F1F1FC7C700AE5D3E /* SetNotificationsViewController.swift in Sources */,
+				DCA20C6C1F22129600E50334 /* AddPriceViewController.swift in Sources */,
 				DCBF4AB81F14ACC500A8AA8E /* Currency.swift in Sources */,
 				DCF190021F1E0F3800A51499 /* CurrencySubscriptionService.swift in Sources */,
 				DC8C60541F1B50C200779F28 /* ChooseSourceViewController.swift in Sources */,
+				DC2B093F1F1FEB50008F1BD6 /* SegmentControlTableViewCell.swift in Sources */,
 				DCA932361F1A160100355435 /* SourcesFeedback.swift in Sources */,
 				DC901F311F19232200A28D3A /* QuotationsViewController.swift in Sources */,
 				DCA2D51C1F12182600F44DA2 /* BankDetailsTableViewController.swift in Sources */,
+				DC8FC9551F1FC91900AE5D3E /* SwitchCostTableViewCell.swift in Sources */,
 				DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */,
 				DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */,
 				DC744EB41F1D10A400C45B31 /* PageViewContoller.swift in Sources */,
 				DCF190051F1E13C600A51499 /* CurrencyListService.swift in Sources */,
+				DCA20C6A1F220BE100E50334 /* Image.swift in Sources */,
 				DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */,
 				DC953A771F1CC16F008FB250 /* NetworkController.swift in Sources */,
 				DC901F331F19233F00A28D3A /* QuotationsTableViewCell.swift in Sources */,
@@ -284,12 +321,15 @@
 				DC953A751F1CBE8B008FB250 /* TableView.swift in Sources */,
 				DC746D721F18D9C9004641CE /* CustomTextView.swift in Sources */,
 				DC9D0B021F163444009C5CBE /* Price.swift in Sources */,
+				DC83ADB41F1F6BBA00908007 /* Notification.swift in Sources */,
 				DC8C60581F1B528F00779F28 /* ChooseSourceTableViewCell.swift in Sources */,
-				DCC183AD1F10D712009A6ABC /* ViewController.swift in Sources */,
+				DC83ADB81F1F6EA000908007 /* CustomActivityIndicator.swift in Sources */,
+				DC8FC9511F1FC82A00AE5D3E /* ChangeCostTableViewCell.swift in Sources */,
 				DC892BC51F17516200A7723E /* CustomCheckBox.swift in Sources */,
 				DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */,
 				DCBF4ABA1F14AE9100A8AA8E /* Exchange.swift in Sources */,
 				DCFD6A261F13EDEE00E8FACD /* BankDataDownloadService.swift in Sources */,
+				DCAA311A1F210421008CB1E7 /* SetNotificationsTableViewHeader.swift in Sources */,
 				DC746D741F18E034004641CE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

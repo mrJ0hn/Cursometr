@@ -10,30 +10,29 @@ import UIKit
 
 class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     var currencies : [Currency] = []
-    var activityIndicator = UIActivityIndicatorView()
-    var currentIndexPage = 0
+    var activityIndicator : UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.dataSource = self
-        self.view.backgroundColor = UIColor.black
-        createActivityIndicator()
-        CurrencySubscriptionService.shared.startLoading = startLoading
-        CurrencySubscriptionService.shared.finishLoading = updateData
+        self.dataSource = self
+        self.view.backgroundColor = Constatns.Color.viewFlipsideBackgroundColor
+        
+        activityIndicator = CustomActivityIndicator().get()
+        view.addSubview(activityIndicator)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(startLoading), name: .StartLoadingCurrencySubscription, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateData), name: .FinishLoadingCurrencySubscription, object: nil)
+        
         updateData()
     }
     
-    func createActivityIndicator(){
-        activityIndicator.frame	= CGRect(x: 0, y: 0, width: 40, height: 40)
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        view.addSubview(activityIndicator)
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func updateData(){
         startLoading()
-        CurrencySubscriptionService.shared.getCurrencySubscription(onSuccess: { [weak self] (currencies) in
+        CurrencySubscriptionService.shared.obtainCurrencySubscription(onSuccess: { [weak self] (currencies) in
             DispatchQueue.main.async {
                 self?.currencies = currencies
                 self?.updatePageViewController()
@@ -43,7 +42,7 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     }
     
     func updatePageViewController(){
-        setViewControllers([getItemController(currentIndexPage)], direction: .forward, animated: false, completion: nil)
+        setViewControllers([getItemController(0)], direction: .forward, animated: false, completion: nil)
     }
     
     func getItemController(_ itemIndex: Int) -> ItemViewController {
@@ -51,7 +50,6 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
             let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ItemViewController.self)) as! ItemViewController
             pageItemController.itemIndex = itemIndex
             pageItemController.setConfig(currency: currencies[itemIndex])
-            print("setConfig")
             return pageItemController
         }
         else{
@@ -67,17 +65,14 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return currentIndexPage
+        return 0
     }
-    
     
     //swipe to left
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
         let itemController = viewController as! ItemViewController
         if (itemController.itemIndex > 0)
         {
-            currentIndexPage = itemController.itemIndex-1
             return getItemController(itemController.itemIndex-1)
         }
         return nil
@@ -88,7 +83,6 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
         let itemController = viewController as! ItemViewController
         if (itemController.itemIndex + 1 < currencies.count)
         {
-            currentIndexPage = itemController.itemIndex+1
             return getItemController(itemController.itemIndex + 1)
         }
         return nil
@@ -96,11 +90,17 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     
     func startLoading(){
         view.isUserInteractionEnabled = false
+        if (viewControllers?.count)!>0{
+            viewControllers?[0].view.isHidden = true
+        }
         activityIndicator.startAnimating()
     }
     
     func stopLoading(){
         view.isUserInteractionEnabled = true
+        if (viewControllers?.count)!>0{
+            viewControllers?[0].view.isHidden = false
+        }
         activityIndicator.stopAnimating()
     }
     

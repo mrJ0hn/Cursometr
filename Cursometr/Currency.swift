@@ -28,6 +28,6 @@ extension Currency{
         self.id = id
         self.name = name
         self.fullName = fullName
-        self.sources = json.map(Exchange.init)
+        self.sources = json.flatMap(Exchange.init)
     }
 }

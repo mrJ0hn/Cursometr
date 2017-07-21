@@ -13,8 +13,9 @@ protocol CurrencyChangedDelegate: class {
 }
 
 class QuotationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CurrencyChangedDelegate  {
-    
     @IBOutlet weak var tblView: UITableView!
+    
+    var activityIndicator : UIActivityIndicatorView!
     var currencies : [Currency] = []
     var indexSelectedCurrency: Int? = nil
     
@@ -28,10 +29,16 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
         tblView.delegate = self
         tblView.tableFooterView = UIView(frame: .zero)
         tblView.tableFooterView?.isHidden = true
-        CurrencyListService.shared.getCurrencyList(onSuccess: { (currencies) in
+        
+        activityIndicator = CustomActivityIndicator().get()
+        view.addSubview(activityIndicator)
+        
+        startLoading()
+        CurrencyListService.shared.obtainCurrencyList(onSuccess: { (currencies) in
             DispatchQueue.main.async {
                 self.currencies = currencies
                 self.tblView.reloadData()
+                self.stopLoading()
             }
         })
         // Do any additional setup after loading the view.
@@ -52,12 +59,6 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
         performSegue(withIdentifier: SegueIdentifier.chooseSourceViewController.rawValue, sender: self)
     }
     
-    @IBAction func unwindToLeaveFeedbackViewController(sender: UIStoryboardSegue) {
-        if let chooseSourceViewController = sender.source as? ChooseSourceViewController {
-            currencies[indexSelectedCurrency!] = chooseSourceViewController.currency!
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let id = segue.identifier,
             let sid = SegueIdentifier(rawValue: id) else {
@@ -71,20 +72,37 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    func startLoading(){
+        view.isUserInteractionEnabled = false
+        tblView.isHidden = true
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoading(){
+        view.isUserInteractionEnabled = true
+        tblView.isHidden = false
+        activityIndicator.stopAnimating()
+    }
+    
     func currencyChanged(currency: Currency){
         var changedCurrencies = [Subscription]()
         var countSubcribed = 0
+        var wasChanged = false
         let prevCurrency = currencies[indexSelectedCurrency!]
-        for i in 0...currency.sources.count-1{
+        for i in 0..<currency.sources.count{
             if prevCurrency.sources[i].subscribed != currency.sources[i].subscribed{
                 changedCurrencies.append((currency.sources[i].id, currency.sources[i].subscribed ? .add : .delete))
+                wasChanged = true
             }
             if currency.sources[i].subscribed{
                 countSubcribed+=1
             }
         }
-        CurrencySubscriptionService.shared.changeCurrencySubscription(categoryId: currency.id, subscriptions: changedCurrencies, deleteAll: countSubcribed == 0)
-        currencies[indexSelectedCurrency!] = currency
-        tblView.reloadData()
+        if wasChanged{
+            CurrencySubscriptionService.shared.changeCurrencySubscription(categoryId: currency.id, subscriptions: changedCurrencies, deleteAll: countSubcribed == 0)
+            currencies[indexSelectedCurrency!] = currency
+            CurrencyListService.shared.allCurrencies[indexSelectedCurrency!] = currency
+            tblView.reloadData()
+        }
     }
 }

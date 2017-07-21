@@ -14,7 +14,7 @@ class LeaveFeedbackViewController: UIViewController {
     @IBOutlet weak var txtMessage: UITextView!
     @IBOutlet weak var lblSubjectFeedback: UILabel!
     @IBOutlet weak var viewAddSource: UIView!
-    var subjectFeedback = SourcesFeedback.Source.addSource
+    var subjectFeedback = FeedbackSubject.addSource
 
     enum SegueIdentifier: String {
         case chooseSubjectViewController = "ChooseSubjectViewController"
@@ -55,10 +55,10 @@ class LeaveFeedbackViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToLeaveFeedbackViewController(sender: UIStoryboardSegue) {
+    @IBAction func SToLeaveFeedbackViewController(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? ChooseSubjectViewController {
             subjectFeedback = sourceViewController.selectedItem
-            lblSubjectFeedback.text = SourcesFeedback.shared.sources[subjectFeedback.rawValue]
+            lblSubjectFeedback.text = subjectFeedback.description
         }
     }
 }

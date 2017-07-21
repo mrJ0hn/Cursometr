@@ -8,15 +8,24 @@
 
 import Foundation
 
-class SourcesFeedback{
-    static let shared = SourcesFeedback()
+enum FeedbackSubject: CustomStringConvertible {
+    case addSource
+    case addQuotations
+    case addFunction
+    case another
     
-    enum Source: Int {
-        case addSource
-        case addQuotations
-        case addFunction
-        case another
+    var description: String {
+        switch self {
+        case .addSource:
+            return "Add source"
+        case .addQuotations:
+            return "Add quotation"
+        case .addFunction:
+            return "Add function"
+        case .another:
+            return "Another"
+        }
     }
     
-    let sources : [String] = ["Add source", "Add quotation", "Add function", "Another"]
+    static let allValues: [FeedbackSubject] = [ .addSource, .addQuotations, .addFunction, .another]
 }

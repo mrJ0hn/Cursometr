@@ -20,13 +20,12 @@ class FeedbackSubjectTableViewCell: UITableViewCell {
     }
     
     func setSelected(){
-        lblTitle.textColor = UIColor.white
-        chkBxIsSelected.setStatus(isChecked: true)
+        
     }
 
-    func setConfig(title: String){
+    func setConfig(title: String, isSelected: Bool){
         lblTitle.text = title
+        lblTitle.textColor = isSelected ? UIColor.white : Constatns.Color.gray
+        chkBxIsSelected.setStatus(isChecked: isSelected)
     }
-    
-    
 }

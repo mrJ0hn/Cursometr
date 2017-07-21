@@ -18,13 +18,13 @@ struct Exchange {
 
 extension Exchange {
     
-    init(json: JSON){
+    init?(json: JSON){
         guard let id = json["id"] as? Int,
             let name = json["name"] as? String
             //let prices = json["ranges"] as? JSONArray
             //let subscribed = json["subscribed"] as? Bool
         else{
-                fatalError("extension Exchange: init(json:)")
+           return nil
         }
         self.id = id
         self.name = name

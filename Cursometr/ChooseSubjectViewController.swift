@@ -11,8 +11,7 @@ import UIKit
 class ChooseSubjectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tblView: UITableView!
-    let sources = SourcesFeedback.shared.sources
-    var selectedItem = SourcesFeedback.Source.addSource
+    var selectedItem: FeedbackSubject = .addSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,24 +19,21 @@ class ChooseSubjectViewController: UIViewController, UITableViewDataSource, UITa
         tblView.dataSource = self
         tblView.tableFooterView = UIView(frame: .zero)
         tblView.tableFooterView?.isHidden = true
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sources.count
+        return FeedbackSubject.allValues.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: FeedbackSubjectTableViewCell.self), for: indexPath) as! FeedbackSubjectTableViewCell
-        cell.setConfig(title: sources[indexPath.row])
-        if indexPath.row == selectedItem.rawValue{
-            cell.setSelected()
-        }
+        let subject = FeedbackSubject.allValues[indexPath.row]
+        cell.setConfig(title: subject.description, isSelected: subject == self.selectedItem)
         return cell
     }
 
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        selectedItem = SourcesFeedback.Source(rawValue: indexPath.row)!
+        selectedItem = FeedbackSubject.allValues[indexPath.row]
         return indexPath
     }
 }

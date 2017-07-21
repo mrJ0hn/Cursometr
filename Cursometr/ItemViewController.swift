@@ -23,6 +23,7 @@ class ItemViewController: UIViewController{
         case leaveFeedbackViewController = "LeaveFeedbackViewController"
         case bankDetailsTableViewController = "BankDetailsTableViewController"
         case quotationsViewController = "QuotationsViewController"
+        case setNotificationsViewController = "SetNotificationsViewController"
     }
     
     override func viewDidLoad() {
@@ -30,7 +31,6 @@ class ItemViewController: UIViewController{
         let imgLeaveFeedbackTap = UITapGestureRecognizer(target: self, action: #selector(imgLeaveFeedbackTapped))
         imgLeaveFeedback.addGestureRecognizer(imgLeaveFeedbackTap)
         imgLeaveFeedback.isUserInteractionEnabled = true
-        
         let viewQuotationsTap = UITapGestureRecognizer(target: self, action: #selector(viewQuotationsTapped))
         viewQuotations.addGestureRecognizer(viewQuotationsTap)
         viewQuotations.isUserInteractionEnabled = true
@@ -71,7 +71,7 @@ class ItemViewController: UIViewController{
         case .bankDetailsTableViewController:
             let vc = segue.destination as! BankDetailsTableViewController
             if let currency = currency{
-                vc.setConfig(exchanges: currency.sources)
+                vc.setConfig(currency: currency, exchanges: currency.sources)
             }
         default:
             break

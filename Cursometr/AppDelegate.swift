@@ -16,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        CurrencySubscriptionService.initialize(dependency: BankDataDownloadService.shared)
+        CurrencyListService.initialize(dependency: BankDataDownloadService.shared)
+        SendFeedbackService.initialize(dependency: BankDataDownloadService.shared)
         return true
     }
 
@@ -43,8 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
-    // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
         /*

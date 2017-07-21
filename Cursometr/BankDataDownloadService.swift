@@ -10,24 +10,26 @@ import UIKit
 
 typealias JSONArray = [JSON]
 typealias JSON = [String:AnyObject]
+typealias Parametr = (name: String, value: AnyObject)
+
+enum ApiURL: String{
+    case strUrlAuthentication = "http://currency.btc-solutions.ru:8080/api/Account"
+    case strUrlCurrencySubscription = "http://currency.btc-solutions.ru:8080/api/CurrencySubscription"
+    case strUrlCurrencyList = "http://currency.btc-solutions.ru:8080/api/CurrencyList"
+    case strURLFeedback = "http://currency.btc-solutions.ru:8080/api/Feedback"
+    case strUrlCategory = "http://currency.btc-solutions.ru:8080/api/Category"
+}
+
+enum HttpMethod: String{
+    case post = "POST"
+    case delete = "DELETE"
+}
 
 class BankDataDownloadService {
-    var isCookiesLoad = false
-
-    enum ApiURL: String{
-        case strUrlAuthentication = "http://currency.btc-solutions.ru:8080/api/Account"
-        case strUrlCurrencySubscription = "http://currency.btc-solutions.ru:8080/api/CurrencySubscription"
-        case strUrlCurrencyList = "http://currency.btc-solutions.ru:8080/api/CurrencyList"
-        case strURLFeedback = "http://currency.btc-solutions.ru:8080/api/Feedback"
-        case strUrlCategory = "http://currency.btc-solutions.ru:8080/api/Category"
-    }
+    static let shared = BankDataDownloadService()
+    static var isCookiesLoad = false
     
-    enum HttpMethod: String{
-        case post = "POST"
-        case delete = "DELETE"
-    }
-    
-    func getCookies(onSuccess: @escaping ()->()){
+    func obtainCookies(onSuccess: @escaping ()->()){
         let userId = UIDevice.current.identifierForVendor!.uuidString.replacingOccurrences(of: "-", with: "")
         print(userId)
         let json : JSON = ["userId" : userId as AnyObject]
@@ -35,6 +37,7 @@ class BankDataDownloadService {
                                         httpMethod: HttpMethod.post)!
         let success : (JSON, URLResponse)->Void = { (_, response) in
             self.setCookies(response: response)
+            BankDataDownloadService.isCookiesLoad = true
             onSuccess()
         }
         let error : (Error) -> Void = {(error) in
@@ -43,9 +46,33 @@ class BankDataDownloadService {
         NetworkController.shared.request(request: request, onSuccess: success, onError: error)
     }
     
-    func createJsonRequest(strUrl: String, json: JSON?, httpMethod: HttpMethod) -> URLRequest?
+    func setCookies(response: URLResponse?){
+        if let httpResponce = response as? HTTPURLResponse{
+            if let url = httpResponce.url,
+                let allHeaderFiels = httpResponce.allHeaderFields as? [String:String]{
+                let cookies = HTTPCookie.cookies(withResponseHeaderFields: allHeaderFiels, for: url)
+                for cookie in cookies{
+                    HTTPCookieStorage.shared.setCookie(cookie)
+                }
+            }
+        }
+    }
+    
+    func createJsonRequest(strUrl: String, parameters: [Parametr]? = nil,  json: JSON?, httpMethod: HttpMethod) -> URLRequest?
     {
-        let url = URL(string: strUrl)!
+        var url: URL!
+        if let parameters = parameters{
+            if parameters.count>0 {
+                var strParametrs = "?\(parameters[0].name)=\(parameters[0].value)"
+                for i in 1..<parameters.count{
+                    strParametrs+="&\(parameters[i].name)=\(parameters[i].value)"
+                }
+                url=URL(string: (strUrl+strParametrs))
+            }
+        }
+        else{
+            url = URL(string: strUrl)!
+        }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
         do{
@@ -61,17 +88,4 @@ class BankDataDownloadService {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         return request
     }
-    
-    func setCookies(response: URLResponse?){
-        if let httpResponce = response as? HTTPURLResponse{
-            if let url = httpResponce.url,
-                let allHeaderFiels = httpResponce.allHeaderFields as? [String:String]{
-                let cookies = HTTPCookie.cookies(withResponseHeaderFields: allHeaderFiels, for: url)
-                for cookie in cookies{
-                    HTTPCookieStorage.shared.setCookie(cookie)
-                }
-            }
-        }
-    }
-    
 }
