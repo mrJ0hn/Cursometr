@@ -29,7 +29,7 @@ class BankDataDownloadService {
     static let shared = BankDataDownloadService()
     static var isCookiesLoad = false
     
-    func obtainCookies(onSuccess: @escaping ()->()){
+    func obtainCookies(onSuccess: @escaping ()->Void, onError: @escaping (Error)->Void){
         let userId = UIDevice.current.identifierForVendor!.uuidString.replacingOccurrences(of: "-", with: "")
         print(userId)
         let json : JSON = ["userId" : userId as AnyObject]
@@ -40,10 +40,7 @@ class BankDataDownloadService {
             BankDataDownloadService.isCookiesLoad = true
             onSuccess()
         }
-        let error : (Error) -> Void = {(error) in
-            print(error)
-        }
-        NetworkController.shared.request(request: request, onSuccess: success, onError: error)
+        NetworkController.shared.request(request: request, onSuccess: success, onError: onError)
     }
     
     func setCookies(response: URLResponse?){

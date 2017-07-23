@@ -25,7 +25,7 @@ class FeedbackSubjectTableViewCell: UITableViewCell {
 
     func setConfig(title: String, isSelected: Bool){
         lblTitle.text = title
-        lblTitle.textColor = isSelected ? UIColor.white : Constatns.Color.gray
+        lblTitle.textColor = isSelected ? UIColor.white : UIColor.gray
         chkBxIsSelected.setStatus(isChecked: isSelected)
     }
 }

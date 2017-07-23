@@ -28,29 +28,29 @@ class CurrencyListService{
         self.bankDataDownloadService = bankDataDownloadService
     }
     
-    func obtainCurrencyList(onSuccess: @escaping ([Currency])->Void)
+    func obtainCurrencyList(onSuccess: @escaping ([Currency])->Void, onError: @escaping (Error)->Void)
     {
         if allCurrencies.count>0{
             onSuccess(allCurrencies)
             return
         }
         if !BankDataDownloadService.isCookiesLoad{
-            bankDataDownloadService.obtainCookies(onSuccess: { //weak
-                self.loadingCurrencyList(onSuccess: { (currencies) in
-                    self.allCurrencies = currencies
+            bankDataDownloadService.obtainCookies(onSuccess: { [weak self] in
+                self?.loadingCurrencyList(onSuccess: { (currencies) in
+                    self?.allCurrencies = currencies
                     onSuccess(currencies)
-                })
-            })
+                }, onError: onError)
+            }, onError: onError)
         }
         else{
             loadingCurrencyList(onSuccess: { (currencies) in
                 self.allCurrencies = currencies
                 onSuccess(currencies)
-            })
+            }, onError: onError)
         }
     }
     
-    private func loadingCurrencyList(onSuccess: @escaping (([Currency])->Void))
+    private func loadingCurrencyList(onSuccess: @escaping (([Currency])->Void), onError: @escaping (Error)->Void)
     {
         let userId = UIDevice.current.identifierForVendor!.uuidString.replacingOccurrences(of: "-", with: "")
         let json : JSON = ["userId" : userId as AnyObject]
@@ -60,9 +60,6 @@ class CurrencyListService{
             let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
             onSuccess(currencies)
         }
-        let error : (Error) -> Void = {(error) in
-            print(error)
-        }
-        NetworkController.shared.request(request: request, onSuccess: success, onError: error)
+        NetworkController.shared.request(request: request, onSuccess: success, onError: onError)
     }
 }

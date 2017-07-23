@@ -11,7 +11,7 @@ import UIKit
 class LeaveFeedbackViewController: UIViewController {
 
     @IBOutlet weak var btnSendFeedback: UIBarButtonItem!
-    @IBOutlet weak var txtMessage: UITextView!
+    @IBOutlet weak var txtMessage: CustomTextView!
     @IBOutlet weak var lblSubjectFeedback: UILabel!
     @IBOutlet weak var viewAddSource: UIView!
     var subjectFeedback = FeedbackSubject.addSource
@@ -27,8 +27,14 @@ class LeaveFeedbackViewController: UIViewController {
         viewAddSource.addGestureRecognizer(imgSourceTap)
         viewAddSource.isUserInteractionEnabled = true
         
+        btnSendFeedback.isEnabled = true
         btnSendFeedback.target = self
         btnSendFeedback.action = #selector(sendFeedback)
+        
+        btnSendFeedback.isEnabled = false
+        txtMessage.isEmptyCallback={[weak self] (isEmpty) in
+            self?.btnSendFeedback.isEnabled = !isEmpty
+        }
     }
     
     func imgSourceTapped(){
@@ -51,11 +57,15 @@ class LeaveFeedbackViewController: UIViewController {
         if !txtMessage.text.isEmpty{
             SendFeedbackService.shared.sendFeedback(title: lblSubjectFeedback.text!, body: txtMessage.text, onSuccess: {
                 self.dismiss(animated: true, completion: nil)
+            }, onError: { [weak self] (error) in
+                DispatchQueue.main.async {
+                    self?.showError(error: error)
+                }
             })
         }
     }
     
-    @IBAction func SToLeaveFeedbackViewController(sender: UIStoryboardSegue) {
+    @IBAction func unwindToLeaveFeedbackViewController(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? ChooseSubjectViewController {
             subjectFeedback = sourceViewController.selectedItem
             lblSubjectFeedback.text = subjectFeedback.description

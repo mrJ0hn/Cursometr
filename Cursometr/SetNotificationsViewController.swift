@@ -11,8 +11,6 @@ import UIKit
 
 
 class SetNotificationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    typealias Section = (name: String, cells: [CellType])
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblExchange: UILabel!
     @IBOutlet weak var lblCurrency: UILabel!
@@ -21,6 +19,7 @@ class SetNotificationsViewController: UIViewController, UITableViewDataSource, U
     var currency: Currency!
     var exchange: Exchange!
     var price: Price!
+    var selectedIndexPath : IndexPath!
     
     enum CellType{
         case switchCost
@@ -28,12 +27,32 @@ class SetNotificationsViewController: UIViewController, UITableViewDataSource, U
         case segmentControl
     }
     
+    enum SegueIdentifier: String {
+        case addPriceViewController = "AddPriceViewController"
+    }
+    
+    struct Cell{
+        let name: String?
+        let type: CellType
+        var value: Double?
+    }
+    
+    struct Section{
+        let name: String
+        var cells: [Cell]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sections = [(name: "Purchase", cells: [.switchCost, .switchCost]),
-                    (name: "Sale", cells: [.switchCost, .switchCost]),
-                    (name: "Repeat", cells: [.segmentControl])]
+        let purchaseCells = [
+            Cell(name: "Above \(price.salePriceNow)", type: .switchCost, value: price.salePriceNow),
+            Cell(name: "Below \(price.buyPriceNow)", type: .switchCost, value: price.buyPriceNow)]
+        let saleCells = [
+            Cell(name: "Above \(price.salePriceNow)", type: .switchCost, value: price.salePriceNow),
+            Cell(name: "Below \(price.buyPriceNow)", type: .switchCost, value: price.buyPriceNow)]
+        sections = [Section(name: "Purchase", cells: purchaseCells),
+                    Section(name: "Sale", cells: saleCells),
+                    Section(name: "Repeat", cells: [Cell(name: nil, type: .segmentControl, value: nil)])]
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -66,34 +85,22 @@ class SetNotificationsViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        switch sections[indexPath.section].cells[indexPath.row] {
+        let cellModel = sections[indexPath.section].cells[indexPath.row]
+        switch cellModel.type {
         case .changeCost:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChangeCostTableViewCell.self), for: indexPath) as! ChangeCostTableViewCell
-            switch indexPath.row {
-            case 0:
-                cell.set(cost: price.salePriceNow)
-            case 1:
-                cell.set(cost: price.buyPriceNow)
-            default: break
+            cell.set(cost: cellModel.value!)
+            cell.callback = {[weak self] (cell) in
+                guard let index = self?.tableView.indexPath(for: cell) else { return }
+                self?.selectedIndexPath = index
             }
             return cell
         case .switchCost:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SwitchCostTableViewCell.self), for: indexPath) as! SwitchCostTableViewCell
-            if indexPath.row == 0{
-                cell.set(title: "Above \(price.salePriceNow)")
-                cell.callback = { [weak self] (cell, state) in
-                    guard let index = self?.tableView.indexPath(for: cell) else { return }
-                    let newIndexPath = IndexPath(row: index.row+1, section: index.section)
-                    self?.cellCallback(newIndexPath: newIndexPath, state: state)
-                }
-            }
-            if indexPath.row == 1{
-                cell.set(title: "Below \(price.buyPriceNow)")
-                cell.callback = { [weak self] (cell, state) in
-                    guard let index = self?.tableView.indexPath(for: cell) else { return }
-                    let newIndexPath = IndexPath(row: index.row+1, section: index.section)
-                    self?.cellCallback(newIndexPath: newIndexPath, state: state)
-                }
+            cell.set(title: cellModel.name!)
+            cell.callback = { [weak self] (cell) in
+                guard let index = self?.tableView.indexPath(for: cell) else { return }
+                self?.cellCallback(cell: cell, index: index, cellType: .switchCost)
             }
             return cell
         case .segmentControl:
@@ -102,23 +109,48 @@ class SetNotificationsViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    func cellCallback(newIndexPath: IndexPath, state: Bool){
-        if state{
-            self.sections[newIndexPath.section].cells.insert(.changeCost , at: newIndexPath.row)
-            self.tableView.insertRows(at: [newIndexPath], with: .none)
-        }
-        else{
-            self.sections[newIndexPath.section].cells.remove(at: newIndexPath.row)
-            self.tableView.deleteRows(at: [newIndexPath], with: .none)
+    func cellCallback(cell : UITableViewCell, index: IndexPath, cellType: CellType){
+        switch cellType {
+        case .switchCost:
+            let cell = cell as! SwitchCostTableViewCell
+            let newIndexPath = IndexPath(row: index.row+1, section: index.section)
+            if cell.state{
+                let lastCell = self.sections[index.section].cells[index.row]
+                let cell = Cell(name: String(lastCell.value!),type: .changeCost, value: lastCell.value)
+                self.sections[newIndexPath.section].cells.insert(cell, at: newIndexPath.row)
+                self.tableView.insertRows(at: [newIndexPath], with: .none)
+            }
+            else{
+                self.sections[newIndexPath.section].cells.remove(at: newIndexPath.row)
+                self.tableView.deleteRows(at: [newIndexPath], with: .none)
+            }
+        case .changeCost:
+            break
+        default: break
         }
     }
     
     @IBAction func unwindToAddPriceViewController(sender: UIStoryboardSegue){
         if let sourceViewController = sender.source as? AddPriceViewController {
-            
+            if let cost = sourceViewController.cost{
+                sections[selectedIndexPath.section].cells[selectedIndexPath.row].value = cost
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
         }
     }
-    @IBAction func cancelAddPrice(sender: UIStoryboardSegue){
-    }
     
+    @IBAction func cancelAddPrice(sender: UIStoryboardSegue){}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier,
+            let sid = SegueIdentifier(rawValue: id) else {
+                return
+        }
+        switch sid {
+        case .addPriceViewController:
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let vc = destinationNavigationController.topViewController as! AddPriceViewController
+            vc.set(cost: sections[selectedIndexPath.section].cells[selectedIndexPath.row].value!)//set valid cost
+        }
+    }
 }

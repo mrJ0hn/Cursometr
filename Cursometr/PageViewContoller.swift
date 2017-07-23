@@ -38,6 +38,12 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
                 self?.updatePageViewController()
                 self?.stopLoading()
             }
+            }, onError: { [weak self] (error) in
+                DispatchQueue.main.async {
+                    self?.showError(error: error)
+                    self?.updatePageViewController()
+                    self?.stopLoading()
+                }
         })
     }
     
@@ -98,9 +104,9 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     
     func stopLoading(){
         view.isUserInteractionEnabled = true
-        if (viewControllers?.count)!>0{
+        //if (viewControllers?.count)!>0{
             viewControllers?[0].view.isHidden = false
-        }
+        //}
         activityIndicator.stopAnimating()
     }
     

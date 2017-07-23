@@ -26,7 +26,7 @@ class QuotationsTableViewCell: UITableViewCell {
     
     func setConfig(currency: Currency){
         lblSubscribedExchanges.text = ""
-        lblCurrency.textColor = Constatns.Color.gray
+        lblCurrency.textColor = UIColor.gray
         imgViewCurrencyIsSelected.isHidden = true
         
         lblCurrency.text = currency.fullName

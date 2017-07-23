@@ -11,6 +11,7 @@ import UIKit
 class ChangeCostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblCost: UILabel!
+    var callback: ((UITableViewCell)->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,7 +20,7 @@ class ChangeCostTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        callback?(self)
         // Configure the view for the selected state
     }
 

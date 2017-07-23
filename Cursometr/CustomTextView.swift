@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable
 class CustomTextView: UITextView, UITextViewDelegate {
     
+    var isEmptyCallback : ((Bool)->Void)?
     
     @IBInspectable var strPlaceholder = "Placeholder"{
         didSet{
@@ -24,10 +25,14 @@ class CustomTextView: UITextView, UITextViewDelegate {
         self.delegate = self
     }
 
+    func textViewDidChange(_ textView: UITextView) {
+        isEmptyCallback?(text.isEmpty || textColor ==  UIColor.gray)
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if self.textColor == UIColor.gray{
             self.text = ""
-            self.textColor = Constatns.Color.gray
+            self.textColor = UIColor.white
         }
     }
 }

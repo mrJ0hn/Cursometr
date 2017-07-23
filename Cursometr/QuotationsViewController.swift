@@ -34,14 +34,19 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
         view.addSubview(activityIndicator)
         
         startLoading()
-        CurrencyListService.shared.obtainCurrencyList(onSuccess: { (currencies) in
+        CurrencyListService.shared.obtainCurrencyList(onSuccess: { [weak self] (currencies) in
             DispatchQueue.main.async {
-                self.currencies = currencies
-                self.tblView.reloadData()
-                self.stopLoading()
+                self?.currencies = currencies
+                self?.tblView.reloadData()
+                self?.stopLoading()
+            }
+        }, onError: { [weak self] (error) in
+            DispatchQueue.main.async {
+                self?.showError(error: error)
+                self?.tblView.reloadData()
+                self?.stopLoading()
             }
         })
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,7 +104,9 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
         if wasChanged{
-            CurrencySubscriptionService.shared.changeCurrencySubscription(categoryId: currency.id, subscriptions: changedCurrencies, deleteAll: countSubcribed == 0)
+            CurrencySubscriptionService.shared.changeCurrencySubscription(categoryId: currency.id, subscriptions: changedCurrencies, deleteAll: countSubcribed == 0, onError: {(error) in
+                print(error)
+            })
             currencies[indexSelectedCurrency!] = currency
             CurrencyListService.shared.allCurrencies[indexSelectedCurrency!] = currency
             tblView.reloadData()

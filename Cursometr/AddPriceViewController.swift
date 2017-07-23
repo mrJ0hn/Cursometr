@@ -8,28 +8,40 @@
 
 import UIKit
 
-class AddPriceViewController: UIViewController {
-
+class AddPriceViewController: UIViewController, UITabBarDelegate {
+    
+    @IBOutlet weak var btnDone: UIBarButtonItem!
+    @IBOutlet weak var txtCost: UITextField!
+    @IBOutlet weak var lblCurrentQuotation: UILabel!
+    var cost : Double?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let strCost = String(format: "%.3f", cost!)
+        txtCost.text = strCost
+        self.lblCurrentQuotation.text = "Current quotatoin: " + strCost
+        txtCost.addTarget(self, action: #selector(costDidChange), for: .editingChanged)
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func costDidChange(){
+        if let text = txtCost.text, text.isEmpty{
+            btnDone.isEnabled = false
+        }
+        else if btnDone.isEnabled == false{
+            btnDone.isEnabled = true
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func set(cost: Double){
+        self.cost = cost
     }
-    */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cost = Double(txtCost.text!){
+            self.cost = cost
+        }
+        else{
+            self.cost = nil
+        }
+    }
 }

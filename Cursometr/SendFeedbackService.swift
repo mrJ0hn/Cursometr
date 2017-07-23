@@ -27,15 +27,12 @@ class SendFeedbackService{
         self.bankDataDownloadService = bankDataDownloadService
     }
     
-    func sendFeedback(title: String, body: String, onSuccess: @escaping (() -> Void)){
+    func sendFeedback(title: String, body: String, onSuccess: @escaping () -> Void, onError: @escaping (Error)->Void){
         let json : JSON = ["title" : title as AnyObject, "body" : body as AnyObject]
         let request = bankDataDownloadService.createJsonRequest(strUrl: ApiURL.strURLFeedback.rawValue, json: json, httpMethod: HttpMethod.post)!
         let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
             onSuccess()
         }
-        let error : (Error) -> Void = {(error) in
-            print(error)
-        }
-        NetworkController.shared.request(request: request, onSuccess: success, onError: error)
+        NetworkController.shared.request(request: request, onSuccess: success, onError: onError)
     }
 }

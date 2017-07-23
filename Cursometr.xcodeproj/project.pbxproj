@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DC2B093F1F1FEB50008F1BD6 /* SegmentControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B093E1F1FEB50008F1BD6 /* SegmentControlTableViewCell.swift */; };
+		DC4F2C5C1F24942A004BD129 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F2C5B1F24942A004BD129 /* ErrorView.swift */; };
 		DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F85231F10327F00A05586 /* AppDelegate.swift */; };
 		DC4F85291F10327F00A05586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4F85271F10327F00A05586 /* Main.storyboard */; };
 		DC4F852C1F10327F00A05586 /* Cursometr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */; };
@@ -17,6 +18,7 @@
 		DC746D741F18E034004641CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D731F18E034004641CE /* Constants.swift */; };
 		DC83ADB41F1F6BBA00908007 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC83ADB31F1F6BBA00908007 /* Notification.swift */; };
 		DC83ADB81F1F6EA000908007 /* CustomActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC83ADB71F1F6EA000908007 /* CustomActivityIndicator.swift */; };
+		DC861AB31F226EE500B0E40E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC861AB21F226EE500B0E40E /* ViewController.swift */; };
 		DC892BC51F17516200A7723E /* CustomCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC892BC41F17516200A7723E /* CustomCheckBox.swift */; };
 		DC8C60541F1B50C200779F28 /* ChooseSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C60531F1B50C200779F28 /* ChooseSourceViewController.swift */; };
 		DC8C60581F1B528F00779F28 /* ChooseSourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */; };
@@ -50,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		DC2B093E1F1FEB50008F1BD6 /* SegmentControlTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentControlTableViewCell.swift; sourceTree = "<group>"; };
+		DC4F2C5B1F24942A004BD129 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		DC4F85201F10327F00A05586 /* Cursometr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cursometr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4F85231F10327F00A05586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC4F85281F10327F00A05586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		DC746D731F18E034004641CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DC83ADB31F1F6BBA00908007 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		DC83ADB71F1F6EA000908007 /* CustomActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActivityIndicator.swift; sourceTree = "<group>"; };
+		DC861AB21F226EE500B0E40E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DC892BC41F17516200A7723E /* CustomCheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCheckBox.swift; sourceTree = "<group>"; };
 		DC8C60531F1B50C200779F28 /* ChooseSourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSourceViewController.swift; sourceTree = "<group>"; };
 		DC8C60571F1B528F00779F28 /* ChooseSourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSourceTableViewCell.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				DC953A741F1CBE8B008FB250 /* TableView.swift */,
 				DC83ADB31F1F6BBA00908007 /* Notification.swift */,
 				DCA20C691F220BE100E50334 /* Image.swift */,
+				DC861AB21F226EE500B0E40E /* ViewController.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				DC746D711F18D9C9004641CE /* CustomTextView.swift */,
 				DC83ADB71F1F6EA000908007 /* CustomActivityIndicator.swift */,
 				DCAA31191F210421008CB1E7 /* SetNotificationsTableViewHeader.swift */,
+				DC4F2C5B1F24942A004BD129 /* ErrorView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -314,7 +320,9 @@
 				DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */,
 				DC953A771F1CC16F008FB250 /* NetworkController.swift in Sources */,
 				DC901F331F19233F00A28D3A /* QuotationsTableViewCell.swift in Sources */,
+				DC861AB31F226EE500B0E40E /* ViewController.swift in Sources */,
 				DC9D0B041F163677009C5CBE /* BankDetailsTableViewHeaderCell.swift in Sources */,
+				DC4F2C5C1F24942A004BD129 /* ErrorView.swift in Sources */,
 				DC9FB98B1F15650A00E1111E /* FeedbackSubjectTableViewCell.swift in Sources */,
 				DCA2D51A1F12117600F44DA2 /* BankDetailsTableViewCell.swift in Sources */,
 				DC9FB9891F1561F900E1111E /* ChooseSubjectViewController.swift in Sources */,

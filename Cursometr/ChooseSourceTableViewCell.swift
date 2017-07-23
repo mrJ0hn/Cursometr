@@ -39,7 +39,7 @@ class ChooseSourceTableViewCell: UITableViewCell {
             lblExchange.textColor = Constatns.Color.aqua
         }
         else{
-            lblExchange.textColor = Constatns.Color.gray
+            lblExchange.textColor = UIColor.gray
         }
     }
 }

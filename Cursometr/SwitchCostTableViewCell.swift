@@ -12,7 +12,8 @@ class SwitchCostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var switchSelectedCost: UISwitch!
     @IBOutlet weak var lblTitle: UILabel!
-    var callback: ((UITableViewCell, Bool) -> Void)?
+    var callback: ((UITableViewCell) -> Void)?
+    var state : Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,12 +40,13 @@ class SwitchCostTableViewCell: UITableViewCell {
     }
     
     func stateChange(switchState: UISwitch){
-        callback!(self, switchState.isOn)
+        state = switchState.isOn
+        callback!(self)
         if switchState.isOn{
             lblTitle.textColor = Constatns.Color.aqua
         }
         else{
-            lblTitle.textColor = Constatns.Color.gray
+            lblTitle.textColor = UIColor.gray
         }
     }
 }
