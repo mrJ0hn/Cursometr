@@ -9,71 +9,51 @@
 import UIKit
 
 class BankDetailsTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var viewSeparator: UIView!
-    @IBOutlet weak var lblFrom: UILabel!
+    @IBOutlet weak var labelFrom: UILabel!
+    @IBOutlet weak var labelPurchasePrice: UILabel!
+    @IBOutlet weak var labelSalePrice: UILabel!
     @IBOutlet weak var viewSalePrice: UIView!
-    @IBOutlet weak var lblPurchasePrice: UILabel!
-    @IBOutlet weak var lblSalePrice: UILabel!
-    @IBOutlet weak var viewCornerRadius: UIView!
+    @IBOutlet weak var viewCornerRadius: CornerRadiusView!
+    let valueCornerRadius: CGFloat = 10
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    func setConfig(price: Price, showSellPrice: Bool){
-        lblPurchasePrice.text = String(price.buyPriceNow)
-        lblSalePrice.text = String(price.salePriceNow)
+    func configure(price: Price, showSellPrice: Bool) {
+        labelPurchasePrice.text = String(price.buyPriceNow)
+        labelSalePrice.text = String(price.salePriceNow)
         viewSalePrice.isHidden = showSellPrice
-        lblFrom.text = "Form \(price.range)"
+        labelFrom.text = "Form \(price.range)"
     }
     
-    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
-        var viewCornerRadiusBounds: CGRect = self.contentView.frame
-        viewCornerRadiusBounds.size.width -= 32
-        let path = UIBezierPath(roundedRect: viewCornerRadiusBounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: 0))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        viewCornerRadius.layer.mask = mask
-    }
-    
-    func hideSeparator(){
+    private func hideSeparator(){
         viewSeparator.isHidden = true
     }
     
-    func showSeparator(){
+    private func showSeparator(){
         viewSeparator.isHidden = false
     }
     
+    func configureCorners(for row: Int, countInSection count: Int){
     
-    func setUIConfig(row: Int, count: Int){
         if row == 0{
             //if only one cell
             if row == count-1 {
-                roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
+                viewCornerRadius.configure(positionCornerRadius: [.topLeft, .topRight, .bottomLeft, .bottomRight], valueCornerRadius: valueCornerRadius)
                 hideSeparator()
             }
                 //if first cell
             else{
-                roundCorners([.topLeft, .topRight], radius: 10)
+                viewCornerRadius.configure(positionCornerRadius: [.topLeft, .topRight], valueCornerRadius: valueCornerRadius)
                 showSeparator()
             }
         }
             //if last cell
         else if row == count-1 {
-            roundCorners([.bottomLeft, .bottomRight], radius: 10)
+            viewCornerRadius.configure(positionCornerRadius: [.bottomLeft, .bottomRight], valueCornerRadius: valueCornerRadius)
             hideSeparator()
         }
             //if center cell
         else{
-            roundCorners([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 0)
+            viewCornerRadius.configure(positionCornerRadius: [.topLeft, .topRight, .bottomLeft, .bottomRight], valueCornerRadius: 0)
             showSeparator()
         }
     }

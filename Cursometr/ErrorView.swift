@@ -9,29 +9,29 @@
 import UIKit
 
 class ErrorView: UIView {
-    var lblTitle = UILabel()
+    var labelTitle = UILabel()
     let timeDelay: Double = 2
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setConfig()
+        self.initialize()
     }
     
     required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)!
     }
     
-    func setConfig(){
+    func initialize(){
         self.backgroundColor = Constatns.Color.pink
         
-        lblTitle.translatesAutoresizingMaskIntoConstraints = false
-        lblTitle.font.withSize(13)
-        lblTitle.textAlignment = NSTextAlignment.center
-        lblTitle.textColor = UIColor.white
-        self.addSubview(lblTitle)
-        lblTitle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        lblTitle.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
-        lblTitle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
+        labelTitle.translatesAutoresizingMaskIntoConstraints = false
+        labelTitle.font.withSize(13)
+        labelTitle.textAlignment = NSTextAlignment.center
+        labelTitle.textColor = UIColor.white
+        self.addSubview(labelTitle)
+        labelTitle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        labelTitle.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        labelTitle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         self.addGestureRecognizer(tapGesture)
@@ -45,7 +45,7 @@ class ErrorView: UIView {
         self.removeFromSuperview()
     }
     
-    func set(title: String){
-        lblTitle.text = title
+    func configure(title: String){
+        labelTitle.text = title
     }
 }

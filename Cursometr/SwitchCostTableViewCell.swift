@@ -11,9 +11,9 @@ import UIKit
 class SwitchCostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var switchSelectedCost: UISwitch!
-    @IBOutlet weak var lblTitle: UILabel!
-    var callback: ((UITableViewCell) -> Void)?
-    var state : Bool = false
+    @IBOutlet weak var label: UILabel!
+    var onStateChange: ((UITableViewCell) -> Void)?
+    var switchState : Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,29 +24,18 @@ class SwitchCostTableViewCell: UITableViewCell {
         self.contentView.layer.addSublayer(separatorLayer)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    func set(title: String){
-        lblTitle.text = title
+    func configure(title: String){
+        label.text = title
     }
     
     func stateChange(switchState: UISwitch){
-        state = switchState.isOn
-        callback!(self)
+        self.switchState = switchState.isOn
+        onStateChange!(self)
         if switchState.isOn{
-            lblTitle.textColor = Constatns.Color.aqua
+            label.textColor = Constatns.Color.aqua
         }
         else{
-            lblTitle.textColor = UIColor.gray
+            label.textColor = UIColor.gray
         }
     }
 }

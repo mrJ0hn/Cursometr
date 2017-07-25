@@ -12,8 +12,8 @@ import UIKit
 
 class SetNotificationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var lblExchange: UILabel!
-    @IBOutlet weak var lblCurrency: UILabel!
+    @IBOutlet weak var labelExchange: UILabel!
+    @IBOutlet weak var labelCurrency: UILabel!
     
     var sections: [Section]!
     var currency: Currency!
@@ -31,7 +31,7 @@ class SetNotificationsViewController: UIViewController, UITableViewDataSource, U
         case addPriceViewController = "AddPriceViewController"
     }
     
-    struct Cell{
+    struct CellModel{
         let name: String?
         let type: CellType
         var value: Double?
@@ -39,28 +39,33 @@ class SetNotificationsViewController: UIViewController, UITableViewDataSource, U
     
     struct Section{
         let name: String
-        var cells: [Cell]
+        var cells: [CellModel]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let purchaseCells = [
-            Cell(name: "Above \(price.salePriceNow)", type: .switchCost, value: price.salePriceNow),
-            Cell(name: "Below \(price.buyPriceNow)", type: .switchCost, value: price.buyPriceNow)]
-        let saleCells = [
-            Cell(name: "Above \(price.salePriceNow)", type: .switchCost, value: price.salePriceNow),
-            Cell(name: "Below \(price.buyPriceNow)", type: .switchCost, value: price.buyPriceNow)]
-        sections = [Section(name: "Purchase", cells: purchaseCells),
-                    Section(name: "Sale", cells: saleCells),
-                    Section(name: "Repeat", cells: [Cell(name: nil, type: .segmentControl, value: nil)])]
+        initializeSections()
+        
         tableView.dataSource = self
         tableView.delegate = self
         
-        lblCurrency.text = "\(currency.name) from \(price.range)"
-        lblExchange.text = exchange.name
+        labelCurrency.text = "\(currency.name) from \(price.range)"
+        labelExchange.text = exchange.name
     }
     
-    func setConfig(currency: Currency, exchange: Exchange, price: Price){
+    func initializeSections(){
+        let purchaseCells = [
+            CellModel(name: "Above \(price.salePriceNow)", type: .switchCost, value: price.salePriceNow),
+            CellModel(name: "Below \(price.buyPriceNow)", type: .switchCost, value: price.buyPriceNow)]
+        let saleCells = [
+            CellModel(name: "Above \(price.salePriceNow)", type: .switchCost, value: price.salePriceNow),
+            CellModel(name: "Below \(price.buyPriceNow)", type: .switchCost, value: price.buyPriceNow)]
+        sections = [Section(name: "Purchase", cells: purchaseCells),
+                    Section(name: "Sale", cells: saleCells),
+                    Section(name: "Repeat", cells: [CellModel(name: nil, type: .segmentControl, value: nil)])]
+    }
+    
+    func configure(currency: Currency, exchange: Exchange, price: Price){
         self.currency = currency
         self.exchange = exchange
         self.price = price
@@ -89,22 +94,22 @@ class SetNotificationsViewController: UIViewController, UITableViewDataSource, U
         switch cellModel.type {
         case .changeCost:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChangeCostTableViewCell.self), for: indexPath) as! ChangeCostTableViewCell
-            cell.set(cost: cellModel.value!)
-            cell.callback = {[weak self] (cell) in
+            cell.configure(cost: cellModel.value!)
+            cell.onSelected = {[weak self] (cell) in
                 guard let index = self?.tableView.indexPath(for: cell) else { return }
                 self?.selectedIndexPath = index
             }
             return cell
         case .switchCost:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SwitchCostTableViewCell.self), for: indexPath) as! SwitchCostTableViewCell
-            cell.set(title: cellModel.name!)
-            cell.callback = { [weak self] (cell) in
+            cell.configure(title: cellModel.name!)
+            cell.onStateChange = { [weak self] (cell) in
                 guard let index = self?.tableView.indexPath(for: cell) else { return }
                 self?.cellCallback(cell: cell, index: index, cellType: .switchCost)
             }
             return cell
         case .segmentControl:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SegmentControlTableViewCell.self), for: indexPath) as! SegmentControlTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SegmentedControlTableViewCell.self), for: indexPath) as! SegmentedControlTableViewCell
             return cell
         }
     }
@@ -114,9 +119,9 @@ class SetNotificationsViewController: UIViewController, UITableViewDataSource, U
         case .switchCost:
             let cell = cell as! SwitchCostTableViewCell
             let newIndexPath = IndexPath(row: index.row+1, section: index.section)
-            if cell.state{
+            if cell.switchState{
                 let lastCell = self.sections[index.section].cells[index.row]
-                let cell = Cell(name: String(lastCell.value!),type: .changeCost, value: lastCell.value)
+                let cell = CellModel(name: String(lastCell.value!),type: .changeCost, value: lastCell.value)
                 self.sections[newIndexPath.section].cells.insert(cell, at: newIndexPath.row)
                 self.tableView.insertRows(at: [newIndexPath], with: .none)
             }
@@ -150,7 +155,7 @@ class SetNotificationsViewController: UIViewController, UITableViewDataSource, U
         case .addPriceViewController:
             let destinationNavigationController = segue.destination as! UINavigationController
             let vc = destinationNavigationController.topViewController as! AddPriceViewController
-            vc.set(cost: sections[selectedIndexPath.section].cells[selectedIndexPath.row].value!)//set valid cost
+            vc.configure(cost: sections[selectedIndexPath.section].cells[selectedIndexPath.row].value!)
         }
     }
 }

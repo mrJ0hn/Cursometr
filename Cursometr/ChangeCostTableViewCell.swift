@@ -10,21 +10,17 @@ import UIKit
 
 class ChangeCostTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblCost: UILabel!
-    var callback: ((UITableViewCell)->Void)?
+    @IBOutlet weak var labelCost: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+    var onSelected: ((UITableViewCell)->Void)?
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        callback?(self)
-        // Configure the view for the selected state
+        onSelected?(self)
     }
 
-    func set(cost: Double){
-        lblCost.text = String(cost)
+
+    func configure(cost: Double){
+        labelCost.text = String(cost)
     }
 }

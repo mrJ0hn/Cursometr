@@ -9,11 +9,10 @@
 import UIKit
 
 class ItemViewController: UIViewController{
-
     @IBOutlet weak var viewNoCurrency: UIView!
     @IBOutlet weak var viewQuotations: UIView!
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var imgLeaveFeedback: UIImageView!
+    @IBOutlet weak var imageViewLeaveFeedback: UIImageView!
+    @IBOutlet weak var labelTitle: UILabel!
     
     var itemIndex: Int = 0
     var strTitle: String? = String()
@@ -29,22 +28,22 @@ class ItemViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         let imgLeaveFeedbackTap = UITapGestureRecognizer(target: self, action: #selector(imgLeaveFeedbackTapped))
-        imgLeaveFeedback.addGestureRecognizer(imgLeaveFeedbackTap)
-        imgLeaveFeedback.isUserInteractionEnabled = true
+        imageViewLeaveFeedback.addGestureRecognizer(imgLeaveFeedbackTap)
+        imageViewLeaveFeedback.isUserInteractionEnabled = true
         let viewQuotationsTap = UITapGestureRecognizer(target: self, action: #selector(viewQuotationsTapped))
         viewQuotations.addGestureRecognizer(viewQuotationsTap)
         viewQuotations.isUserInteractionEnabled = true
-        lblTitle.text = strTitle
+        labelTitle.text = strTitle
         if currency != nil{
             self.viewNoCurrency.isHidden = true
         }
     }
     
-    func setConfig(title: String){
+    func configure(title: String){
         self.strTitle = title
     }
     
-    func setConfig(currency: Currency)
+    func configure(currency: Currency)
     {
         self.currency = currency
         self.strTitle = currency.name
@@ -71,7 +70,7 @@ class ItemViewController: UIViewController{
         case .bankDetailsTableViewController:
             let vc = segue.destination as! BankDetailsTableViewController
             if let currency = currency{
-                vc.setConfig(currency: currency, exchanges: currency.sources)
+                vc.configure(currency: currency, exchanges: currency.sources)
             }
         default:
             break

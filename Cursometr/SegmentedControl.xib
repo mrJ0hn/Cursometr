@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SegmentedControl" customModule="Cursometr" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="JLv-4f-sQA"/>
+                <outlet property="firstSegmentView" destination="hOX-tk-DAL" id="0f9-sv-KKv"/>
+                <outlet property="imageViewFirstSegment" destination="Ajk-0F-t5X" id="urE-W2-VPm"/>
+                <outlet property="imageViewSecondSegment" destination="dh4-n8-laf" id="CPF-WJ-jeF"/>
+                <outlet property="labelFirstSegment" destination="zk0-iD-zxp" id="JE5-gj-sTU"/>
+                <outlet property="labelSecondSegment" destination="Tg8-Ar-Tut" id="Eo2-bn-eX5"/>
+                <outlet property="secondSegmentView" destination="B24-Ih-3mu" id="Yk4-VA-h6p"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfR-ff-Uqs">
+                    <rect key="frame" x="0.0" y="319" width="375" height="29"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-tk-DAL" customClass="ItemSegmentedControl" customModule="Cursometr" customModuleProvider="target">
+                            <rect key="frame" x="1" y="1" width="186.5" height="27"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zk0-iD-zxp">
+                                    <rect key="frame" x="67.5" y="7" width="51.5" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_repeat_once_blue" translatesAutoresizingMaskIntoConstraints="NO" id="Ajk-0F-t5X">
+                                    <rect key="frame" x="52.5" y="5" width="13" height="16"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="zk0-iD-zxp" firstAttribute="centerX" secondItem="hOX-tk-DAL" secondAttribute="centerX" id="9hU-NR-HW4"/>
+                                <constraint firstItem="zk0-iD-zxp" firstAttribute="leading" secondItem="Ajk-0F-t5X" secondAttribute="trailing" constant="2" id="E9P-Lk-dSS"/>
+                                <constraint firstItem="zk0-iD-zxp" firstAttribute="centerY" secondItem="hOX-tk-DAL" secondAttribute="centerY" id="nzS-oo-5ZT"/>
+                                <constraint firstItem="Ajk-0F-t5X" firstAttribute="centerY" secondItem="hOX-tk-DAL" secondAttribute="centerY" id="w1s-ip-bsw"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B24-Ih-3mu" customClass="ItemSegmentedControl" customModule="Cursometr" customModuleProvider="target">
+                            <rect key="frame" x="187.5" y="1" width="186.5" height="27"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Each Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tg8-Ar-Tut">
+                                    <rect key="frame" x="64" y="6.5" width="59" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_repeat_eachtime_white" translatesAutoresizingMaskIntoConstraints="NO" id="dh4-n8-laf">
+                                    <rect key="frame" x="42" y="6" width="20" height="16"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="Tg8-Ar-Tut" firstAttribute="centerX" secondItem="B24-Ih-3mu" secondAttribute="centerX" id="Gpq-gK-s9I"/>
+                                <constraint firstItem="Tg8-Ar-Tut" firstAttribute="leading" secondItem="dh4-n8-laf" secondAttribute="trailing" constant="2" id="RwV-nf-tie"/>
+                                <constraint firstItem="Tg8-Ar-Tut" firstAttribute="centerY" secondItem="B24-Ih-3mu" secondAttribute="centerY" id="TY2-bL-UMI"/>
+                                <constraint firstItem="dh4-n8-laf" firstAttribute="centerY" secondItem="B24-Ih-3mu" secondAttribute="centerY" id="f37-Aj-Qj5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="B24-Ih-3mu" secondAttribute="trailing" constant="1" id="1y7-ZK-nML"/>
+                        <constraint firstItem="B24-Ih-3mu" firstAttribute="width" secondItem="hOX-tk-DAL" secondAttribute="width" id="3Tn-h8-syH"/>
+                        <constraint firstAttribute="bottom" secondItem="B24-Ih-3mu" secondAttribute="bottom" constant="1" id="Al2-Xr-aEx"/>
+                        <constraint firstItem="hOX-tk-DAL" firstAttribute="top" secondItem="WfR-ff-Uqs" secondAttribute="top" constant="1" id="D9o-Qp-kDK"/>
+                        <constraint firstAttribute="height" constant="29" id="N6l-zk-pxV"/>
+                        <constraint firstItem="B24-Ih-3mu" firstAttribute="top" secondItem="WfR-ff-Uqs" secondAttribute="top" constant="1" id="SZE-Jp-NFh"/>
+                        <constraint firstAttribute="bottom" secondItem="hOX-tk-DAL" secondAttribute="bottom" constant="1" id="TDf-2J-c4M"/>
+                        <constraint firstItem="B24-Ih-3mu" firstAttribute="leading" secondItem="hOX-tk-DAL" secondAttribute="trailing" id="oU0-xv-VeQ"/>
+                        <constraint firstItem="hOX-tk-DAL" firstAttribute="leading" secondItem="WfR-ff-Uqs" secondAttribute="leading" constant="1" id="zcb-rz-OR6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="WfR-ff-Uqs" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="5d6-dH-mjv"/>
+                <constraint firstAttribute="trailing" secondItem="WfR-ff-Uqs" secondAttribute="trailing" id="dnl-dZ-Iz1"/>
+                <constraint firstItem="WfR-ff-Uqs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="faj-lb-jET"/>
+            </constraints>
+            <point key="canvasLocation" x="119" y="256"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icn_repeat_eachtime_white" width="20" height="16"/>
+        <image name="icn_repeat_once_blue" width="13" height="16"/>
+    </resources>
+</document>

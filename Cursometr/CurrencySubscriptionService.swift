@@ -8,52 +8,48 @@
 
 import Foundation
 
-typealias Subscription = (sourceId: Int, action: CurrencySubscriptionService.ActionUnderCurrencySubscription)
-
 class CurrencySubscriptionService {
     private static var instance: CurrencySubscriptionService!
-    var bankDataDownloadService: BankDataDownloadService!
+    var authorizationService: AuthorizationService!
     let group = DispatchGroup()
-    var curCurrencies : [Currency] = []
-    
-    class var shared: CurrencySubscriptionService {
-        return instance
-    }
+    var currentCurrencies : [Currency] = []
     
     enum ActionUnderCurrencySubscription{
         case delete
         case add
     }
     
-    class func initialize(dependency: BankDataDownloadService){
+    class var shared: CurrencySubscriptionService {
+        return instance
+    }
+
+    class func initialize(dependency: AuthorizationService){
         guard self.instance == nil else {
             return
         }
-        instance = CurrencySubscriptionService(bankDataDownloadService: dependency)
+        instance = CurrencySubscriptionService(authorizationService: dependency)
     }
     
-    private init(bankDataDownloadService: BankDataDownloadService) {
-        self.bankDataDownloadService = bankDataDownloadService
+    private init(authorizationService: AuthorizationService) {
+        self.authorizationService = authorizationService
     }
     
+    private init(){}
     
-    func obtainCurrencySubscription(onSuccess: @escaping ([Currency])->Void, onError: @escaping (Error)->Void){
-        if !BankDataDownloadService.isCookiesLoad{
-            bankDataDownloadService.obtainCookies(onSuccess: { [weak self] in
-                self?.loadingCurrencySubscription(onSuccess: {(currencies) in
-                    self?.curCurrencies = currencies
-                    onSuccess(currencies)
-                }, onError: onError)
-            }, onError: onError)
-        }
-        else{
-            loadingCurrencySubscription(onSuccess: {(currencies) in
+    func obtainCurrencySubscription(onSuccess: @escaping ([Currency])->Void, onError: @escaping ErrorAction){
+        authorizationService.loginIfNecessary(onSuccess: {[weak self] in
+            let url = URL(string: ApiURL.strUrlCurrencySubscription.rawValue)!
+            let onSuccess : (JSON, URLResponse)->Void = { [weak self] (jsonArray, _) in
+                let jsonCurrencies = jsonArray["subscriptionCategories"] as? JSONArray
+                let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
+                self?.currentCurrencies = currencies
                 onSuccess(currencies)
-            }, onError: onError)
-        }
+            }
+            NetworkController.request(endpoint: url, query: nil, body: nil, httpMethod: .get, onSuccess: onSuccess, onError: onError)
+        }, onError: onError)
     }
     
-    func changeCurrencySubscription(categoryId: Int, subscriptions: [Subscription], deleteAll: Bool = false, onError: @escaping (Error)->Void){
+    func changeCurrencySubscription(categoryId: Int, subscriptions: [Subscription], deleteAll: Bool = false, onError: @escaping ErrorAction){
         NotificationCenter.default.post(name: .StartLoadingCurrencySubscription, object: nil)
         if deleteAll{
             group.enter()
@@ -84,55 +80,40 @@ class CurrencySubscriptionService {
         }
     }
     
-    func addCategory(categoryId: Int, onSuccess: @escaping ()->Void, onError: @escaping (Error)->Void){
-        let strUtl = ApiURL.strUrlCategory.rawValue
-        let parameters = [("categoryId", categoryId as AnyObject)]
-        let request = bankDataDownloadService.createJsonRequest(strUrl: strUtl, parameters: parameters, json: nil, httpMethod: HttpMethod.post)!
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
-            print(jsonArray)
+    func addCategory(categoryId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
+        let url = URL(string: ApiURL.strUrlCategory.rawValue)!
+        let parameters : JSON = ["categoryId" : categoryId as AnyObject]
+        let onSuccess : (JSON, URLResponse)->Void = { (_, _) in
             onSuccess()
         }
-        NetworkController.shared.request(request: request, onSuccess: success, onError: onError)
+        NetworkController.request(endpoint: url, query: parameters, body: nil, httpMethod: .post, onSuccess: onSuccess, onError: onError)
     }
     
-    func deleteCategory(categoryId: Int, onSuccess: @escaping ()->Void, onError: @escaping (Error)->Void){
-        let strUtl = ApiURL.strUrlCategory.rawValue
-        let parameters = [("categoryId", categoryId as AnyObject)]
-        let request = bankDataDownloadService.createJsonRequest(strUrl: strUtl, parameters: parameters, json: nil, httpMethod: HttpMethod.delete)!
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
+    func deleteCategory(categoryId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
+        let url = URL(string: ApiURL.strUrlCategory.rawValue)!
+        let parameters : JSON = ["categoryId" : categoryId as AnyObject]
+        let onSuccess : (JSON, URLResponse)->Void = { (_, _) in
             onSuccess()
         }
-        NetworkController.shared.request(request: request, onSuccess: success, onError: onError)
+        NetworkController.request(endpoint: url, query: parameters, body: nil, httpMethod: .delete, onSuccess: onSuccess, onError: onError)
     }
     
     
-    func addCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping ()->Void, onError: @escaping (Error)->Void){
-        let json : JSON = ["categoryId" : categoryId as AnyObject, "sourceId" : sourceId as AnyObject]
-        let request = bankDataDownloadService.createJsonRequest(strUrl: ApiURL.strUrlCurrencySubscription.rawValue, json: json, httpMethod: HttpMethod.post)!
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
-            onSuccess()
-        }
-        NetworkController.shared.request(request: request, onSuccess: success, onError: onError)
-    }
-    
-    func deleteCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping ()->Void, onError: @escaping (Error)->Void){
-        let strUrl = ApiURL.strUrlCurrencySubscription.rawValue
-        let parameters = [("categoryId", categoryId as AnyObject), ("sourceId", sourceId as AnyObject)]
-        let request = bankDataDownloadService.createJsonRequest(strUrl: strUrl, parameters: parameters, json: nil, httpMethod: HttpMethod.delete)!
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
-            onSuccess()
-        }
-        NetworkController.shared.request(request: request, onSuccess: success, onError: onError)
-    }
-    
-    private func loadingCurrencySubscription(onSuccess: @escaping ([Currency])->Void, onError: @escaping (Error)->Void){
+    func addCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
         let url = URL(string: ApiURL.strUrlCurrencySubscription.rawValue)!
-        let request = URLRequest(url: url)
-        let success : (JSON, URLResponse)->Void = { (jsonArray, _) in
-            let jsonCurrencies = jsonArray["subscriptionCategories"] as? JSONArray
-            let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
-            onSuccess(currencies)
+        let json : JSON = ["categoryId" : categoryId as AnyObject, "sourceId" : sourceId as AnyObject]
+        let onSuccess : (JSON, URLResponse)->Void = { (_, _) in
+            onSuccess()
         }
-        NetworkController.shared.request(request: request, onSuccess: success, onError: onError)
+        NetworkController.request(endpoint: url, query: nil, body: json, httpMethod: .post, onSuccess: onSuccess, onError: onError)
+    }
+    
+    func deleteCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
+        let url = URL(string: ApiURL.strUrlCurrencySubscription.rawValue)!
+        let parameters : JSON = ["categoryId" : categoryId as AnyObject, "sourceId" : sourceId as AnyObject]
+        let onSuccess : (JSON, URLResponse)->Void = { (_, _) in
+            onSuccess()
+        }
+        NetworkController.request(endpoint: url, query: parameters, body: nil, httpMethod: .delete, onSuccess: onSuccess, onError: onError)
     }
 }

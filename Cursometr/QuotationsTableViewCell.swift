@@ -9,36 +9,27 @@
 import UIKit
 
 class QuotationsTableViewCell: UITableViewCell {
-    @IBOutlet weak var lblSubscribedExchanges: UILabel!
-    @IBOutlet weak var lblCurrency: UILabel!
-    @IBOutlet weak var imgViewCurrencyIsSelected: UIImageView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak var labelSubscribedExchanges: UILabel!
+    @IBOutlet weak var labelCurrency: UILabel!
+    @IBOutlet weak var imageViewCurrencyIsSelected: UIImageView!
     
-    func setConfig(currency: Currency){
-        lblSubscribedExchanges.text = ""
-        lblCurrency.textColor = UIColor.gray
-        imgViewCurrencyIsSelected.isHidden = true
+    func configure(currency: Currency){
+        labelCurrency.text = currency.name
         
-        lblCurrency.text = currency.fullName
+        labelSubscribedExchanges.text = ""
+        labelCurrency.textColor = UIColor.gray
+        imageViewCurrencyIsSelected.isHidden = true
+        
+        labelCurrency.text = currency.fullName
         for exchange in currency.sources{
             if exchange.subscribed{
-                if !(lblSubscribedExchanges.text?.isEmpty)!{
-                    lblSubscribedExchanges.text = "\(lblSubscribedExchanges.text!), \(exchange.name)"
+                if !(labelSubscribedExchanges.text?.isEmpty)!{
+                    labelSubscribedExchanges.text! += ", \(exchange.name)"
                 }
                 else{
-                    lblSubscribedExchanges.text = exchange.name
-                    imgViewCurrencyIsSelected.isHidden = false
-                    lblCurrency.textColor = UIColor.white
+                    labelSubscribedExchanges.text = exchange.name
+                    imageViewCurrencyIsSelected.isHidden = false
+                    labelCurrency.textColor = UIColor.white
                 }
             }
         }

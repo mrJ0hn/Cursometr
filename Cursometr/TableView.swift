@@ -9,7 +9,6 @@
 import UIKit
 
 extension UITableView {
-    
     func register(cellClass: UITableViewCell.Type) {
         self.register(cellClass, forCellReuseIdentifier: String(describing: cellClass))
     }

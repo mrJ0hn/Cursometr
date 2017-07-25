@@ -9,12 +9,11 @@
 import UIKit
 
 class SetNotificationsTableViewHeader: UIView {
-    
     var label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setConfig()
+        initialize()
     }
     
     convenience init() {
@@ -25,7 +24,7 @@ class SetNotificationsTableViewHeader: UIView {
         fatalError("This class does not support NSCoding")
     }
     
-    func setConfig() {
+    func initialize() {
         self.backgroundColor = Constatns.Color.viewFlipsideBackgroundColor
         label.font = UIFont(name: label.font.fontName, size: 22)
         label.textColor = UIColor.white

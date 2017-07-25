@@ -8,19 +8,25 @@
 
 import Foundation
 
+enum HttpMethod: String{
+    case post = "POST"
+    case delete = "DELETE"
+    case get = "GET"
+}
+
 class NetworkController {
-    static let shared = NetworkController()
-    //let queue = DispatchQueue.global()
-    //var item: DispatchWorkItem!
+    private init(){}
     
-    func request(request: URLRequest, onSuccess: @escaping ((JSON, URLResponse)->Void), onError: @escaping ((Error)->Void)){
-        let task = URLSession.shared.dataTask(with: request){
-            (data, response, error) in
+    static func request(endpoint: URL, query: JSON? = nil, body: JSON? = nil, httpMethod: HttpMethod,
+                 onSuccess: @escaping ((JSON, URLResponse)->Void), onError: @escaping ErrorAction){
+        let request = createRequest(url: endpoint, query: query, body: body, httpMethod: httpMethod)!
+        let task = URLSession.shared.dataTask(with: request){(data, response, error) in
             guard error == nil else {
                 onError(error!)
                 return
             }
-            print(request)
+            sleep(2)
+            print("\(request) \(httpMethod)")
             if let usableData = data{
                 do{
                     let jsonArray: JSON = try JSONSerialization.jsonObject(with: usableData, options: []) as! JSON
@@ -30,11 +36,34 @@ class NetworkController {
                     onError(error)
                 }
             }
-            //self.item = nil
         }
-        //item = DispatchWorkItem{
         task.resume()
-        //}
-        //queue.sync(execute: item)
+    }
+    
+    private static func createRequest(url: URL, query: JSON? = nil, body: JSON? = nil, httpMethod: HttpMethod) -> URLRequest?
+    {
+        var url = url
+        if let query = query, !query.isEmpty {
+            var parameters = String()
+            for (name, value) in query {
+                parameters += parameters.isEmpty ? "?" : "&"
+                parameters += "\(name)=\(value)"
+            }
+            url=URL(string: url.absoluteString + parameters)!
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod.rawValue
+        do{
+            if body != nil{
+                request.httpBody = try JSONSerialization.data(withJSONObject: body!, options: .prettyPrinted)
+            }
+        }
+        catch{
+            print(error)
+            return nil
+        }
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        return request
     }
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 class BankDetailsTableViewController: UITableViewController {
-    @IBOutlet var tblView: UITableView!
     var exchanges : [Exchange] = []
     var currency : Currency!
     var selectedExchange : Exchange?
@@ -23,13 +22,13 @@ class BankDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        tblView.refreshControl = refreshControl
+        tableView.refreshControl = refreshControl
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BankDetailsTableViewHeaderCell.self)) as! BankDetailsTableViewHeaderCell
-        headerCell.set(title: exchanges[section].name)
+        headerCell.configure(title: exchanges[section].name)
         return headerCell
     }
     
@@ -54,12 +53,12 @@ class BankDetailsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BankDetailsTableViewCell.self), for: indexPath) as? BankDetailsTableViewCell
         let exchange = exchanges[indexPath.section]
-        cell?.setConfig(price: exchange.prices[indexPath.row], showSellPrice: exchange.showSellPrice)
-        cell?.setUIConfig(row: indexPath.row, count: exchanges[indexPath.section].prices.count)
+        cell?.configure(price: exchange.prices[indexPath.row], showSellPrice: exchange.showSellPrice)
+        cell?.configureCorners(for: indexPath.row, countInSection: exchanges[indexPath.section].prices.count)
         return cell!
     }
     
-    func setConfig(currency: Currency, exchanges: [Exchange]){
+    func configure(currency: Currency, exchanges: [Exchange]){
         self.currency = currency
         self.exchanges = exchanges
     }
@@ -78,7 +77,7 @@ class BankDetailsTableViewController: UITableViewController {
         case .setNotificationsViewController:
             let vc = segue.destination as! SetNotificationsViewController
             if let exchange = selectedExchange, let currency = self.currency, let price = self.selectedPrice {
-                vc.setConfig(currency: currency, exchange: exchange, price: price)
+                vc.configure(currency: currency, exchange: exchange, price: price)
             }
         }
     }

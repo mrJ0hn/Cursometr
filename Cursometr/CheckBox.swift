@@ -8,11 +8,9 @@
 
 import UIKit
 
-class CustomCheckBox: UIButton {
-
-    let checkedImage = UIImage(named: "icn_checkmark")! as UIImage
+class CheckBox: UIButton {
+    let checkedImage = #imageLiteral(resourceName: "icn_checkmark")
     
-    // Bool property
     var isChecked: Bool = false {
         didSet{
             if isChecked == true {

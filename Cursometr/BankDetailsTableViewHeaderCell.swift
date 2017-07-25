@@ -9,20 +9,9 @@
 import UIKit
 
 class BankDetailsTableViewHeaderCell: UITableViewCell {
-    @IBOutlet weak var lblTitle: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak var label: UILabel!
     
-    func set(title: String){
-        lblTitle.text = title
+    func configure(title: String){
+        label.text = title
     }
 }

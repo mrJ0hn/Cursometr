@@ -9,13 +9,13 @@
 import UIKit
 
 class LeaveFeedbackViewController: UIViewController {
-
-    @IBOutlet weak var btnSendFeedback: UIBarButtonItem!
-    @IBOutlet weak var txtMessage: CustomTextView!
-    @IBOutlet weak var lblSubjectFeedback: UILabel!
+    @IBOutlet weak var buttonSend: UIBarButtonItem!
+    @IBOutlet weak var textViewMessage: TextView!
+    @IBOutlet weak var labelSubjectFeedback: UILabel!
     @IBOutlet weak var viewAddSource: UIView!
+    
     var subjectFeedback = FeedbackSubject.addSource
-
+    
     enum SegueIdentifier: String {
         case chooseSubjectViewController = "ChooseSubjectViewController"
     }
@@ -23,21 +23,21 @@ class LeaveFeedbackViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let imgSourceTap = UITapGestureRecognizer(target: self, action: #selector(imgSourceTapped))
-        viewAddSource.addGestureRecognizer(imgSourceTap)
+        let viewSourceTap = UITapGestureRecognizer(target: self, action: #selector(viewSourceTapped))
+        viewAddSource.addGestureRecognizer(viewSourceTap)
         viewAddSource.isUserInteractionEnabled = true
         
-        btnSendFeedback.isEnabled = true
-        btnSendFeedback.target = self
-        btnSendFeedback.action = #selector(sendFeedback)
+        buttonSend.isEnabled = true
+        buttonSend.target = self
+        buttonSend.action = #selector(sendFeedback)
         
-        btnSendFeedback.isEnabled = false
-        txtMessage.isEmptyCallback={[weak self] (isEmpty) in
-            self?.btnSendFeedback.isEnabled = !isEmpty
+        buttonSend.isEnabled = false
+        textViewMessage.isEmptyCallback={[weak self] (isEmpty) in
+            self?.buttonSend.isEnabled = !isEmpty
         }
     }
     
-    func imgSourceTapped(){
+    func viewSourceTapped(){
         performSegue(withIdentifier: SegueIdentifier.chooseSubjectViewController.rawValue, sender: self)
     }
     
@@ -48,27 +48,25 @@ class LeaveFeedbackViewController: UIViewController {
         }
         switch sid {
         case .chooseSubjectViewController:
-            let vc = segue.destination as! ChooseSubjectViewController
+            let vc = segue.destination as! SubjectFeedbackViewController
             vc.selectedItem = subjectFeedback
         }
     }
     
     func sendFeedback(){
-        if !txtMessage.text.isEmpty{
-            SendFeedbackService.shared.sendFeedback(title: lblSubjectFeedback.text!, body: txtMessage.text, onSuccess: {
-                self.dismiss(animated: true, completion: nil)
-            }, onError: { [weak self] (error) in
-                DispatchQueue.main.async {
-                    self?.showError(error: error)
-                }
-            })
-        }
+        SendFeedbackService.sendFeedback(title: labelSubjectFeedback.text!, body: textViewMessage.text, onSuccess: {
+            self.dismiss(animated: true, completion: nil)
+        }, onError: { [weak self] (error) in
+            DispatchQueue.main.async {
+                self?.showError(error: error)
+            }
+        })
     }
     
     @IBAction func unwindToLeaveFeedbackViewController(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? ChooseSubjectViewController {
+        if let sourceViewController = sender.source as? SubjectFeedbackViewController {
             subjectFeedback = sourceViewController.selectedItem
-            lblSubjectFeedback.text = subjectFeedback.description
+            labelSubjectFeedback.text = subjectFeedback.description
         }
     }
 }

@@ -8,38 +8,32 @@
 
 import UIKit
 
-class ChooseSourceTableViewCell: UITableViewCell {
-
+class ChooseCurrencyTableViewCell: UITableViewCell {
     @IBOutlet weak var switchIsSelected: UISwitch!
-    @IBOutlet weak var lblExchange: UILabel!
-    var callback: ((UITableViewCell) -> Void)?
-
+    @IBOutlet weak var labelExchange: UILabel!
+    
+    var onStateChange: ((UITableViewCell) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         switchIsSelected.addTarget(self, action: #selector(stateChange), for: UIControlEvents.valueChanged)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
-    func setConfig(exchange: Exchange){
-        lblExchange.text = exchange.name
+    func configure(exchange: Exchange){
+        labelExchange.text = exchange.name
         if exchange.subscribed{
             switchIsSelected.setOn(true, animated: false)
-            lblExchange.textColor = Constatns.Color.aqua
+            labelExchange.textColor = Constatns.Color.aqua
         }
     }
     
     func stateChange(switchState: UISwitch){
-        callback!(self)
+        onStateChange!(self)
         if switchState.isOn{
-            lblExchange.textColor = Constatns.Color.aqua
+            labelExchange.textColor = Constatns.Color.aqua
         }
         else{
-            lblExchange.textColor = UIColor.gray
+            labelExchange.textColor = UIColor.gray
         }
     }
 }

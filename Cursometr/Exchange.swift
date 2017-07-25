@@ -11,9 +11,9 @@ import Foundation
 struct Exchange {
     let id: Int
     let name: String
-    var subscribed: Bool
-    let showSellPrice: Bool
-    let prices: [Price]
+    var subscribed: Bool = false
+    var showSellPrice: Bool = true
+    var prices: [Price] = []
 }
 
 extension Exchange {
@@ -21,30 +21,19 @@ extension Exchange {
     init?(json: JSON){
         guard let id = json["id"] as? Int,
             let name = json["name"] as? String
-            //let prices = json["ranges"] as? JSONArray
-            //let subscribed = json["subscribed"] as? Bool
-        else{
-           return nil
+            else{
+                return nil
         }
         self.id = id
         self.name = name
         if let subscribed = (json["subscribed"] as? Bool){
             self.subscribed = subscribed
         }
-        else{
-            self.subscribed = false
-        }
         if let showSellPrice = (json["showSellPrice"] as? Bool){
             self.showSellPrice = showSellPrice
         }
-        else{
-            showSellPrice = true
-        }
         if let prices = (json["ranges"] as? JSONArray){
             self.prices = prices.map(Price.init)
-        }
-        else{
-            self.prices = []
         }
     }
 }

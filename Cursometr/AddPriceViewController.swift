@@ -10,34 +10,35 @@ import UIKit
 
 class AddPriceViewController: UIViewController, UITabBarDelegate {
     
-    @IBOutlet weak var btnDone: UIBarButtonItem!
-    @IBOutlet weak var txtCost: UITextField!
-    @IBOutlet weak var lblCurrentQuotation: UILabel!
+    @IBOutlet weak var buttonDone: UIBarButtonItem!
+    @IBOutlet weak var textFieldCost: UITextField!
+    @IBOutlet weak var labelCurrentQuotation: UILabel!
+    
     var cost : Double?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let strCost = String(format: "%.3f", cost!)
-        txtCost.text = strCost
-        self.lblCurrentQuotation.text = "Current quotatoin: " + strCost
-        txtCost.addTarget(self, action: #selector(costDidChange), for: .editingChanged)
-        // Do any additional setup after loading the view.
+        textFieldCost.text = strCost
+        self.labelCurrentQuotation.text = "Current quotatoin: " + strCost
+        textFieldCost.addTarget(self, action: #selector(costDidChange), for: .editingChanged)
     }
     
     func costDidChange(){
-        if let text = txtCost.text, text.isEmpty{
-            btnDone.isEnabled = false
+        if let text = textFieldCost.text, text.isEmpty{
+            buttonDone.isEnabled = false
         }
-        else if btnDone.isEnabled == false{
-            btnDone.isEnabled = true
+        else if buttonDone.isEnabled == false{
+            buttonDone.isEnabled = true
         }
     }
     
-    func set(cost: Double){
+    func configure(cost: Double){
         self.cost = cost
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cost = Double(txtCost.text!){
+        if let cost = Double(textFieldCost.text!){
             self.cost = cost
         }
         else{

@@ -8,21 +8,21 @@
 
 import UIKit
 
-class ChooseSourceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChooseCurrencyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var tblView: UITableView!
-    @IBOutlet weak var lblCurrencyName: UILabel!
+    @IBOutlet weak var labelCurrency: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     weak var delegate: CurrencyChangedDelegate? = nil
     var currency : Currency!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tblView.dataSource = self
-        tblView.delegate = self
-        //tblView.register(cellClass: ChooseSourceTableViewCell.self)
-        tblView.tableFooterView = UIView(frame: .zero)
-        tblView.tableFooterView?.isHidden = true
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView(frame: .zero)
+        tableView.tableFooterView?.isHidden = true
+        labelCurrency.text = currency.name
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,10 +30,10 @@ class ChooseSourceViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: ChooseSourceTableViewCell.self), for: indexPath) as! ChooseSourceTableViewCell
-        cell.setConfig(exchange:  currency!.sources[indexPath.row])
-        cell.callback = { [weak self] cell in
-            guard let index = self?.tblView.indexPath(for: cell) else { return }
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChooseCurrencyTableViewCell.self), for: indexPath) as! ChooseCurrencyTableViewCell
+        cell.configure(exchange:  currency.sources[indexPath.row])
+        cell.onStateChange = { [weak self] cell in
+            guard let index = self?.tableView.indexPath(for: cell) else { return }
             self?.currency.sources[index.row].subscribed = !((self?.currency!.sources[index.row].subscribed)!)
         }
         return cell
@@ -44,5 +44,9 @@ class ChooseSourceViewController: UIViewController, UITableViewDataSource, UITab
         if self.isMovingFromParentViewController {
             delegate?.currencyChanged(currency: currency)
         }
+    }
+    
+    func configure(currency: Currency){
+        self.currency = currency
     }
 }

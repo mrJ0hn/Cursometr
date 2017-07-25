@@ -17,9 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        CurrencySubscriptionService.initialize(dependency: BankDataDownloadService.shared)
-        CurrencyListService.initialize(dependency: BankDataDownloadService.shared)
-        SendFeedbackService.initialize(dependency: BankDataDownloadService.shared)
+        CurrencySubscriptionService.initialize(dependency: AuthorizationService.shared)
+        CurrencyListService.initialize(dependency: AuthorizationService.shared)
         return true
     }
 

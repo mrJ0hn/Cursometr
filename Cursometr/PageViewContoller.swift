@@ -10,15 +10,13 @@ import UIKit
 
 class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     var currencies : [Currency] = []
-    var activityIndicator : UIActivityIndicatorView!
+    let activityIndicator = ActivityIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         self.view.backgroundColor = Constatns.Color.viewFlipsideBackgroundColor
-        
-        activityIndicator = CustomActivityIndicator().get()
-        view.addSubview(activityIndicator)
+        self.view.addSubview(activityIndicator)
         
         NotificationCenter.default.addObserver(self, selector: #selector(startLoading), name: .StartLoadingCurrencySubscription, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateData), name: .FinishLoadingCurrencySubscription, object: nil)
@@ -28,6 +26,14 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func startLoading(){
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoading(){
+        activityIndicator.stopAnimating()
     }
     
     func updateData(){
@@ -55,13 +61,13 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
         if (itemIndex < currencies.count){
             let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ItemViewController.self)) as! ItemViewController
             pageItemController.itemIndex = itemIndex
-            pageItemController.setConfig(currency: currencies[itemIndex])
+            pageItemController.configure(currency: currencies[itemIndex])
             return pageItemController
         }
         else{
             let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: ItemViewController.self)) as! ItemViewController
             pageItemController.itemIndex = itemIndex
-            pageItemController.setConfig(title: "No currency")
+            pageItemController.configure(title: "No currency")
             return pageItemController
         }
     }
@@ -93,21 +99,4 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
         }
         return nil
     }
-    
-    func startLoading(){
-        view.isUserInteractionEnabled = false
-        if (viewControllers?.count)!>0{
-            viewControllers?[0].view.isHidden = true
-        }
-        activityIndicator.startAnimating()
-    }
-    
-    func stopLoading(){
-        view.isUserInteractionEnabled = true
-        //if (viewControllers?.count)!>0{
-            viewControllers?[0].view.isHidden = false
-        //}
-        activityIndicator.stopAnimating()
-    }
-    
 }

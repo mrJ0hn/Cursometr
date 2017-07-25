@@ -9,8 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CustomTextView: UITextView, UITextViewDelegate {
-    
+class TextView: UITextView, UITextViewDelegate {
     var isEmptyCallback : ((Bool)->Void)?
     
     @IBInspectable var strPlaceholder = "Placeholder"{
