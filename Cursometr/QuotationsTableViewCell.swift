@@ -9,6 +9,7 @@
 import UIKit
 
 class QuotationsTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var labelSubscribedExchanges: UILabel!
     @IBOutlet weak var labelCurrency: UILabel!
     @IBOutlet weak var imageViewCurrencyIsSelected: UIImageView!

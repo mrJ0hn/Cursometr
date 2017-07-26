@@ -11,7 +11,6 @@ import UIKit
 class ChooseCurrencyTableViewCell: UITableViewCell {
     @IBOutlet weak var switchIsSelected: UISwitch!
     @IBOutlet weak var labelExchange: UILabel!
-    
     var onStateChange: ((UITableViewCell) -> Void)?
     
     override func awakeFromNib() {

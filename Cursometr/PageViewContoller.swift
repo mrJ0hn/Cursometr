@@ -30,6 +30,7 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     
     func startLoading(){
         activityIndicator.startAnimating()
+        
     }
     
     func stopLoading(){
@@ -82,20 +83,22 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     
     //swipe to left
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let itemController = viewController as! ItemViewController
-        if (itemController.itemIndex > 0)
-        {
-            return getItemController(itemController.itemIndex-1)
+        if let itemController = viewController as? ItemViewController{
+            if (itemController.itemIndex > 0)
+            {
+                return getItemController(itemController.itemIndex-1)
+            }
         }
         return nil
     }
     
     //swipe to right
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let itemController = viewController as! ItemViewController
-        if (itemController.itemIndex + 1 < currencies.count)
-        {
-            return getItemController(itemController.itemIndex + 1)
+        if let itemController = viewController as? ItemViewController{
+            if (itemController.itemIndex + 1 < currencies.count)
+            {
+                return getItemController(itemController.itemIndex + 1)
+            }
         }
         return nil
     }

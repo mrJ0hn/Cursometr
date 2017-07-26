@@ -9,7 +9,6 @@
 import UIKit
 
 class ChangeCostTableViewCell: UITableViewCell {
-
     @IBOutlet weak var labelCost: UILabel!
     
     var onSelected: ((UITableViewCell)->Void)?
@@ -18,7 +17,6 @@ class ChangeCostTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         onSelected?(self)
     }
-
 
     func configure(cost: Double){
         labelCost.text = String(cost)

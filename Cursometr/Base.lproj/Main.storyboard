@@ -635,7 +635,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GF-m7-AA4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GF-m7-AA4">
                                                     <rect key="frame" x="16" y="19.5" width="70.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
@@ -644,29 +644,30 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="KGq-fE-jyK">
                                                     <rect key="frame" x="94.5" y="24.5" width="15" height="11"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="KCY-P0-5kr"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="11" id="4na-GV-ss3"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="pvr-PR-9vq"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="ewu-ll-bDo">
                                                     <rect key="frame" x="347" y="19.5" width="12" height="20"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oE8-ZI-vyd">
-                                                    <rect key="frame" x="339" y="30.5" width="0.0" height="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Source" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oE8-ZI-vyd">
+                                                    <rect key="frame" x="285" y="19.5" width="54" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="6GF-m7-AA4" firstAttribute="centerY" secondItem="vrX-o6-bUk" secondAttribute="centerY" id="6pJ-2B-U2H"/>
-                                                <constraint firstItem="6GF-m7-AA4" firstAttribute="leading" secondItem="vrX-o6-bUk" secondAttribute="leading" constant="16" id="Ddv-vi-Yoe"/>
-                                                <constraint firstItem="ewu-ll-bDo" firstAttribute="centerY" secondItem="vrX-o6-bUk" secondAttribute="centerY" id="Dmb-OS-Meb"/>
-                                                <constraint firstItem="KGq-fE-jyK" firstAttribute="centerY" secondItem="vrX-o6-bUk" secondAttribute="centerY" id="Peb-QF-FV7"/>
-                                                <constraint firstItem="oE8-ZI-vyd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KGq-fE-jyK" secondAttribute="trailing" constant="16" id="Qb2-Xq-92X"/>
-                                                <constraint firstItem="KGq-fE-jyK" firstAttribute="leading" secondItem="6GF-m7-AA4" secondAttribute="trailing" constant="8" id="XSW-Gg-kcJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="ewu-ll-bDo" secondAttribute="trailing" constant="16" id="afm-b0-B7I"/>
-                                                <constraint firstItem="oE8-ZI-vyd" firstAttribute="centerY" secondItem="vrX-o6-bUk" secondAttribute="centerY" id="fso-Ub-EaM"/>
-                                                <constraint firstItem="ewu-ll-bDo" firstAttribute="leading" secondItem="oE8-ZI-vyd" secondAttribute="trailing" constant="8" id="gd5-a8-5dW"/>
+                                                <constraint firstItem="6GF-m7-AA4" firstAttribute="leading" secondItem="vrX-o6-bUk" secondAttribute="leading" constant="16" id="4x5-Rt-DiP"/>
+                                                <constraint firstItem="ewu-ll-bDo" firstAttribute="leading" secondItem="oE8-ZI-vyd" secondAttribute="trailing" priority="750" constant="8" id="60J-a7-irK"/>
+                                                <constraint firstItem="6GF-m7-AA4" firstAttribute="centerY" secondItem="vrX-o6-bUk" secondAttribute="centerY" id="AIp-sq-zfc"/>
+                                                <constraint firstItem="oE8-ZI-vyd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KGq-fE-jyK" secondAttribute="trailing" priority="750" constant="8" id="EUi-tK-t4h"/>
+                                                <constraint firstItem="KGq-fE-jyK" firstAttribute="centerY" secondItem="vrX-o6-bUk" secondAttribute="centerY" id="VRi-JW-omg"/>
+                                                <constraint firstItem="KGq-fE-jyK" firstAttribute="leading" secondItem="6GF-m7-AA4" secondAttribute="trailing" constant="8" id="Yvy-7l-PcL"/>
+                                                <constraint firstAttribute="trailing" secondItem="ewu-ll-bDo" secondAttribute="trailing" constant="16" id="cWA-7c-Rtz"/>
+                                                <constraint firstItem="ewu-ll-bDo" firstAttribute="centerY" secondItem="vrX-o6-bUk" secondAttribute="centerY" id="gWg-eG-hOf"/>
+                                                <constraint firstItem="oE8-ZI-vyd" firstAttribute="centerY" secondItem="vrX-o6-bUk" secondAttribute="centerY" id="pFG-55-90o"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

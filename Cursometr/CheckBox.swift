@@ -8,15 +8,15 @@
 
 import UIKit
 
-class CheckBox: UIButton {
+class CheckBox: UIImageView {
     let checkedImage = #imageLiteral(resourceName: "icn_checkmark")
     
     var isChecked: Bool = false {
         didSet{
             if isChecked == true {
-                self.setImage(checkedImage, for: UIControlState.normal)
+                self.image = checkedImage
             } else {
-                self.setImage(nil, for: UIControlState.normal)
+                self.image = nil
             }
         }
     }
