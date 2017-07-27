@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DC2B093F1F1FEB50008F1BD6 /* SegmentedControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B093E1F1FEB50008F1BD6 /* SegmentedControlTableViewCell.swift */; };
+		DC45125B1F29E9040077E9E7 /* PriceObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC45125A1F29E9040077E9E7 /* PriceObj.swift */; };
+		DC45125D1F29E9140077E9E7 /* ExchangeObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC45125C1F29E9140077E9E7 /* ExchangeObj.swift */; };
+		DC45126A1F29F7870077E9E7 /* CurrencyObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4512691F29F7870077E9E7 /* CurrencyObj.swift */; };
 		DC4C8AA71F27205B006423B7 /* SegmentedControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC4C8AA61F27205B006423B7 /* SegmentedControl.xib */; };
 		DC4C8AA91F2724C4006423B7 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C8AA81F2724C4006423B7 /* SegmentedControl.swift */; };
 		DC4C8AB11F275051006423B7 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C8AB01F275051006423B7 /* ActivityIndicator.swift */; };
@@ -21,6 +24,8 @@
 		DC744EB41F1D10A400C45B31 /* PageViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC744EB31F1D10A400C45B31 /* PageViewContoller.swift */; };
 		DC746D721F18D9C9004641CE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D711F18D9C9004641CE /* TextView.swift */; };
 		DC746D741F18E034004641CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC746D731F18E034004641CE /* Constants.swift */; };
+		DC81BE6F1F2A40A1009ABD1B /* ModelConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81BE6E1F2A40A1009ABD1B /* ModelConverter.swift */; };
+		DC81BE711F2A5574009ABD1B /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81BE701F2A5574009ABD1B /* Repository.swift */; };
 		DC83ADB41F1F6BBA00908007 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC83ADB31F1F6BBA00908007 /* Notification.swift */; };
 		DC861AB31F226EE500B0E40E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC861AB21F226EE500B0E40E /* ViewController.swift */; };
 		DC892BC51F17516200A7723E /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC892BC41F17516200A7723E /* CheckBox.swift */; };
@@ -45,6 +50,7 @@
 		DCAA311A1F210421008CB1E7 /* SetNotificationsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAA31191F210421008CB1E7 /* SetNotificationsTableViewHeader.swift */; };
 		DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */; };
 		DCAFEE421F115E7400263C7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCAFEE411F115E7400263C7B /* Assets.xcassets */; };
+		DCB35D271F29D83C0095B56C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB35D261F29D83C0095B56C /* CoreDataManager.swift */; };
 		DCBF4AB81F14ACC500A8AA8E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBF4AB71F14ACC500A8AA8E /* Currency.swift */; };
 		DCBF4ABA1F14AE9100A8AA8E /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */; };
 		DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */; };
@@ -56,6 +62,9 @@
 
 /* Begin PBXFileReference section */
 		DC2B093E1F1FEB50008F1BD6 /* SegmentedControlTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlTableViewCell.swift; sourceTree = "<group>"; };
+		DC45125A1F29E9040077E9E7 /* PriceObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceObj.swift; sourceTree = "<group>"; };
+		DC45125C1F29E9140077E9E7 /* ExchangeObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeObj.swift; sourceTree = "<group>"; };
+		DC4512691F29F7870077E9E7 /* CurrencyObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyObj.swift; sourceTree = "<group>"; };
 		DC4C8AA61F27205B006423B7 /* SegmentedControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentedControl.xib; sourceTree = "<group>"; };
 		DC4C8AA81F2724C4006423B7 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		DC4C8AB01F275051006423B7 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -71,6 +80,8 @@
 		DC744EB31F1D10A400C45B31 /* PageViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewContoller.swift; sourceTree = "<group>"; };
 		DC746D711F18D9C9004641CE /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DC746D731F18E034004641CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DC81BE6E1F2A40A1009ABD1B /* ModelConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelConverter.swift; sourceTree = "<group>"; };
+		DC81BE701F2A5574009ABD1B /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		DC83ADB31F1F6BBA00908007 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		DC861AB21F226EE500B0E40E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DC892BC41F17516200A7723E /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
@@ -95,6 +106,7 @@
 		DCAA31191F210421008CB1E7 /* SetNotificationsTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNotificationsTableViewHeader.swift; sourceTree = "<group>"; };
 		DCAD9CB21F12CB770051D209 /* LeaveFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackViewController.swift; sourceTree = "<group>"; };
 		DCAFEE411F115E7400263C7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DCB35D261F29D83C0095B56C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		DCBF4AB71F14ACC500A8AA8E /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				DCAD9CB11F12C4430051D209 /* Application */,
+				DCB35D251F29D8020095B56C /* Database */,
 				DC953A731F1CBE7B008FB250 /* Extensions */,
 				DCF190001F1E0F1100A51499 /* NetworkService */,
 				DCFD6A241F13EDAE00E8FACD /* Model */,
@@ -211,9 +224,22 @@
 				DC4F85231F10327F00A05586 /* AppDelegate.swift */,
 				DC4F852F1F10327F00A05586 /* LaunchScreen.storyboard */,
 				DC4F85321F10327F00A05586 /* Info.plist */,
-				DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */,
 			);
 			name = Application;
+			sourceTree = "<group>";
+		};
+		DCB35D251F29D8020095B56C /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */,
+				DCB35D261F29D83C0095B56C /* CoreDataManager.swift */,
+				DC4512691F29F7870077E9E7 /* CurrencyObj.swift */,
+				DC45125C1F29E9140077E9E7 /* ExchangeObj.swift */,
+				DC45125A1F29E9040077E9E7 /* PriceObj.swift */,
+				DC81BE6E1F2A40A1009ABD1B /* ModelConverter.swift */,
+				DC81BE701F2A5574009ABD1B /* Repository.swift */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 		DCF190001F1E0F1100A51499 /* NetworkService */ = {
@@ -331,9 +357,12 @@
 				DC7377FA1F26157400136DA2 /* Typealias.swift in Sources */,
 				DC744EB41F1D10A400C45B31 /* PageViewContoller.swift in Sources */,
 				DC4C8AB11F275051006423B7 /* ActivityIndicator.swift in Sources */,
+				DC81BE711F2A5574009ABD1B /* Repository.swift in Sources */,
 				DCF190051F1E13C600A51499 /* CurrencyListService.swift in Sources */,
 				DC4C8AA91F2724C4006423B7 /* SegmentedControl.swift in Sources */,
+				DC45125B1F29E9040077E9E7 /* PriceObj.swift in Sources */,
 				DCAD9CB31F12CB770051D209 /* LeaveFeedbackViewController.swift in Sources */,
+				DCB35D271F29D83C0095B56C /* CoreDataManager.swift in Sources */,
 				DC953A771F1CC16F008FB250 /* NetworkController.swift in Sources */,
 				DC9FE2121F27807400348D61 /* CornerRadiusView.swift in Sources */,
 				DC901F331F19233F00A28D3A /* QuotationsTableViewCell.swift in Sources */,
@@ -345,9 +374,12 @@
 				DC9FB9891F1561F900E1111E /* SubjectFeedbackViewController.swift in Sources */,
 				DC953A751F1CBE8B008FB250 /* TableView.swift in Sources */,
 				DC746D721F18D9C9004641CE /* TextView.swift in Sources */,
+				DC45126A1F29F7870077E9E7 /* CurrencyObj.swift in Sources */,
 				DC9D0B021F163444009C5CBE /* Price.swift in Sources */,
 				DC83ADB41F1F6BBA00908007 /* Notification.swift in Sources */,
+				DC81BE6F1F2A40A1009ABD1B /* ModelConverter.swift in Sources */,
 				DC8C60581F1B528F00779F28 /* ChooseCurrencyTableViewCell.swift in Sources */,
+				DC45125D1F29E9140077E9E7 /* ExchangeObj.swift in Sources */,
 				DC8FC9511F1FC82A00AE5D3E /* ChangeCostTableViewCell.swift in Sources */,
 				DC892BC51F17516200A7723E /* CheckBox.swift in Sources */,
 				DC4F85241F10327F00A05586 /* AppDelegate.swift in Sources */,

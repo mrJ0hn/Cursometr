@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="CurrencyObj" representedClassName=".CurrencyObj" syncable="YES">
+        <attribute name="fullName" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="subscribed" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="exchanges" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExchangeObj" inverseName="currencies" inverseEntity="ExchangeObj" syncable="YES"/>
+    </entity>
+    <entity name="ExchangeObj" representedClassName="ExchangeObj" syncable="YES">
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="showSellPrice" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="subscribed" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="currencies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CurrencyObj" inverseName="exchanges" inverseEntity="CurrencyObj" syncable="YES"/>
+        <relationship name="prices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PriceObj" inverseName="exchanges" inverseEntity="PriceObj" syncable="YES"/>
+    </entity>
+    <entity name="PriceObj" representedClassName="PriceObj" syncable="YES">
+        <attribute name="buyPriceNow" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="range" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="salePriceNow" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="exchanges" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExchangeObj" inverseName="prices" inverseEntity="ExchangeObj" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CurrencyObj" positionX="-459" positionY="-12" width="128" height="120"/>
+        <element name="ExchangeObj" positionX="-243" positionY="-45" width="128" height="135"/>
+        <element name="PriceObj" positionX="-45" positionY="-9" width="128" height="118"/>
+    </elements>
 </model>
