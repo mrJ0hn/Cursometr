@@ -37,3 +37,11 @@ extension Exchange {
         }
     }
 }
+
+extension Exchange: Equatable {
+    static func ==(lhs: Exchange, rhs: Exchange) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name &&  lhs.subscribed == rhs.subscribed &&
+            lhs.showSellPrice == rhs.showSellPrice
+    }
+}
+

@@ -10,11 +10,17 @@ import Foundation
 
 class ModelConverter{
     static func convert(currency: Currency) -> CurrencyObj{
-        return CurrencyObj(id: Int32(currency.id), name: currency.name, fullName: currency.fullName)
+        let currencyObj = CurrencyObj()
+        currencyObj.id = Int32(currency.id)
+        currencyObj.name = currency.name
+        currencyObj.fullName = currency.fullName
+        return currencyObj
     }
     
     static func convert(currencyObj: CurrencyObj) -> Currency{
-        return Currency(id: Int(currencyObj.id), name: currencyObj.name, fullName: currencyObj.fullName, sources: [])
+        let exchangesObj = currencyObj.exchanges?.allObjects as! [ExchangeObj]
+        let exchanges = exchangesObj.map(convert)
+        return Currency(id: Int(currencyObj.id), name: currencyObj.name, fullName: currencyObj.fullName, sources: exchanges )
     }
     
     static func convert(exchange: Exchange) -> ExchangeObj{

@@ -10,16 +10,17 @@ import UIKit
 
 class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     var currencies : [Currency] = []
-    let activityIndicator = ActivityIndicator()
+    //let activityIndicator = ActivityIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         self.view.backgroundColor = Constatns.Color.viewFlipsideBackgroundColor
-        self.view.addSubview(activityIndicator)
+        //self.view.addSubview(activityIndicator)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateData), name: .UpdateCurrencySubscription, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startLoading), name: .StartLoadingCurrencySubscription, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateData), name: .FinishLoadingCurrencySubscription, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopLoading), name: .StopLoadingCurrencySubscription, object: nil)
         
         updateData()
     }
@@ -29,27 +30,23 @@ class PageViewContoller: UIPageViewController, UIPageViewControllerDataSource{
     }
     
     func startLoading(){
-        activityIndicator.startAnimating()
-        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
     func stopLoading(){
-        activityIndicator.stopAnimating()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
     func updateData(){
-        startLoading()
-        CurrencySubscriptionService.shared.obtainCurrencySubscription(onSuccess: { [weak self] (currencies) in
+        Repository.shared.obtainCurrencySubscription(onSuccess: { [weak self] (currencies) in
             DispatchQueue.main.async {
                 self?.currencies = currencies
                 self?.updatePageViewController()
-                self?.stopLoading()
             }
             }, onError: { [weak self] (error) in
                 DispatchQueue.main.async {
                     self?.showError(error: error)
                     self?.updatePageViewController()
-                    self?.stopLoading()
                 }
         })
     }

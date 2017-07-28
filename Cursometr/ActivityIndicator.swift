@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ActivityIndicator: UIActivityIndicatorView {
+class ActivityIndicator: UIView {
+    let activityIndicator = UIActivityIndicatorView()
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
     init(){
@@ -22,21 +23,25 @@ class ActivityIndicator: UIActivityIndicatorView {
     }
     
     required init(coder: NSCoder) {
-        super.init(coder: coder)
+        super.init(coder: coder)!
     }
     
     func initialize(){
-        self.frame	= CGRect(x: 0, y: 0, width: 40, height: 40)
-        self.hidesWhenStopped = true
-        self.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        self.backgroundColor = Constatns.Color.viewFlipsideBackgroundColor
+        activityIndicator.frame	= CGRect(x: 0, y: 0, width: 40, height: 40)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        self.addSubview(activityIndicator)
     }
     
-    override func startAnimating() {
-        self.center = (delegate.window?.center)!
-        super.startAnimating()
+    func startAnimating() {
+        self.frame = (delegate.window?.frame)!
+        activityIndicator.center = self.center
+        activityIndicator.startAnimating()
     }
     
-    override func stopAnimating() {
-        super.stopAnimating()
+    func stopAnimating() {
+        activityIndicator.stopAnimating()
+        self.removeFromSuperview()
     }
 }

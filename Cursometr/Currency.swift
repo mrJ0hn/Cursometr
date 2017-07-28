@@ -31,3 +31,10 @@ extension Currency{
         self.sources = json.flatMap(Exchange.init)
     }
 }
+
+extension Currency: Equatable {
+    static func ==(lhs: Currency, rhs: Currency) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name &&  lhs.fullName == rhs.fullName &&
+            lhs.sources.elementsEqual(rhs.sources)
+    }
+}

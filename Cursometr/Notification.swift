@@ -9,6 +9,7 @@
 import Foundation
 
 extension Notification.Name {
+    static let UpdateCurrencySubscription = Notification.Name("updateCurrencySubscription")
     static let StartLoadingCurrencySubscription = Notification.Name("startLoadingCurrencySubscription")
-    static let FinishLoadingCurrencySubscription = Notification.Name("finishLoadingCurrencySubscription")
+    static let StopLoadingCurrencySubscription = Notification.Name("stopLoadingCurrencySubscription")
 }

@@ -12,7 +12,6 @@ class CurrencySubscriptionService {
     private static var instance: CurrencySubscriptionService!
     var authorizationService: AuthorizationService!
     let group = DispatchGroup()
-    var currentCurrencies : [Currency] = []
     
     enum ActionUnderCurrencySubscription{
         case delete
@@ -37,12 +36,11 @@ class CurrencySubscriptionService {
     private init(){}
     
     func obtainCurrencySubscription(onSuccess: @escaping ([Currency])->Void, onError: @escaping ErrorAction){
-        authorizationService.loginIfNecessary(onSuccess: {[weak self] in
+        authorizationService.loginIfNecessary(onSuccess: {
             let url = URL(string: ApiURL.strUrlCurrencySubscription.rawValue)!
-            let onSuccess : (JSON, URLResponse)->Void = { [weak self] (jsonArray, _) in
+            let onSuccess : (JSON, URLResponse)->Void = { (jsonArray, _) in
                 let jsonCurrencies = jsonArray["subscriptionCategories"] as? JSONArray
                 let currencies: [Currency] = jsonCurrencies!.map(Currency.init)
-                self?.currentCurrencies = currencies
                 onSuccess(currencies)
             }
             NetworkController.request(endpoint: url, query: nil, body: nil, httpMethod: .get, onSuccess: onSuccess, onError: onError)
@@ -76,11 +74,11 @@ class CurrencySubscriptionService {
             }
         }
         group.notify(queue: DispatchQueue.main){
-            NotificationCenter.default.post(name: .FinishLoadingCurrencySubscription, object: nil)
+            NotificationCenter.default.post(name: .UpdateCurrencySubscription, object: nil)
         }
     }
     
-    func addCategory(categoryId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
+    private func addCategory(categoryId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
         let url = URL(string: ApiURL.strUrlCategory.rawValue)!
         let parameters : JSON = ["categoryId" : categoryId as AnyObject]
         let onSuccess : (JSON, URLResponse)->Void = { (_, _) in
@@ -89,7 +87,7 @@ class CurrencySubscriptionService {
         NetworkController.request(endpoint: url, query: parameters, body: nil, httpMethod: .post, onSuccess: onSuccess, onError: onError)
     }
     
-    func deleteCategory(categoryId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
+    private func deleteCategory(categoryId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
         let url = URL(string: ApiURL.strUrlCategory.rawValue)!
         let parameters : JSON = ["categoryId" : categoryId as AnyObject]
         let onSuccess : (JSON, URLResponse)->Void = { (_, _) in
@@ -99,7 +97,7 @@ class CurrencySubscriptionService {
     }
     
     
-    func addCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
+    private func addCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
         let url = URL(string: ApiURL.strUrlCurrencySubscription.rawValue)!
         let json : JSON = ["categoryId" : categoryId as AnyObject, "sourceId" : sourceId as AnyObject]
         let onSuccess : (JSON, URLResponse)->Void = { (_, _) in
@@ -108,7 +106,7 @@ class CurrencySubscriptionService {
         NetworkController.request(endpoint: url, query: nil, body: json, httpMethod: .post, onSuccess: onSuccess, onError: onError)
     }
     
-    func deleteCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
+    private func deleteCurrencySubscription(categoryId: Int, sourceId: Int, onSuccess: @escaping Action, onError: @escaping ErrorAction){
         let url = URL(string: ApiURL.strUrlCurrencySubscription.rawValue)!
         let parameters : JSON = ["categoryId" : categoryId as AnyObject, "sourceId" : sourceId as AnyObject]
         let onSuccess : (JSON, URLResponse)->Void = { (_, _) in

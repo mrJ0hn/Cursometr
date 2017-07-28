@@ -33,7 +33,7 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
         self.view.addSubview(activityIndicator)
         
         activityIndicator.startAnimating()
-        CurrencyListService.shared.obtainCurrencyList(onSuccess: { [weak self] (currencies) in
+        Repository.shared.obtainAllCurrencies(onSuccess: { [weak self] (currencies) in
             DispatchQueue.main.async {
                 self?.currencies = currencies
                 self?.activityIndicator.stopAnimating()
@@ -95,7 +95,7 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
                 print(error)
             })
             currencies[selectedIndexPath.row] = currency
-            CurrencyListService.shared.allCurrencies[selectedIndexPath.row] = currency
+            Repository.shared.updateCurrencySubscribed(currency: currency)
             tableView.reloadRows(at: [selectedIndexPath], with: .none)
         }
     }

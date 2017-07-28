@@ -34,7 +34,7 @@ class CoreDataManager{
     }()
     
     class func saveContext () {
-        let context = persistentContainer.viewContext
+        let context = getContext()
         if context.hasChanges {
             do {
                 try context.save()

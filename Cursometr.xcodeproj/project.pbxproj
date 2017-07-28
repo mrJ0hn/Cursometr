@@ -147,10 +147,10 @@
 		DC4F85221F10327F00A05586 /* Cursometr */ = {
 			isa = PBXGroup;
 			children = (
+				DCC4B96D1F2B7C350040AD87 /* DataSource */,
+				DC81BE701F2A5574009ABD1B /* Repository.swift */,
 				DCAD9CB11F12C4430051D209 /* Application */,
-				DCB35D251F29D8020095B56C /* Database */,
 				DC953A731F1CBE7B008FB250 /* Extensions */,
-				DCF190001F1E0F1100A51499 /* NetworkService */,
 				DCFD6A241F13EDAE00E8FACD /* Model */,
 				DCAD9CB01F12C4150051D209 /* View */,
 				DCAD9CAF1F12C36F0051D209 /* View controller */,
@@ -228,7 +228,7 @@
 			name = Application;
 			sourceTree = "<group>";
 		};
-		DCB35D251F29D8020095B56C /* Database */ = {
+		DCB35D251F29D8020095B56C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				DC4F852A1F10327F00A05586 /* Cursometr.xcdatamodeld */,
@@ -237,9 +237,17 @@
 				DC45125C1F29E9140077E9E7 /* ExchangeObj.swift */,
 				DC45125A1F29E9040077E9E7 /* PriceObj.swift */,
 				DC81BE6E1F2A40A1009ABD1B /* ModelConverter.swift */,
-				DC81BE701F2A5574009ABD1B /* Repository.swift */,
 			);
-			name = Database;
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		DCC4B96D1F2B7C350040AD87 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				DCF190001F1E0F1100A51499 /* NetworkService */,
+				DCB35D251F29D8020095B56C /* CoreData */,
+			);
+			name = DataSource;
 			sourceTree = "<group>";
 		};
 		DCF190001F1E0F1100A51499 /* NetworkService */ = {

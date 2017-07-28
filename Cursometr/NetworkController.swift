@@ -25,7 +25,7 @@ class NetworkController {
                 onError(error!)
                 return
             }
-            sleep(2)
+            sleep(1)
             print("\(request) \(httpMethod)")
             if let usableData = data{
                 do{

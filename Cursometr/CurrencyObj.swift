@@ -25,13 +25,6 @@ public class CurrencyObj: NSManagedObject {
     convenience init(){
         self.init(entity: CoreDataManager.entityForName(entityName: .currencyObj), insertInto: CoreDataManager.getContext())
     }
-    
-    convenience init(id: Int32, name: String, fullName: String){
-        self.init()
-        self.id = id
-        self.name = name
-        self.fullName = fullName
-    }
 }
 
 // MARK: Generated accessors for exchanges
