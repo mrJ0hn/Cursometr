@@ -41,6 +41,7 @@ class QuotationsViewController: UIViewController, UITableViewDataSource, UITable
             }
             }, onError: { [weak self] (error) in
                 DispatchQueue.main.async {
+                    print(error)
                     self?.showError(error: error)
                     self?.activityIndicator.stopAnimating()
                 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CoreLocation
 
 @objc(CurrencyObj)
 public class CurrencyObj: NSManagedObject {
@@ -16,14 +17,29 @@ public class CurrencyObj: NSManagedObject {
         return NSFetchRequest<CurrencyObj>(entityName: "CurrencyObj")
     }
     
-    @NSManaged public var fullName: String
     @NSManaged public var id: Int32
     @NSManaged public var name: String
+    @NSManaged public var fullName: String
     @NSManaged public var subscribed: Bool
     @NSManaged public var exchanges: NSSet?
+    
+    convenience init(context: NSManagedObjectContext){
+        self.init(entity: CoreDataManager.entityForName(entityName: .currencyObj), insertInto: context)
+    }
+    
+    static func insert(into context: NSManagedObjectContext, id: Int, name: String, fullName: String, subscribed: Bool) -> CurrencyObj {
+        let currencyObj = CurrencyObj(context: context)
+        currencyObj.id = Int32(id)
+        currencyObj.name = name
+        currencyObj.fullName = fullName
+        currencyObj.subscribed = subscribed
+        return currencyObj
+    }
+}
 
-    convenience init(){
-        self.init(entity: CoreDataManager.entityForName(entityName: .currencyObj), insertInto: CoreDataManager.getContext())
+extension CurrencyObj: Managed{
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(name), ascending: false)]
     }
 }
 

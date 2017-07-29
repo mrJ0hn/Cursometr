@@ -22,16 +22,23 @@ public class ExchangeObj: NSManagedObject {
     @NSManaged public var currencies: NSSet?
     @NSManaged public var prices: NSSet?
     
-    convenience init(){
-        self.init(entity: CoreDataManager.entityForName(entityName: .exchangeObj), insertInto: CoreDataManager.getContext())
+    convenience init(context: NSManagedObjectContext){
+        self.init(entity: CoreDataManager.entityForName(entityName: .exchangeObj), insertInto: context)
     }
     
-    convenience init(id: Int32, name: String, showSellPrice: Bool, subscribed: Bool){
-        self.init()
-        self.id = id
-        self.name = name
-        self.showSellPrice = showSellPrice
-        self.subscribed = subscribed
+    static func insert(into context: NSManagedObjectContext, id: Int, name: String, showSellPrice: Bool, subscribed: Bool) -> ExchangeObj{
+        let exhcangeObj = ExchangeObj(context: context)
+        exhcangeObj.id = Int32(id)
+        exhcangeObj.name = name
+        exhcangeObj.showSellPrice = showSellPrice
+        exhcangeObj.subscribed = subscribed
+        return exhcangeObj
+    }
+}
+
+extension ExchangeObj: Managed{
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(id), ascending: false)]
     }
 }
 

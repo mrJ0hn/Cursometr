@@ -28,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfR-ff-Uqs">
                     <rect key="frame" x="0.0" y="319" width="375" height="29"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-tk-DAL" customClass="ItemSegmentedControl" customModule="Cursometr" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOX-tk-DAL">
                             <rect key="frame" x="1" y="1" width="186.5" height="27"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zk0-iD-zxp">
@@ -49,7 +49,7 @@
                                 <constraint firstItem="Ajk-0F-t5X" firstAttribute="centerY" secondItem="hOX-tk-DAL" secondAttribute="centerY" id="w1s-ip-bsw"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B24-Ih-3mu" customClass="ItemSegmentedControl" customModule="Cursometr" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B24-Ih-3mu">
                             <rect key="frame" x="187.5" y="1" width="186.5" height="27"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Each Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tg8-Ar-Tut">

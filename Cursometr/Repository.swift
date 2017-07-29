@@ -18,10 +18,10 @@ class Repository{
     private init(){}
     
     func obtainAllCurrencies(onSuccess: @escaping ([Currency])->Void, onError: @escaping ErrorAction){
-        let savedCurrencies = fetchCurrenciesFromCoreData()
-        onSuccess(fetchCurrenciesFromCoreData())
+        let savedCurrenciesObj = fetchCurrenciesFromCoreData()
+        onSuccess(savedCurrenciesObj.map(ModelConverter.convert))
         CurrencyListService.shared.obtainCurrencyList(onSuccess: {[weak self] (currencies) in
-            if savedCurrencies.count != currencies.count {
+            if savedCurrenciesObj.count != currencies.count {
                 self?.saveCurrenciesToCoreData(currencies: currencies)
                 onSuccess(currencies)
             }
@@ -40,38 +40,41 @@ class Repository{
     
     func updateCurrencySubscribed(currency: Currency){
         let predicate = NSPredicate(format: "id = %i", currency.id)
-        let currenciesObj = fetch(entityName: .currencyObj, predicate: predicate) as! [CurrencyObj]
+        let currenciesObj = fetchCurrenciesFromCoreData(predicate: predicate)
         if let currencyObj = currenciesObj.first{
             let exchangesObj = currencyObj.exchanges?.allObjects as! [ExchangeObj]
-            for i in 0..<exchangesObj.count{
-                if Int(exchangesObj[i].id) == currency.sources[i].id{
-                    exchangesObj[i].subscribed = currency.sources[i].subscribed
+            for exchange in currency.sources{
+                for exchangeObj in exchangesObj{
+                    if exchange.id == Int(exchangeObj.id) && exchange.subscribed != exchangeObj.subscribed{
+                        exchangeObj.subscribed = exchange.subscribed
+                    }
                 }
             }
-            CoreDataManager.saveContext()
         }
     }
     
-    private func fetchExchangesFromCoreData() -> [Exchange]{
-        let fetchedCurrencies = fetch(entityName: .exchangeObj) as! [ExchangeObj]
-        print(fetchedCurrencies)
-        return fetchedCurrencies.map(ModelConverter.convert)
-    }
-    
-    private func fetchCurrenciesFromCoreData() -> [Currency]{
-        let fetchedCurrencies = fetch(entityName: .currencyObj) as! [CurrencyObj]
-        print(fetchedCurrencies)
-        return fetchedCurrencies.map(ModelConverter.convert)
-    }
-    
-    private func fetch(entityName: EntityName, predicate: NSPredicate? = nil) -> [Any]{
-        let context = CoreDataManager.getContext()
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName.rawValue)
-        if let predicate = predicate{
-            fetchRequest.predicate = predicate
-        }
+    private func fetchExchangesFromCoreData(predicate: NSPredicate? = nil) -> [ExchangeObj]{
+        let request = ExchangeObj.sortedFetchRequest
         do{
-            return try context.fetch(fetchRequest)
+            return try context.fetch(request)
+        }catch{
+            print(error)
+        }
+        return []
+//        let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//        let fetchedExchanges = fetchedResultsController.fetchedObjects
+//        if let exchanges = fetchedExchanges{
+//            return exchanges
+//        }
+//        return []
+    }
+    
+    private func fetchCurrenciesFromCoreData(predicate: NSPredicate? = nil) -> [CurrencyObj]{
+        let request = CurrencyObj.sortedFetchRequest
+        request.predicate = predicate
+        //        let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        do{
+            return try context.fetch(request)
         }catch{
             print(error)
         }
@@ -79,14 +82,21 @@ class Repository{
     }
     
     private func saveCurrenciesToCoreData(currencies: [Currency]){
-        let currenciesObj = currencies.map(ModelConverter.convert)
-        for i in 0..<currencies.count{
-            for exchange in currencies[i].sources{
-                let exchangeObj = ModelConverter.convert(exchange: exchange)
-                currenciesObj[i].addToExchanges(exchangeObj)
-                exchangeObj.addToCurrencies(currenciesObj[i])
-            }
+        for currency in currencies{
+            saveCurrencyToCoreData(currency: currency, subscribed: false)
         }
+        //CoreDataManager.saveContext()
+    }
+    
+    private func saveCurrencyToCoreData(currency: Currency, subscribed: Bool){
+        let currencyObj = CurrencyObj.insert(into: context, id: currency.id, name: currency.name, fullName: currency.fullName, subscribed: subscribed)
+        var exchangesObj : [ExchangeObj] = []
+        for exchange in currency.sources{
+            let exchangeObj = ExchangeObj.insert(into: context, id: exchange.id, name: exchange.name, showSellPrice: exchange.showSellPrice, subscribed: exchange.subscribed)
+            exchangeObj.addToCurrencies(currencyObj)
+            exchangesObj.append(exchangeObj)
+        }
+        currencyObj.addToExchanges(NSSet(array: exchangesObj))
         CoreDataManager.saveContext()
     }
 }

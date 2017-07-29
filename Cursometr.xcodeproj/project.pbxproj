@@ -54,6 +54,7 @@
 		DCBF4AB81F14ACC500A8AA8E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBF4AB71F14ACC500A8AA8E /* Currency.swift */; };
 		DCBF4ABA1F14AE9100A8AA8E /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */; };
 		DCC183AB1F10D5CF009A6ABC /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */; };
+		DCC2C5691F2C802A00DA5010 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC2C5681F2C802A00DA5010 /* Managed.swift */; };
 		DCF190021F1E0F3800A51499 /* CurrencySubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF190011F1E0F3800A51499 /* CurrencySubscriptionService.swift */; };
 		DCF190051F1E13C600A51499 /* CurrencyListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF190041F1E13C600A51499 /* CurrencyListService.swift */; };
 		DCF190091F1E156400A51499 /* SendFeedbackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF190081F1E156400A51499 /* SendFeedbackService.swift */; };
@@ -110,6 +111,7 @@
 		DCBF4AB71F14ACC500A8AA8E /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		DCBF4AB91F14AE9100A8AA8E /* Exchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		DCC183AA1F10D5CF009A6ABC /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		DCC2C5681F2C802A00DA5010 /* Managed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		DCF190011F1E0F3800A51499 /* CurrencySubscriptionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySubscriptionService.swift; sourceTree = "<group>"; };
 		DCF190041F1E13C600A51499 /* CurrencyListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyListService.swift; sourceTree = "<group>"; };
 		DCF190081F1E156400A51499 /* SendFeedbackService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFeedbackService.swift; sourceTree = "<group>"; };
@@ -148,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				DCC4B96D1F2B7C350040AD87 /* DataSource */,
-				DC81BE701F2A5574009ABD1B /* Repository.swift */,
 				DCAD9CB11F12C4430051D209 /* Application */,
 				DC953A731F1CBE7B008FB250 /* Extensions */,
 				DCFD6A241F13EDAE00E8FACD /* Model */,
@@ -237,6 +238,7 @@
 				DC45125C1F29E9140077E9E7 /* ExchangeObj.swift */,
 				DC45125A1F29E9040077E9E7 /* PriceObj.swift */,
 				DC81BE6E1F2A40A1009ABD1B /* ModelConverter.swift */,
+				DCC2C5681F2C802A00DA5010 /* Managed.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -244,6 +246,7 @@
 		DCC4B96D1F2B7C350040AD87 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				DC81BE701F2A5574009ABD1B /* Repository.swift */,
 				DCF190001F1E0F1100A51499 /* NetworkService */,
 				DCB35D251F29D8020095B56C /* CoreData */,
 			);
@@ -385,6 +388,7 @@
 				DC45126A1F29F7870077E9E7 /* CurrencyObj.swift in Sources */,
 				DC9D0B021F163444009C5CBE /* Price.swift in Sources */,
 				DC83ADB41F1F6BBA00908007 /* Notification.swift in Sources */,
+				DCC2C5691F2C802A00DA5010 /* Managed.swift in Sources */,
 				DC81BE6F1F2A40A1009ABD1B /* ModelConverter.swift in Sources */,
 				DC8C60581F1B528F00779F28 /* ChooseCurrencyTableViewCell.swift in Sources */,
 				DC45125D1F29E9140077E9E7 /* ExchangeObj.swift in Sources */,

@@ -24,7 +24,12 @@ class ModelConverter{
     }
     
     static func convert(exchange: Exchange) -> ExchangeObj{
-        return ExchangeObj(id: Int32(exchange.id), name: exchange.name, showSellPrice: exchange.showSellPrice, subscribed: exchange.subscribed)
+        let exchangeObj = ExchangeObj()
+        exchangeObj.id = Int32(exchange.id)
+        exchangeObj.name = exchange.name
+        exchangeObj.subscribed = exchange.subscribed
+        exchangeObj.showSellPrice = exchange.showSellPrice
+        return exchangeObj
     }
     
     static func convert(exchangeObj: ExchangeObj) -> Exchange{
